@@ -20,7 +20,7 @@ export default function Navbar() {
   return (
     <div className='w-full flex flex-row gap-5 items-center justify-between relative px-48 py-4 shadow-md'>
       <div className='text-2xl font-bold text-slate-800 font-serif italic flex flex-row items-end justify-center gap-2'>
-        <Image src={logo} width={50} />
+        <Image src={logo} width={40} alt='logo' className='w-auto' />
         <h1>Vistalab</h1>
       </div>
       <div className='flex flex-row items-center justify-center gap-4'>

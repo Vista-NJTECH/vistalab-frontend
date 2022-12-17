@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { stackData } from "./config";
+import { stacksData } from "./config";
 
-function StackCard({ item }) {
+function StacksCard({ item }) {
   return (
     <div className='flex flex-col items-center justify-between gap-4 py-4 px-7 border-2 border-slate-300 rounded-xl'>
-      <div className='flex flex-col items-center justify-center gap-2'>
+      <div className='flex flex-col items-center justify-center gap-4'>
         <span className='text-9xl'>{item.icon}</span>
         <span className='text-2xl font-bold text-slate-700'>{item.title}</span>
         <span>{item.intro}</span>
@@ -19,13 +19,13 @@ function StackCard({ item }) {
   );
 }
 
-export default function Stack() {
+export default function Stacks() {
   return (
-    <div className='flex flex-col items-center justify-center gap-20 px-48 py-28 bg-slate-100'>
+    <div className='flex flex-col items-center justify-center gap-20 px-48 py-28'>
       <h1 className='text-3xl font-bold text-slate-700'>我们的方向</h1>
       <div className='grid grid-cols-3 gap-5'>
-        {stackData.map((item) => (
-          <StackCard key={item.title} item={item} />
+        {stacksData.map((item) => (
+          <StacksCard key={item.title} item={item} />
         ))}
       </div>
     </div>
