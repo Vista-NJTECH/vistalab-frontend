@@ -2,14 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 
 import logo from "../../data/images/logo.png";
-
-import navbarData from "./config";
+import { navbarData } from "./config";
 
 function NavbarCard({ item }) {
   return (
     <Link
       href={item.href}
-      className='py-2 px-3 rounded-md font-semibold text-md hover:bg-white hover:text-theme-dark bg-theme-dark text-white duration-500 shadow-md flex flex-row gap-1 items-center justify-center'
+      className='py-2 px-3 rounded-md font-semibold text-md hover:shadow-md bg-theme-dark text-white duration-500 flex flex-row gap-1 items-center justify-center'
     >
       <span>{item.icon}</span>
       <span>{item.title}</span>
@@ -19,7 +18,7 @@ function NavbarCard({ item }) {
 
 export default function Navbar() {
   return (
-    <main className='w-full flex flex-row gap-5 items-center justify-between relative px-48 py-4 shadow-md'>
+    <div className='w-full flex flex-row gap-5 items-center justify-between relative px-48 py-4 shadow-md'>
       <div className='text-2xl font-bold text-slate-800 font-serif italic flex flex-row items-end justify-center gap-2'>
         <Image src={logo} width={50} />
         <h1>Vistalab</h1>
@@ -29,6 +28,6 @@ export default function Navbar() {
           <NavbarCard key={item.title} item={item} />
         ))}
       </div>
-    </main>
+    </div>
   );
 }

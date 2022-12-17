@@ -1,9 +1,9 @@
 export default function Header() {
   return (
-    <div className='mx-48 h-[70vh] flex flex-row items-center justify-center gap-28'>
-      <div className='w-1/3 flex flex-col gap-6'>
+    <div className='mt-20 mx-48 h-[70vh] flex flex-row items-center justify-center gap-28'>
+      <div className='w-1/3 flex flex-col gap-10'>
         <h1 className='text-3xl font-semibold text-slate-600'>远景实验室</h1>
-        <p className='border-b-2 border-slate-600'>
+        <p className='border-b-2 border-slate-600 text-xl'>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis debitis vel sed at reiciendis. Delectus
           debitis dolorem impedit a iure!
         </p>

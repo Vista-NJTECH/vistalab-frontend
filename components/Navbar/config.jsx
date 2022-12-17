@@ -1,7 +1,7 @@
 import { AiFillHome, AiFillAccountBook, AiFillFlag } from "react-icons/ai";
 import { FaUserAlt, FaElementor } from "react-icons/fa";
 
-const navbarData = [
+export const navbarData = [
   {
     title: "首页",
     href: "/",
@@ -28,5 +28,3 @@ const navbarData = [
     icon: <AiFillAccountBook />,
   },
 ];
-
-export default navbarData;
