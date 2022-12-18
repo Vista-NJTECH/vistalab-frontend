@@ -24,8 +24,8 @@ export default function Navbar() {
         <h1>Vistalab</h1>
       </div>
       <div className='flex flex-row items-center justify-center gap-4'>
-        {navbarData.map((item) => (
-          <NavbarCard key={item.title} item={item} />
+        {navbarData.map((item, index) => (
+          <NavbarCard key={index} item={item} />
         ))}
       </div>
     </div>

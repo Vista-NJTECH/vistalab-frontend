@@ -8,7 +8,7 @@ export const navbarData = [
     icon: <AiFillHome />,
   },
   {
-    title: "人员信息",
+    title: "主要成员",
     href: "/",
     icon: <FaUserAlt />,
   },

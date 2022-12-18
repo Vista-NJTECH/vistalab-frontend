@@ -1,6 +1,4 @@
-import Header from "./Header";
-import Stacks from "./Stacks";
-import Awards from "./Awards";
+import { Header, Awards, Stacks } from "./components";
 
 export default function Page() {
   return (
