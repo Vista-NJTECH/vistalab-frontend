@@ -4,7 +4,7 @@ import work from "./images/work.jpg";
 
 export default function Header() {
   return (
-    <div className='py-20 px-10 md:px-48 flex flex-col lg:flex-row items-center justify-between'>
+    <div className='py-20 px-5 md:px-48 flex flex-col lg:flex-row items-center justify-between gap-10'>
       <Image src={work} alt='work' className='object-cover object-center w-[600px]' />
       <div className='w-full lg:w-1/3 flex flex-col gap-10'>
         <h1 className='text-3xl font-semibold text-slate-600'>远景实验室</h1>
