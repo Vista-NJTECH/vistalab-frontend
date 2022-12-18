@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { RxDotFilled, RxDot } from "react-icons/rx";
 
@@ -10,6 +10,14 @@ import importAllImages from "./config";
 export default function Certificates() {
   const images = importAllImages();
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlideIndex((prevSlideState) => (prevSlideState + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   const prevSlide = () => {
     const newSlideIndex = currentSlideIndex === 0 ? images.length - 1 : currentSlideIndex - 1;
     setCurrentSlideIndex(newSlideIndex);
@@ -18,11 +26,12 @@ export default function Certificates() {
     const newSlideIndex = currentSlideIndex === images.length - 1 ? 0 : currentSlideIndex + 1;
     setCurrentSlideIndex(newSlideIndex);
   };
+
   return (
     <div className='px-10 md:px-48 flex flex-col items-center justify-center py-10 gap-5'>
       <h1 className='text-3xl font-bold text-slate-700'>获得的奖项</h1>
       <div className='flex flex-col gap-3 items-center justify-center'>
-        <div className='max-w-[700px] max-h-[550px] relative group border-8 border-[#cdaa7d] border-dashed p-2'>
+        <div className='w-[300px] md:w-[700px] h-[250px] md:h-[550px] relative group border-8 border-[#cdaa7d] border-dashed p-2'>
           {<Image src={images[currentSlideIndex]} alt='slide-image' placeholder='blur' className='w-full h-full' />}
           <button className='group-hover:block hidden absolute top-[50%] -translate-x-0 -translate-y-[-45%] left-5 text-2xl rounded-full cursor-pointer text-white bg-black/30'>
             <MdKeyboardArrowLeft onClick={prevSlide} size={30} />

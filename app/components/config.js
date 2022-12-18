@@ -45,13 +45,13 @@ function importImagesCache(r) {
 }
 
 export default function importAllImages() {
-  const imagesCache = importImagesCache(require.context("../../data/images/slider", false, /\.(png|jpe?g|svg|webp)$/));
+  const imagesCache = importImagesCache(require.context("./images/slider", false, /\.(png|jpe?g|svg|webp)$/));
   return Object.entries(imagesCache).map((module) => module[1].default);
 }
 
-import activity01 from "../../data/images/meta/activity01.jpg";
-import activity02 from "../../data/images/meta/activity02.jpg";
-import activity03 from "../../data/images/meta/activity03.jpg";
+import activity01 from "./images/activities/activity01.jpg";
+import activity02 from "./images/activities/activity02.jpg";
+import activity03 from "./images/activities/activity03.jpg";
 
 export const activitiesData = [
   {
