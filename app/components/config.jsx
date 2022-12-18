@@ -39,3 +39,40 @@ export const awardsData = {
     "Lores adipisci ipsum fugit xasfdsa repudiandae?",
   ],
 };
+
+function importImagesCache(r) {
+  return r.keys().map(r);
+}
+
+export default function importAllImages() {
+  const imagesCache = importImagesCache(require.context("../../data/images/slider", false, /\.(png|jpe?g|svg|webp)$/));
+  return Object.entries(imagesCache).map((module) => module[1].default);
+}
+
+import activity01 from "../../data/images/meta/activity01.jpg";
+import activity02 from "../../data/images/meta/activity02.jpg";
+import activity03 from "../../data/images/meta/activity03.jpg";
+
+export const activitiesData = [
+  {
+    title: "Hello world and tody is nice for BBC!",
+    date: "2022/12/20",
+    intro: "Lorem adipisci ipsum fugit xasfdsa repudiandae?",
+    href: "/",
+    src: activity01,
+  },
+  {
+    title: "Hello world and good morning!",
+    date: "2022/12/22",
+    intro: "Lorem adipisci ipsum fugit xasfdsa repudiandae?",
+    href: "/",
+    src: activity02,
+  },
+  {
+    title: "Hello world and good morning!",
+    date: "2022/12/28",
+    intro: "Lorem adipisci ipsum fugit xasfdsa repudiandae?",
+    href: "/",
+    src: activity03,
+  },
+];

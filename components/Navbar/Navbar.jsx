@@ -5,11 +5,13 @@ import Image from "next/image";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useState } from "react";
 
-import logo from "../../data/images/meta/logo.png";
 import { navbarData } from "./config";
+import logo from "../../data/images/meta/logo.png";
+import useWindowSize from "../../app/components/useWindowSize";
 
 export default function Navbar() {
   const [isExpand, setIsExpand] = useState(false);
+  const windowSize = useWindowSize();
 
   const NavbarCard = ({ item }) => {
     return (
@@ -33,17 +35,21 @@ export default function Navbar() {
           <Image src={logo} width={40} alt='logo' className='w-auto' />
           <h1>Vistalab</h1>
         </div>
-        <div className='hidden lg:flex flex-row items-center justify-center gap-4'>
-          {navbarData.map((item, index) => (
-            <NavbarCard key={index} item={item} />
-          ))}
-        </div>
-        <button className='block lg:hidden text-xl' onClick={handleClickExpand}>
-          <AiOutlineMenu />
-        </button>
+        {windowSize.width > 1024 && (
+          <div className='flex flex-row items-center justify-center gap-4'>
+            {navbarData.map((item, index) => (
+              <NavbarCard key={index} item={item} />
+            ))}
+          </div>
+        )}
+        {windowSize.width <= 1024 && (
+          <button className='text-xl' onClick={handleClickExpand}>
+            <AiOutlineMenu />
+          </button>
+        )}
       </div>
-      {isExpand && (
-        <div className='lg:hidden w-full flex flex-col items-start gap-3'>
+      {isExpand && windowSize.width <= 1024 && (
+        <div className='w-full flex flex-col items-start gap-3'>
           {navbarData.map((item, index) => (
             <Link
               key={index}

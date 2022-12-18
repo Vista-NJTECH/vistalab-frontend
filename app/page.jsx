@@ -1,4 +1,4 @@
-import { Header, Awards, Stacks, Certificates } from "./components";
+import { Header, Awards, Stacks, Certificates, Activities } from "./components";
 
 export default function Page() {
   return (
@@ -7,6 +7,7 @@ export default function Page() {
       <Awards />
       <Certificates />
       <Stacks />
+      <Activities />
     </div>
   );
 }
