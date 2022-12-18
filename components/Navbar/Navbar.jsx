@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import logo from "../../data/images/logo.png";
+import logo from "../../data/images/meta/logo.png";
 import { navbarData } from "./config";
 
 function NavbarCard({ item }) {

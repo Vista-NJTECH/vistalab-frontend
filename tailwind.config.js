@@ -12,7 +12,7 @@ module.exports = {
         "theme-dark": "#3173E9",
       },
       backgroundImage: {
-        work: "url('../data/images/work.png')",
+        work: "url('../data/images/meta/work.png')",
       },
     },
   },
