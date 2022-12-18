@@ -5,26 +5,6 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 
 import { awardsData } from "./config";
 
-function YearCard({ item, currentIndex, setCurrentIndex }) {
-  const commonStyle =
-    "p-3 text-xl font-bold text-slate-700 border-l-4 w-full flex flex-row items-center justify-between cursor-pointer duration-500";
-  return (
-    <div
-      onClick={setCurrentIndex}
-      className={
-        currentIndex === item ? `bg-slate-200 border-theme-dark ${commonStyle}` : `border-theme-light  ${commonStyle}`
-      }
-    >
-      <span>{item}</span>
-      {currentIndex === item && (
-        <span className='text-theme-dark'>
-          <MdKeyboardArrowRight />
-        </span>
-      )}
-    </div>
-  );
-}
-
 export default function Awards() {
   const yearsData = Object.keys(awardsData);
   const [currentIndex, setCurrentIndex] = useState(yearsData[0]);
@@ -56,8 +36,8 @@ export default function Awards() {
     );
   };
   return (
-    <div className='px-48 py-28 flex flex-row gap-10 items-center justify-center bg-slate-100'>
-      <div className='w-1/3 flex flex-col items-center justify-start gap-7 rounded-r-none rounded-xl pl-16 py-10'>
+    <div className='px-10 md:px-48 py-10 md:py-28 flex flex-col md:flex-row gap-5 md:gap-10 items-center justify-center bg-slate-100'>
+      <div className='w-full md:w-1/3 flex flex-col items-center justify-start gap-4 md:gap-7 rounded-r-none md:pl-16 md:py-10'>
         <h1 className='text-3xl font-bold text-slate-700'>我们的成果</h1>
         {yearsData.map((item, index) => (
           <YearCard key={index} item={item} />
