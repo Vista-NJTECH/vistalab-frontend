@@ -19,7 +19,7 @@ export default function Certificates() {
     setCurrentSlideIndex(newSlideIndex);
   };
   return (
-    <div className='bg-slate-100 px-48 flex flex-col items-center justify-center py-20 gap-5'>
+    <div className='px-48 flex flex-col items-center justify-center py-20 gap-5'>
       <h1 className='text-3xl font-bold text-slate-700'>获得的奖项</h1>
       <div className='flex flex-col gap-3 items-center justify-center'>
         <div className='w-[700px] h-[500px] relative group border-8 border-[#cdaa7d] border-dashed p-2'>

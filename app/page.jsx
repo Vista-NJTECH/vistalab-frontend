@@ -5,8 +5,8 @@ export default function Page() {
     <div className='flex flex-col gap-40'>
       <Header />
       <Awards />
-      <Stacks />
       <Certificates />
+      <Stacks />
     </div>
   );
 }
