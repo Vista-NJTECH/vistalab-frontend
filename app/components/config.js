@@ -52,27 +52,35 @@ export default function importAllImages() {
 import activity01 from "./images/activities/activity01.jpg";
 import activity02 from "./images/activities/activity02.jpg";
 import activity03 from "./images/activities/activity03.jpg";
+import activity04 from "./images/activities/activity04.jpg";
 
 export const activitiesData = [
   {
-    title: "Hello world and tody is nice for BBC!",
-    date: "2022/12/20",
+    title: "Good and nice day for joining manga!",
+    date: "2022/10/30",
     intro: "Lorem adipisci ipsum fugit xasfdsa repudiandae?",
     href: "/",
-    src: activity01,
+    src: activity04,
   },
   {
-    title: "Hello world and good morning!",
-    date: "2022/12/22",
+    title: "Nice team work! Everyone is happy!",
+    date: "2022/10/28",
+    intro: "Lorem adipisci ipsum fugit xasfdsa repudiandae?",
+    href: "/",
+    src: activity03,
+  },
+  {
+    title: "Another good day for learning and teaching!",
+    date: "2022/11/22",
     intro: "Lorem adipisci ipsum fugit xasfdsa repudiandae?",
     href: "/",
     src: activity02,
   },
   {
-    title: "Hello world and good morning!",
-    date: "2022/12/28",
+    title: "WE DID IT! Waiting another year!",
+    date: "2022/12/20",
     intro: "Lorem adipisci ipsum fugit xasfdsa repudiandae?",
     href: "/",
-    src: activity03,
+    src: activity01,
   },
 ];
