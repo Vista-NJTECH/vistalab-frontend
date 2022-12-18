@@ -1,7 +1,7 @@
 export default function Header() {
   return (
-    <div className='mt-20 px-10 md:px-48 flex flex-col md:flex-row items-center justify-center gap-28'>
-      <div className='w-full md:w-1/3 flex flex-col gap-10'>
+    <div className='py-20 px-10 md:px-48 flex flex-row items-center justify-center gap-28'>
+      <div className='w-full lg:w-1/3 flex flex-col gap-10'>
         <h1 className='text-3xl font-semibold text-slate-600'>远景实验室</h1>
         <p className='border-b-2 border-slate-600 text-xl'>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis debitis vel sed at reiciendis. Delectus
@@ -23,7 +23,7 @@ export default function Header() {
           </button>
         </form>
       </div>
-      <div className='flex-1 bg-work object-contain object-center h-[60vh]'></div>
+      <div className='hidden lg:block flex-1 bg-work bg-cover bg-center h-[60vh]'></div>
     </div>
   );
 }

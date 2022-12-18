@@ -17,7 +17,7 @@ export default function Navbar() {
     return (
       <Link
         href={item.href}
-        className='font-semibold text-md text-slate-700 border-b-2 duration-500 border-b-white hover:border-b-theme-dark flex flex-row gap-1 items-center justify-center'
+        className='font-semibold text-md rounded-md text-slate-700 hover:text-theme-dark duration-300 flex flex-row gap-1 items-center justify-center'
       >
         <span>{item.icon}</span>
         <span>{item.title}</span>
@@ -29,7 +29,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className='w-full flex flex-col gap-5 items-center justify-between px-10 md:px-48 py-3 shadow-md'>
+    <div className='w-full flex flex-col gap-5 items-center justify-between px-5 md:px-48 py-3 shadow-md'>
       <div className='flex flex-row w-full items-center justify-between'>
         <div className='text-2xl font-bold text-slate-800 font-serif italic flex flex-row items-end justify-center gap-2'>
           <Image src={logo} width={40} alt='logo' className='w-auto' />
@@ -49,12 +49,12 @@ export default function Navbar() {
         )}
       </div>
       {isExpand && windowSize.width <= 1024 && (
-        <div className='w-full flex flex-col items-start gap-3'>
+        <div className='w-full flex flex-col items-start gap-4 py-2 border-t-2 border-t-slate-700'>
           {navbarData.map((item, index) => (
             <Link
               key={index}
               href={item.href}
-              className='font-semibold text-xl text-slate-700 hover:border-b-theme-dark flex flex-row gap-2 items-center justify-center'
+              className='w-full font-semibold text-xl text-slate-700 hover:border-b-theme-dark flex flex-row gap-2 items-center justify-start border-b-2 hover:bg-theme-dark hover:text-white p-2 rounded-md duration-300'
             >
               <span>{item.icon}</span>
               <span>{item.title}</span>

@@ -28,7 +28,7 @@ export default function Certificates() {
   };
 
   return (
-    <div className='px-10 md:px-48 flex flex-col items-center justify-center py-10 gap-5'>
+    <div className='px-5 md:px-48 flex flex-col items-center justify-center py-10 gap-5'>
       <h1 className='text-3xl font-bold text-slate-700'>获得的奖项</h1>
       <div className='flex flex-col gap-3 items-center justify-center'>
         <div className='w-[300px] md:w-[700px] h-[250px] md:h-[550px] relative group border-8 border-[#cdaa7d] border-dashed p-2'>

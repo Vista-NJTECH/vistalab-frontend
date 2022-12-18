@@ -21,7 +21,7 @@ function StacksCard({ item }) {
 
 export default function Stacks() {
   return (
-    <div className='bg-slate-100 flex flex-col items-center justify-center gap-5 lg:gap-20 px-10 md:px-48 py-14 md:py-20'>
+    <div className='bg-slate-100 flex flex-col items-center justify-center gap-5 lg:gap-20 px-5 md:px-48 py-14 md:py-20'>
       <h1 className='text-3xl font-bold text-slate-700'>我们的研究方向</h1>
       <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
         {stacksData.map((item, index) => (
