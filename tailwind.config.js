@@ -11,9 +11,6 @@ module.exports = {
         "theme-light": "#82C3EC",
         "theme-dark": "#3173E9",
       },
-      backgroundImage: {
-        work: "url('../data/images/meta/work.png')",
-      },
     },
   },
   plugins: [],

@@ -6,7 +6,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { useState } from "react";
 
 import { navbarData } from "./config";
-import logo from "../../data/images/meta/logo.png";
+import logo from "./logo.png";
 import useWindowSize from "../../app/components/useWindowSize";
 
 export default function Navbar() {
