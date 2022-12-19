@@ -16,7 +16,12 @@ export default function ActivityCard({ item, isOdd }) {
         <div className='w-full flex flex-col md:flex-row items-center justify-between rounded-md shadow-lg bg-slate-100'>
           {isOdd && (
             <div className='max-w-[450px] cursor-pointer'>
-              <Image src={item.src} alt='activity' className='rounded-l-md hover:scale-105 duration-300' />
+              <Image
+                src={item.src}
+                alt='activity'
+                placeholder='blur'
+                className='rounded-l-md hover:scale-105 duration-300'
+              />
             </div>
           )}
           <div className='p-4'>
@@ -37,6 +42,7 @@ export default function ActivityCard({ item, isOdd }) {
               <Image
                 src={item.src}
                 alt='activity'
+                placeholder='blur'
                 className='rounded-r-md hover:scale-105 duration-300 cursor-pointer'
               />
             </div>
@@ -45,7 +51,12 @@ export default function ActivityCard({ item, isOdd }) {
       ) : (
         <div className='w-full flex flex-col md:flex-row items-center justify-between rounded-md shadow-lg bg-slate-100'>
           <div className='max-w-[450px] cursor-pointer'>
-            <Image src={item.src} alt='activity' className='rounded-t-md hover:scale-105 duration-300' />
+            <Image
+              src={item.src}
+              alt='activity'
+              placeholder='blur'
+              className='rounded-t-md hover:scale-105 duration-300'
+            />
           </div>
           <div className='p-4'>
             <Link href={item.href} className='text-2xl title hover:text-theme duration-300'>

@@ -24,6 +24,7 @@ export default function MobileNavbar() {
   return (
     <div className='lg:hidden'>
       <button
+        type='button'
         onClick={() => setIsExpand((prevState) => !prevState)}
         className='text-xl absolute top-0 bottom-0 right-5 my-auto'
       >
