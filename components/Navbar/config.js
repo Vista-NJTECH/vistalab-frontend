@@ -1,4 +1,4 @@
-import { AiFillHome, AiFillAccountBook, AiFillFlag } from "react-icons/ai";
+import { AiFillHome, AiFillAccountBook, AiFillFlag, AiFillSchedule } from "react-icons/ai";
 import { FaUserAlt, FaElementor } from "react-icons/fa";
 
 export const navbarData = [
@@ -21,6 +21,11 @@ export const navbarData = [
     title: "竞赛管理",
     href: "/",
     icon: <AiFillFlag />,
+  },
+  {
+    title: "日程安排",
+    href: "/",
+    icon: <AiFillSchedule />,
   },
   {
     title: "发票报销",
