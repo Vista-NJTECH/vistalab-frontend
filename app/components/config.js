@@ -45,7 +45,7 @@ function importImagesCache(r) {
 }
 
 export default function importAllImages() {
-  const imagesCache = importImagesCache(require.context("./images/slider", false, /\.(png|jpe?g|svg|webp)$/));
+  const imagesCache = importImagesCache(require.context("./images/certificates", false, /\.(png|jpe?g|svg|webp)$/));
   return Object.entries(imagesCache).map((module) => module[1].default);
 }
 

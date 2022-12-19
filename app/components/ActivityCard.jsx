@@ -18,7 +18,7 @@ export default function ActivityCard({ item, isOdd }) {
             </div>
           )}
           <div className='p-4'>
-            <Link href={item.href} className='text-2xl font-bold text-slate-700 hover:text-theme-dark duration-300'>
+            <Link href={item.href} className='text-2xl title hover:text-theme-dark duration-300'>
               {item.title}
             </Link>
             <span className='flex flex-row items-center gap-1 text-slate-500 mb-3'>
@@ -43,7 +43,7 @@ export default function ActivityCard({ item, isOdd }) {
             <Image src={item.src} alt='activity' className='rounded-t-md hover:scale-105 duration-300' />
           </div>
           <div className='p-4'>
-            <Link href={item.href} className='text-2xl font-bold text-slate-700 hover:text-theme-dark duration-300'>
+            <Link href={item.href} className='text-2xl title hover:text-theme-dark duration-300'>
               {item.title}
             </Link>
             <span className='flex flex-row items-center gap-1 text-slate-500 mb-3'>

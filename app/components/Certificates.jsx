@@ -14,7 +14,7 @@ export default function Certificates() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlideIndex((prevSlideState) => (prevSlideState + 1) % images.length);
-    }, 5000);
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
 
@@ -28,11 +28,11 @@ export default function Certificates() {
   };
 
   return (
-    <div className='px-5 md:px-48 flex flex-col items-center justify-center py-10 gap-5'>
-      <h1 className='text-3xl font-bold text-slate-700'>我们获得的奖项</h1>
+    <div className='frame flex flex-col items-center justify-center gap-5'>
+      <h1 className='title text-3xl'>我们获得的奖项</h1>
       <div className='flex flex-col gap-3 items-center justify-center'>
         <div className='w-[300px] md:w-[700px] h-[250px] md:h-[550px] relative group border-8 border-[#cdaa7d] border-dashed p-2'>
-          {<Image src={images[currentSlideIndex]} alt='slide-image' placeholder='blur' className='w-full h-full' />}
+          {<Image src={images[currentSlideIndex]} alt='certificate' placeholder='blur' className='w-full h-full' />}
           <button className='group-hover:block hidden absolute top-[50%] -translate-x-0 -translate-y-[-45%] left-5 text-2xl rounded-full cursor-pointer text-white bg-black/30'>
             <MdKeyboardArrowLeft onClick={prevSlide} size={30} />
           </button>

@@ -10,7 +10,7 @@ export default function Awards() {
   const [currentIndex, setCurrentIndex] = useState(yearsData[0]);
   const YearCard = ({ item }) => {
     const commonStyle =
-      "p-3 text-xl font-bold text-slate-700 border-l-4 w-full flex flex-row items-center justify-between cursor-pointer duration-500";
+      "p-3 title text-2xl border-l-4 w-full flex flex-row items-center justify-between cursor-pointer duration-500";
     return (
       <div
         onClick={() => setCurrentIndex(item)}
@@ -38,7 +38,7 @@ export default function Awards() {
   return (
     <div className='px-5 md:px-48 py-10 md:py-28 flex flex-col md:flex-row gap-5 md:gap-10 items-center justify-center bg-slate-100'>
       <div className='w-full md:w-1/3 flex flex-col items-center justify-start gap-4 md:gap-7 rounded-r-none md:pl-16 md:py-10'>
-        <h1 className='text-3xl font-bold text-slate-700'>我们取得的成果</h1>
+        <h1 className='title text-3xl'>我们取得的成果</h1>
         {yearsData.map((item, index) => (
           <YearCard key={index} item={item} />
         ))}
