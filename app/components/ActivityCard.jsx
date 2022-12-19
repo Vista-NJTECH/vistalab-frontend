@@ -4,10 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { MdOutlineDateRange } from "react-icons/md";
 
-import useWindowSize from "./useWindowSize";
+import useWindowSize from "../../lib/useWindowSize";
+import useTimeAgo from "../../lib/useTimeAgo";
 
 export default function ActivityCard({ item, isOdd }) {
   const windowSize = useWindowSize();
+  const timeAgo = useTimeAgo(item.date);
   return (
     <>
       {windowSize.width > 768 ? (
@@ -21,9 +23,12 @@ export default function ActivityCard({ item, isOdd }) {
             <Link href={item.href} className='text-2xl title hover:text-theme-dark duration-300'>
               {item.title}
             </Link>
-            <span className='flex flex-row items-center gap-1 text-slate-500 mb-3'>
-              <MdOutlineDateRange />
-              <p>{item.date}</p>
+            <span className='flex flex-row items-center gap-2 text-slate-500 mb-3'>
+              <div className='flex flex-row items-center'>
+                <MdOutlineDateRange />
+                <p>{item.date}</p>
+              </div>
+              <p>{timeAgo}</p>
             </span>
             <p>{item.intro}</p>
           </div>
@@ -49,6 +54,7 @@ export default function ActivityCard({ item, isOdd }) {
             <span className='flex flex-row items-center gap-1 text-slate-500 mb-3'>
               <MdOutlineDateRange />
               <p>{item.date}</p>
+              <p>{timeAgo}</p>
             </span>
             <p>{item.intro}</p>
           </div>

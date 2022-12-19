@@ -8,7 +8,7 @@ import { useState } from "react";
 
 import { navbarData } from "./config";
 import logo from "./logo.png";
-import useWindowSize from "../../app/components/useWindowSize";
+import useWindowSize from "../../lib/useWindowSize";
 
 export default function Navbar() {
   const [isExpand, setIsExpand] = useState(false);

@@ -78,7 +78,7 @@ export const activitiesData = [
   },
   {
     title: "WE DID IT! Waiting another year!",
-    date: "2022/12/20",
+    date: "2022/12/10",
     intro: "Lorem adipisci ipsum fugit xasfdsa repudiandae?",
     href: "/",
     src: activity01,
