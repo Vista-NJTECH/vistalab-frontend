@@ -11,7 +11,7 @@ function Navcard({ item }) {
   return (
     <Link
       href={item.href}
-      className='w-full font-semibold text-xl text-slate-700 flex flex-row gap-2 items-center justify-start border-b-2 hover:text-theme-dark p-2 rounded-md duration-300'
+      className='w-full font-semibold text-xl text-slate-700 flex flex-row gap-2 items-center justify-start border-b-2 hover:text-theme p-2 rounded-md duration-300'
     >
       <span>{item.icon}</span>
       <span>{item.title}</span>
@@ -22,10 +22,10 @@ function Navcard({ item }) {
 export default function MobileNavbar() {
   const [isExpand, setIsExpand] = useState(false);
   return (
-    <div>
+    <div className='lg:hidden'>
       <button
         onClick={() => setIsExpand((prevState) => !prevState)}
-        className='lg:hidden text-xl absolute top-0 bottom-0 right-5 my-auto'
+        className='text-xl absolute top-0 bottom-0 right-5 my-auto'
       >
         {isExpand ? <RxCross1 /> : <AiOutlineMenu />}
       </button>

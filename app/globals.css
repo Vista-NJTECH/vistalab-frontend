@@ -16,7 +16,7 @@
 }
 
 .btn {
-  @apply text-white bg-theme-dark duration-500 font-bold rounded-md shadow-md hover:bg-blue-700;
+  @apply text-white bg-theme duration-500 font-bold rounded-md shadow-md hover:bg-blue-700;
 }
 
 @tailwind utilities;

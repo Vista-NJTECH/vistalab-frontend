@@ -9,7 +9,7 @@ function NavbarCard({ item }) {
   return (
     <Link
       href={item.href}
-      className='font-semibold text-md rounded-md text-slate-700 hover:text-theme-dark duration-300 flex flex-row gap-1 items-center justify-center'
+      className='font-semibold text-md rounded-md text-slate-700 hover:text-theme duration-300 flex flex-row gap-1 items-center justify-center'
     >
       <span>{item.icon}</span>
       <span>{item.title}</span>

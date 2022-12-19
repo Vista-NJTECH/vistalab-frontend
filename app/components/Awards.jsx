@@ -15,12 +15,12 @@ export default function Awards() {
       <div
         onClick={() => setCurrentIndex(item)}
         className={
-          currentIndex === item ? `bg-slate-200 border-theme-dark ${commonStyle}` : `border-theme-light  ${commonStyle}`
+          currentIndex === item ? `bg-slate-200 border-theme ${commonStyle}` : `border-slate-400  ${commonStyle}`
         }
       >
         <span>{item}</span>
         {currentIndex === item && (
-          <span className='text-theme-dark'>
+          <span className='text-theme'>
             <MdKeyboardArrowRight />
           </span>
         )}

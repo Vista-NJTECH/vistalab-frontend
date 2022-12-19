@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { RxDotFilled, RxDot } from "react-icons/rx";
 
@@ -10,34 +10,49 @@ import importAllImages from "./config";
 export default function Certificates() {
   const images = importAllImages();
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const timerRef = useRef(null);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlideIndex((prevSlideState) => (prevSlideState + 1) % images.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     const newSlideIndex = currentSlideIndex === 0 ? images.length - 1 : currentSlideIndex - 1;
     setCurrentSlideIndex(newSlideIndex);
-  };
+  }, [currentSlideIndex, images]);
   const nextSlide = () => {
     const newSlideIndex = currentSlideIndex === images.length - 1 ? 0 : currentSlideIndex + 1;
     setCurrentSlideIndex(newSlideIndex);
   };
 
+  useEffect(() => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+    timerRef.current = setTimeout(() => {
+      nextSlide();
+    }, 4000);
+    return () => clearTimeout(timerRef.current);
+  }, [nextSlide]);
+
   return (
     <div className='frame flex flex-col items-center justify-center gap-5'>
       <h1 className='title text-3xl'>我们获得的奖项</h1>
       <div className='flex flex-col gap-3 items-center justify-center'>
-        <div className='w-[300px] md:w-[700px] h-[250px] md:h-[550px] relative group border-8 border-[#cdaa7d] border-dashed p-2'>
-          {<Image src={images[currentSlideIndex]} alt='certificate' placeholder='blur' className='w-full h-full' />}
-          <button className='group-hover:block hidden absolute top-[50%] -translate-x-0 -translate-y-[-45%] left-5 text-2xl rounded-full cursor-pointer text-white bg-black/30'>
-            <MdKeyboardArrowLeft onClick={prevSlide} size={30} />
+        <div className='flex flex-row items-center justify-center gap-3 md:gap-5'>
+          <button className='text-2xl md:text-3xl rounded-full cursor-pointer text-white bg-black/50'>
+            <MdKeyboardArrowLeft onClick={prevSlide} />
           </button>
-          <button className='group-hover:block hidden absolute top-[50%] -translate-x-0 -translate-y-[-45%] right-5 text-2xl rounded-full cursor-pointer text-white bg-black/30'>
-            <MdKeyboardArrowRight onClick={nextSlide} size={30} />
+          <div className='border-4 md:border-8 border-[#cdaa7d] border-dashed p-1 w-[250px] md:w-[700px] overflow-hidden'>
+            <div className={`flex flex-row translate-x-[${-currentSlideIndex * 100}%] duration-1000`}>
+              {images.map((item, index) => (
+                <Image
+                  key={index}
+                  src={item}
+                  alt='certificate'
+                  className='w-[250px] md:w-[700px] h-[190px] md:h-[550px]'
+                />
+              ))}
+            </div>
+          </div>
+          <button className='text-2xl md:text-3xl rounded-full cursor-pointer text-white bg-black/50'>
+            <MdKeyboardArrowRight onClick={nextSlide} />
           </button>
         </div>
         <div className='flex flex-row gap-2'>
