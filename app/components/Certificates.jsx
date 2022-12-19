@@ -39,15 +39,17 @@ export default function Certificates() {
           <button type='button' className='text-2xl md:text-3xl rounded-full cursor-pointer text-white bg-black/50'>
             <MdKeyboardArrowLeft onClick={prevSlide} />
           </button>
-          <div className='border-4 md:border-8 border-[#cdaa7d] border-dashed p-1 w-[250px] md:w-[700px] overflow-hidden'>
-            <div className={`flex flex-row translate-x-[${-currentSlideIndex * 100}%] duration-1000`}>
+          <div className='border-4 md:border-8 border-[#cdaa7d] border-dashed p-1'>
+            <div className='w-[250px] md:w-[700px] h-[190px] md:h-[550px] relative'>
               {images.map((item, index) => (
                 <Image
                   key={index}
                   src={item}
                   alt='certificate'
                   placeholder='blur'
-                  className='w-[250px] md:w-[700px] h-[190px] md:h-[550px]'
+                  className={`absolute top-0 left-0 w-full h-full duration-1000 ${
+                    currentSlideIndex === index ? "opacity-100" : "opacity-0"
+                  }`}
                 />
               ))}
             </div>
