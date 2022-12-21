@@ -49,10 +49,10 @@ export default function importAllImages() {
   return Object.entries(imagesCache).map((module) => module[1].default);
 }
 
-import activity01 from "./images/activities/activity01.jpg";
-import activity02 from "./images/activities/activity02.jpg";
-import activity03 from "./images/activities/activity03.jpg";
-import activity04 from "./images/activities/activity04.jpg";
+import activity01 from "./images/activities/activity01.jpeg";
+import activity02 from "./images/activities/activity02.jpeg";
+import activity03 from "./images/activities/activity03.jpeg";
+import activity04 from "./images/activities/activity04.jpeg";
 
 export const activitiesData = [
   {
