@@ -55,7 +55,7 @@ export const activitiesData = [
   {
     title: "我们的第一堂电控课！",
     date: "2022/12/01",
-    intro: "有张毅杰同学主讲的电控课，开启大家极客的生涯！",
+    intro: "由张毅杰同学主讲的电控课，开启大家极客的生涯！",
     href: "/",
     src: activity04,
   },
@@ -69,7 +69,7 @@ export const activitiesData = [
   {
     title: "为比赛作准备！",
     date: "2022/3/21",
-    intro: "在焊接车辆的部件。",
+    intro: "蔡建文在焊接车辆的部件。",
     href: "/",
     src: activity02,
   },
