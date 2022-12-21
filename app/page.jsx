@@ -1,9 +1,9 @@
-import { Header, Awards, Stacks, Certificates, Activities } from "./components";
+import { Head, Awards, Stacks, Certificates, Activities } from "./components";
 
 export default function Page() {
   return (
     <div className='flex flex-col gap-10 md:gap-40'>
-      <Header />
+      <Head />
       <Awards />
       <Certificates />
       <Stacks />

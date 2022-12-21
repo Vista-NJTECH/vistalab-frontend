@@ -16,11 +16,11 @@ function ActivityCard({ item, isOdd }) {
               src={item.src}
               alt='activity'
               placeholder='blur'
-              className='rounded-l-md hover:scale-105 duration-300'
+              className='rounded-l-md hover:scale-105 duration-300 object-cover object-center'
             />
           </div>
         )}
-        <div className='p-4'>
+        <div className='p-4 max-w-md'>
           <Link href={item.href} className='text-2xl title hover:text-theme duration-300'>
             {item.title}
           </Link>
@@ -39,18 +39,18 @@ function ActivityCard({ item, isOdd }) {
               src={item.src}
               alt='activity'
               placeholder='blur'
-              className='rounded-r-md hover:scale-105 duration-300 cursor-pointer'
+              className='rounded-r-md hover:scale-105 duration-300 cursor-pointer object-cover object-center'
             />
           </div>
         )}
       </div>
-      <div className='w-full md:hidden flex flex-col items-center justify-between rounded-md shadow-lg bg-slate-100'>
+      <div className='w-full md:hidden flex flex-col items-start justify-between rounded-md shadow-lg bg-slate-100'>
         <div className='max-w-[450px] cursor-pointer'>
           <Image
             src={item.src}
             alt='activity'
             placeholder='blur'
-            className='rounded-t-md hover:scale-105 duration-300'
+            className='rounded-t-md hover:scale-105 duration-300 object-cover object-center'
           />
         </div>
         <div className='p-4'>
