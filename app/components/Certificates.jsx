@@ -40,7 +40,7 @@ export default function Certificates() {
             <MdKeyboardArrowLeft onClick={prevSlide} />
           </button>
           <div className='border-4 md:border-8 border-[#cdaa7d] border-dashed p-1'>
-            <div className='w-[250px] md:w-[700px] h-[180px] md:h-[500px] relative'>
+            <div className='w-[230px] md:w-[700px] h-[165px] md:h-[500px] relative'>
               {images.map((item, index) => (
                 <Image
                   key={index}
