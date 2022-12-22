@@ -1,6 +1,6 @@
 import { FaEdit } from "react-icons/fa";
 
-import { scheduleData } from "../config";
+import { scheduleData, taskImportanceColor } from "../config";
 import useTimeLeft from "../../../lib/useTimeLeft";
 
 export default async function Page({ params: { scheduleid } }) {
@@ -9,6 +9,12 @@ export default async function Page({ params: { scheduleid } }) {
   return (
     <div className='sticky top-0 left-0 w-full flex flex-col items-start justify-start gap-3'>
       <div className='flex flex-row items-center justify-start gap-2 group cursor-pointer'>
+        <span
+          className='p-1 rounded-full text-white'
+          style={{ backgroundColor: taskImportanceColor[schedule.importance].color }}
+        >
+          {taskImportanceColor[schedule.importance].icon}
+        </span>
         <h1 className='title text-2xl'>{decoded_scheduleid}</h1>
         <div className='duration-300 hidden group-hover:block group-hover:text-slate-800/50'>
           <FaEdit />
