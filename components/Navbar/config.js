@@ -24,7 +24,7 @@ export const navbarData = [
   },
   {
     title: "日程安排",
-    href: "/",
+    href: "/schedule",
     icon: <AiFillSchedule />,
   },
   {

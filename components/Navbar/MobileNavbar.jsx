@@ -7,20 +7,22 @@ import { useState } from "react";
 
 import { navbarData } from "./config";
 
-function Navcard({ item }) {
-  return (
-    <Link
-      href={item.href}
-      className='w-full font-semibold text-xl text-slate-700 flex flex-row gap-2 items-center justify-start border-b-2 hover:text-theme p-2 rounded-md duration-300'
-    >
-      <span>{item.icon}</span>
-      <span>{item.title}</span>
-    </Link>
-  );
-}
-
 export default function MobileNavbar() {
   const [isExpand, setIsExpand] = useState(false);
+
+  function Navcard({ item }) {
+    return (
+      <Link
+        href={item.href}
+        onClick={() => setIsExpand(false)}
+        className='w-full font-semibold text-xl text-slate-700 flex flex-row gap-2 items-center justify-start border-b-2 hover:text-theme p-2 rounded-md duration-300'
+      >
+        <span>{item.icon}</span>
+        <span>{item.title}</span>
+      </Link>
+    );
+  }
+
   return (
     <div className='lg:hidden'>
       <button

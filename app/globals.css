@@ -19,4 +19,11 @@
   @apply text-white bg-theme duration-500 font-bold rounded-md shadow-md hover:bg-blue-700;
 }
 
+@layer base {
+  [data-nextjs-scroll-focus-boundary] {
+    display: flex;
+    width: 100%;
+  }
+}
+
 @tailwind utilities;
