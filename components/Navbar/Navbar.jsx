@@ -20,10 +20,13 @@ function NavbarCard({ item }) {
 export default function Navbar() {
   return (
     <div className='frame py-3 shadow-md flex flex-row w-full items-center justify-between relative'>
-      <div className='text-2xl font-bold text-slate-800 font-serif italic flex flex-row items-end justify-center gap-2'>
+      <Link
+        href='/'
+        className='text-2xl font-bold text-slate-800 font-serif italic flex flex-row items-end justify-center gap-2'
+      >
         <Image src={logo} width={40} alt='logo' className='w-auto' />
         <h1>Vistalab</h1>
-      </div>
+      </Link>
       <div className='hidden lg:flex flex-row items-center justify-center gap-4'>
         {navbarData.map((item, index) => (
           <NavbarCard key={index} item={item} />
