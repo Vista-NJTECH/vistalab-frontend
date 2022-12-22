@@ -43,3 +43,9 @@ export default async function Page({ params: { scheduleid } }) {
     </div>
   );
 }
+
+export async function generateStaticParams() {
+  return scheduleData.map((item) => ({
+    scheduleid: item.title,
+  }));
+}
