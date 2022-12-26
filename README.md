@@ -47,7 +47,7 @@ docker build -t vistalab .
 启动 Docker 容器：
 
 ```bash
-docker run --restart=unless-stopped -p 8091:3000 -d --name vistalab vistalab
+docker run --restart=unless-stopped -p 8091:3000 -d --name vistaweb vistalab
 ```
 
 停止 Docker 容器：
