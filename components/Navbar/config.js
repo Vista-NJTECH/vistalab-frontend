@@ -9,7 +9,7 @@ export const navbarData = [
   },
   {
     title: "主要成员",
-    href: "/",
+    href: "/members",
     icon: <FaUserAlt />,
   },
   {

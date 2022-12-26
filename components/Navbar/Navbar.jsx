@@ -32,6 +32,9 @@ export default function Navbar() {
           <NavbarCard key={index} item={item} />
         ))}
       </div>
+      <div>
+        <a  href='/login'>登录</a>
+      </div>
       <MobileNavbar />
     </div>
   );
