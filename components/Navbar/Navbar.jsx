@@ -28,7 +28,7 @@ export default function Navbar() {
         <Image src={logo} width={40} alt='logo' className='w-auto' />
         <h1>Vistalab</h1>
       </Link>
-      <div className='hidden lg:flex flex-row items-center justify-center gap-4'>
+      <div className='hidden lg:flex flex-row items-center justify-center gap-3'>
         {navbarData.map((item, index) => (
           <NavbarCard key={index} item={item} />
         ))}
