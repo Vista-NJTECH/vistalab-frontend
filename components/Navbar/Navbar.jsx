@@ -4,6 +4,7 @@ import Image from "next/image";
 import { navbarData } from "./config";
 import logo from "./logo.png";
 import MobileNavbar from "./MobileNavbar";
+import Login from "./Login";
 
 function NavbarCard({ item }) {
   return (
@@ -31,6 +32,7 @@ export default function Navbar() {
         {navbarData.map((item, index) => (
           <NavbarCard key={index} item={item} />
         ))}
+        <Login />
       </div>
       <MobileNavbar />
     </div>

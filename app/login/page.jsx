@@ -1,21 +1,22 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { FaUserAlt, FaLock } from "react-icons/fa";
+import { signIn } from "next-auth/react";
 
 export default function Page() {
+  const searchParams = useSearchParams();
   const [form, setForm] = useState({ username: "", password: "" });
   const onUpdateInput = (e) => setForm({ ...form, [e.target.name]: e.target.value });
   const onSubmitForm = async (e) => {
     e.preventDefault();
-    const res = await fetch("http://124.223.196.177:8181/api/login", {
-      method: "POST",
-      credentials: "same-origin",
-      body: new URLSearchParams(form),
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    const callbackUrl = searchParams.get("callbackUrl");
+    await signIn("credentials", {
+      username: form.username,
+      password: form.password,
+      callbackUrl: callbackUrl || "/",
     });
-    const data = await res.json();
-    console.log(data);
   };
 
   return (

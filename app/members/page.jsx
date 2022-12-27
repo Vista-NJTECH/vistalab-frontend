@@ -1,7 +1,7 @@
 import "../../statics/table.css";
 
 export default async function Members() {
-  const res = await fetch("http://124.223.196.177:8181/api/member");
+  const res = await fetch("http://124.223.196.177:8181/member/getall");
   if (!res.ok) throw new Error("Failed to fetch data");
   const data = await res.json();
   return (

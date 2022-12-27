@@ -16,9 +16,9 @@ export default async function Page({ params: { scheduleid } }) {
           {taskImportanceColor[schedule.importance].icon}
         </span>
         <h1 className='title text-2xl'>{decoded_scheduleid}</h1>
-        <div className='duration-300 hidden group-hover:block group-hover:text-slate-800/50'>
+        <button type='button' className='duration-300 hidden group-hover:block group-hover:text-slate-800/50'>
           <FaEdit />
-        </div>
+        </button>
       </div>
       <div className='w-full flex flex-col gap-3 text-slate-800 bg-[#FFF6BD] p-2 rounded-xl'>
         <div className='flex flex-row'>

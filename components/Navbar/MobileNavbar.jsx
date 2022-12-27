@@ -6,11 +6,12 @@ import { RxCross1 } from "react-icons/rx";
 import { useState } from "react";
 
 import { navbarData } from "./config";
+import Login from "./Login";
 
 export default function MobileNavbar() {
   const [isExpand, setIsExpand] = useState(false);
 
-  function Navcard({ item }) {
+  function Navbarcard({ item }) {
     return (
       <Link
         href={item.href}
@@ -38,8 +39,9 @@ export default function MobileNavbar() {
         }`}
       >
         {navbarData.map((item, index) => (
-          <Navcard key={index} item={item} />
+          <Navbarcard key={index} item={item} />
         ))}
+        <Login />
       </div>
     </div>
   );
