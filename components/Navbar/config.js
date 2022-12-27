@@ -8,8 +8,13 @@ export const navbarData = [
     icon: <AiFillHome />,
   },
   {
-    title: "主要成员",
+    title: "成员信息",
     href: "/members",
+    icon: <FaUserAlt />,
+  },
+  {
+    title: "我要学习",
+    href: "/study",
     icon: <FaUserAlt />,
   },
   {
@@ -29,7 +34,7 @@ export const navbarData = [
   },
   {
     title: "发票报销",
-    href: "/",
+    href: "/invoice",
     icon: <AiFillAccountBook />,
   },
 ];

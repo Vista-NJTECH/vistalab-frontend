@@ -20,6 +20,7 @@ export const scheduleData = [
     date: "2023-1-11",
     persons: ["张三", "李四"],
     importance: "重要",
+    host: "顾俊玮",
     detail: "1月11号前完成网站动态API设计，包括图片模糊算法的处理",
   },
   {
