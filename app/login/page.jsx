@@ -7,11 +7,12 @@ import { signIn } from "next-auth/react";
 
 export default function Page() {
   const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl");
+  const loginError = searchParams.get("error");
   const [form, setForm] = useState({ username: "", password: "" });
   const onUpdateInput = (e) => setForm({ ...form, [e.target.name]: e.target.value });
   const onSubmitForm = async (e) => {
     e.preventDefault();
-    const callbackUrl = searchParams.get("callbackUrl");
     await signIn("credentials", {
       username: form.username,
       password: form.password,
@@ -22,6 +23,11 @@ export default function Page() {
   return (
     <div className='frame flex flex-col items-center justify-center w-full'>
       <form onSubmit={onSubmitForm} className='flex flex-col w-full md:w-[400px] gap-5'>
+        {loginError && (
+          <div className='title text-xl text-center bg-red-400 p-2 rounded-xl text-white'>
+            <h1>登录失败</h1>
+          </div>
+        )}
         <div className='title text-3xl text-center'>
           <h1>请先登录</h1>
         </div>
