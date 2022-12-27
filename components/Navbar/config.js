@@ -1,5 +1,6 @@
 import { AiFillHome, AiFillAccountBook, AiFillFlag, AiFillSchedule } from "react-icons/ai";
 import { FaUserAlt, FaElementor } from "react-icons/fa";
+import { MdSchool } from "react-icons/md";
 
 export const navbarData = [
   {
@@ -15,7 +16,7 @@ export const navbarData = [
   {
     title: "我要学习",
     href: "/study",
-    icon: <FaUserAlt />,
+    icon: <MdSchool />,
   },
   {
     title: "物品管理",
