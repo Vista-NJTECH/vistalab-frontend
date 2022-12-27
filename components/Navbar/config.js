@@ -1,6 +1,7 @@
 import { AiFillHome, AiFillAccountBook, AiFillFlag, AiFillSchedule } from "react-icons/ai";
 import { FaUserAlt, FaElementor } from "react-icons/fa";
 import { MdSchool } from "react-icons/md";
+import { RiLoginBoxFill } from "react-icons/ri";
 
 export const navbarData = [
   {
@@ -15,7 +16,7 @@ export const navbarData = [
   },
   {
     title: "我要学习",
-    href: "/study",
+    href: "/",
     icon: <MdSchool />,
   },
   {
@@ -37,5 +38,10 @@ export const navbarData = [
     title: "发票报销",
     href: "/invoice",
     icon: <AiFillAccountBook />,
+  },
+  {
+    title: " 登录",
+    href: "/login",
+    icon: <RiLoginBoxFill />,
   },
 ];
