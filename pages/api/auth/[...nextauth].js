@@ -15,8 +15,15 @@ export const authOptions = {
       },
       async authorize(credentials, req) {
         const { username, password } = credentials;
-        if (username !== "admin" || password !== "admin") return null;
-        return { name: "Cael", email: "dsafds@qq.com" };
+        const res = await fetch("http://124.223.196.177:8181/api/login", {
+          method: "POST",
+          body: new URLSearchParams({ username, password }),
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        });
+        if (!res.ok) return null;
+        const data = await res.json();
+        if (data.status) return null;
+        return { token: data.token };
       },
     }),
   ],
