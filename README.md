@@ -41,29 +41,29 @@ npm start
 编译 Docker 镜像：
 
 ```bash
-docker build -t vistalab .
+docker build -t vistalab-frontend .
 ```
 
 启动 Docker 容器：
 
 ```bash
-docker run --restart=unless-stopped -p 8091:3000 -d --name vistaweb vistalab
+docker run --restart=unless-stopped -p 8091:3000 -d --name vistalab-frontend vistalab-frontend
 ```
 
 停止 Docker 容器：
 
 ```bash
-docker stop vistalab
+docker stop vistalab-frontend
 ```
 
 删除 Docker 容器：
 
 ```bash
-docker rm vistalab
+docker rm vistalab-frontend
 ```
 
 删除 Docker 镜像：
 
 ```bash
-docker rmi vistalab
+docker rmi vistalab-frontend
 ```

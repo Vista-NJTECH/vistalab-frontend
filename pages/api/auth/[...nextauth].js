@@ -23,7 +23,7 @@ export const authOptions = {
         if (!res.ok) return null;
         const data = await res.json();
         if (data.status) return null;
-        return { token: data.token };
+        return { user: username, token: data.token };
       },
     }),
   ],
