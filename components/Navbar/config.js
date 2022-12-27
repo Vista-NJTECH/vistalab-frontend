@@ -9,11 +9,6 @@ export const navbarData = [
     icon: <AiFillHome />,
   },
   {
-    title: "成员信息",
-    href: "/members",
-    icon: <FaUserAlt />,
-  },
-  {
     title: "我要学习",
     href: "/",
     icon: <MdSchool />,
@@ -32,6 +27,11 @@ export const navbarData = [
     title: "日程安排",
     href: "/schedule",
     icon: <AiFillSchedule />,
+  },
+  {
+    title: "成员信息",
+    href: "/members",
+    icon: <FaUserAlt />,
   },
   {
     title: "发票报销",
