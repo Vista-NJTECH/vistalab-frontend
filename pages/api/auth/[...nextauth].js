@@ -4,6 +4,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 export const authOptions = {
   session: { strategy: "jwt" },
   secret: process.env.NEXT_AUTH_SECRET,
+
   providers: [
     CredentialsProvider({
       type: "credentials",
