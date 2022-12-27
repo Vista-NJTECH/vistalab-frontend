@@ -21,7 +21,7 @@ export default function Page() {
 
   return (
     <div className='frame flex flex-col items-center justify-center w-full'>
-      <form onSubmit={onSubmitForm} className='flex flex-col w-[400px] gap-5'>
+      <form onSubmit={onSubmitForm} className='flex flex-col w-full md:w-[400px] gap-5'>
         <div className='title text-3xl text-center'>
           <h1>请先登录</h1>
         </div>
