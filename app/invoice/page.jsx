@@ -22,6 +22,7 @@ export default async function Page() {
         <tbody>
           {data.data.map((item) => (
             <tr key={item.id}>
+              <td>{item.id}</td>
               <td>{item.invoicename}</td>
               <td>{item.applicant}</td>
               <td>{item.amount}</td>
