@@ -17,13 +17,15 @@ export default async function Page({
         <h1>|</h1>
         <h1 className='title text-xl'>{decode_studyid2}</h1>
       </div>
-      <div className='grid gap-5 grid-cols-2'>
+      <div className='grid gap-5 grid-cols-1 md:grid-cols-2'>
         {lessons.map((item, index) => (
           <div key={index} className='flex flex-col items-center justify-start gap-2'>
             <h1 className='title text-xl font-bold'>{item.title}</h1>
             <a href={item.href} target='_blank'>
               <Image
                 src={item.src}
+                alt={item.title}
+                placeholder='blur'
                 className='rounded-md hover:scale-105 duration-300 shadow-md border-2 border-slate-200 aspect-4/3'
               />
             </a>

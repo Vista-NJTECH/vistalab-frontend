@@ -5,7 +5,9 @@ import { sidebarData } from "./config";
 export default function Sidebar() {
   return (
     <div className='w-full max-w-xs flex flex-col gap-4'>
-      <h1 className='title text-2xl'>所有课程</h1>
+      <Link href='/study' className='title text-2xl hover:text-theme'>
+        所有课程
+      </Link>
       <div className='flex flex-col gap-6'>
         {Object.keys(sidebarData).map((item1, index1) => (
           <div
