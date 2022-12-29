@@ -7,7 +7,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang='zh-Hans'>
       <head />
-      <body>
+      <body className='min-h-screen flex flex-col items-center justify-between'>
         <Provider>
           <Navbar />
           {children}

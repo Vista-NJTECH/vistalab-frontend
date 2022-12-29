@@ -1,5 +1,5 @@
-import { AiFillHome, AiFillAccountBook, AiFillFlag, AiFillSchedule } from "react-icons/ai";
-import { FaUserAlt, FaElementor } from "react-icons/fa";
+import { AiFillHome, AiFillAccountBook, AiFillSchedule } from "react-icons/ai";
+import { FaUserAlt } from "react-icons/fa";
 import { MdSchool } from "react-icons/md";
 
 export const navbarData = [
@@ -10,18 +10,8 @@ export const navbarData = [
   },
   {
     title: "我要学习",
-    href: "/",
+    href: "/study",
     icon: <MdSchool />,
-  },
-  {
-    title: "物品管理",
-    href: "/",
-    icon: <FaElementor />,
-  },
-  {
-    title: "竞赛管理",
-    href: "/",
-    icon: <AiFillFlag />,
   },
   {
     title: "日程安排",

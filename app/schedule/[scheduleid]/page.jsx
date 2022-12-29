@@ -22,19 +22,11 @@ export default async function Page({ params: { scheduleid } }) {
       </div>
       <div className='w-full flex flex-col gap-3 text-slate-800 bg-[#FFF6BD] p-2 rounded-xl'>
         <div className='flex flex-row'>
-          <span>Level: </span>
+          <span>Level：</span>
           <span>{schedule.importance}</span>
         </div>
         <div className='flex flex-row'>
-          <span>剩余时间:</span>
-          <span>{useTimeLeft(schedule.date)}</span>
-        </div>
-        <div className='flex flex-row'>
-          <span>截止日期:</span>
-          <span>{schedule.date}</span>
-        </div>
-        <div className='flex flex-row'>
-          <span>负责人: </span>
+          <span>负责人：</span>
           <span>{schedule.host}</span>
         </div>
         <div className='flex flex-row'>
@@ -44,6 +36,14 @@ export default async function Page({ params: { scheduleid } }) {
               <div key={index}>{item}</div>
             ))}
           </span>
+        </div>
+        <div className='flex flex-row'>
+          <span>剩余时间：</span>
+          <span>{useTimeLeft(schedule.date)}</span>
+        </div>
+        <div className='flex flex-row'>
+          <span>截止日期：</span>
+          <span>{schedule.date}</span>
         </div>
         <div className='flex flex-row'>
           <span className='whitespace-nowrap'>详细内容：</span>
