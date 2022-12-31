@@ -1,7 +1,5 @@
 import "./globals.css";
-import Footer from "../components/Footer/Footer";
-import Navbar from "../components/Navbar/Navbar";
-import Provider from "./components/Provider";
+import { Footer, Navbar, Provider, ScrollToTop } from "../components";
 
 export default function RootLayout({ children }) {
   return (
@@ -11,6 +9,7 @@ export default function RootLayout({ children }) {
         <Provider>
           <Navbar />
           {children}
+          <ScrollToTop />
           <Footer />
         </Provider>
       </body>
