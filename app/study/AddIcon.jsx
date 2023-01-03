@@ -49,7 +49,7 @@ export default function AddIcon() {
         {isUploading ? (
           <div className='w-full max-w-xs flex flex-col items-center justify-center gap-4 bg-white p-5 rounded-md'>
             <h1 className='title text-3xl'>{uploadingMsg}</h1>
-            {uploadingMsg !== "Loading..." && (
+            {uploadingMsg !== "Uploading..." && (
               <button
                 onClick={() => {
                   setIsAddNew(false);
