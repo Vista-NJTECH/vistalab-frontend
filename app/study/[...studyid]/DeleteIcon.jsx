@@ -12,14 +12,18 @@ export default function DeleteIcon({ item }) {
   const { data: session } = useSession();
   const [isPopup, setIsPopup] = useState(false);
   const handleDelete = async (id) => {
-    const res = await fetch("http://124.223.196.177:8181/study/delete", {
+    fetch("http://124.223.196.177:8181/study/delet", {
       method: "POST",
       body: new URLSearchParams({ id }),
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    });
-    if (!res.ok) throw new Error("Failed to fetch data");
-    setIsPopup(false);
-    router.refresh();
+    })
+      .then(() => {
+        setIsPopup(false);
+        router.refresh();
+      })
+      .catch((error) => {
+        throw new Error(error);
+      });
   };
 
   return (

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import AddIcon from "./AddIcon";
+import Upload from "./Upload";
 import { sidebarData } from "./config";
 
 async function StudyCard({ category }) {
@@ -27,7 +27,7 @@ async function StudyCard({ category }) {
 export default async function Sidebar() {
   return (
     <div className='w-full max-w-md md:max-w-xs flex flex-col gap-4'>
-      <AddIcon />
+      <Upload />
       <div className='flex flex-col gap-6'>
         {sidebarData.map((item, index) => (
           <StudyCard category={item} key={index} />

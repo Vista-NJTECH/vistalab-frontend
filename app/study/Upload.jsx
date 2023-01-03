@@ -6,7 +6,7 @@ import { BsFillPlusCircleFill } from "react-icons/bs";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { useSession, signIn } from "next-auth/react";
 
-export default function AddIcon() {
+export default function Upload() {
   const { data: session } = useSession();
   const [isAddNew, setIsAddNew] = useState(false);
 
@@ -36,12 +36,14 @@ export default function AddIcon() {
       setUpploadingMsg("Uploading...");
       const formData = new FormData();
       Object.keys(form).forEach((item) => formData.append(item, form[item]));
-      const res = await fetch("http://124.223.196.177:8181/study/add", { method: "POST", body: formData });
-      if (!res.ok) {
-        setUpploadingMsg("上传失败");
-        throw new Error("Failed to fetch data");
-      }
-      setUpploadingMsg("上传成功");
+      fetch("http://124.223.196.177:8181/study/add", { method: "POST", body: formData })
+        .then(() => {
+          setUpploadingMsg("上传成功");
+        })
+        .catch((error) => {
+          setUpploadingMsg("上传失败");
+          throw new Error(error);
+        });
     };
 
     return (
