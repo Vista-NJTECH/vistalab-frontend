@@ -9,14 +9,12 @@ export default async function Page({
 }) {
   const decode_studyid1 = decodeURIComponent(studyid1);
   const decode_studyid2 = decodeURIComponent(studyid2);
-  const res = await fetch(`http://124.223.196.177:8181/study/getall`);
+  const res = await fetch(
+    `http://124.223.196.177:8181/study/getall?class=${decode_studyid1}&subclass=${decode_studyid2}`
+  );
   if (!res.ok) throw new Error("Failed to fetch data");
   const data = await res.json();
-  const lessons = data.data.filter(
-    (item) =>
-      item.classification === sidebarData.find((item) => item.title === decode_studyid1).path &&
-      item.coursename === decode_studyid2
-  );
+  const lessons = data.data;
   const prefix = data.prefix;
   return (
     <div className='w-full flex flex-col gap-4'>
@@ -31,12 +29,12 @@ export default async function Page({
             <h1 className='title text-xl font-bold'>{item.title}</h1>
             <a href={item.link} target='_blank'>
               <Image
+                alt={item.title}
                 width={item.width}
                 height={item.height}
                 src={prefix + item.path}
-                alt={item.title}
                 placeholder='empty'
-                className='rounded-md hover:scale-105 duration-300 shadow-md border-2 border-slate-200 aspect-4/3'
+                className='rounded-md hover:scale-105 duration-300 shadow-md border-2 border-slate-200 aspect-4/3 object-contain object-center'
               />
             </a>
           </div>
@@ -48,8 +46,16 @@ export default async function Page({
 
 export async function generateStaticParams() {
   const data = [];
-  Object.keys(sidebarData).forEach((item1) =>
-    Object.keys(sidebarData[item1]).forEach((item2) => data.push({ studyid: [item1, item2] }))
-  );
+  const fetchCategories = async (category) => {
+    const res = await fetch(`http://124.223.196.177:8181/study/getcategory?class=${category}`);
+    if (!res.ok) throw new Error("Failed to fetch data");
+    const data = await res.json();
+    const categories = data.data.map((item) => item.coursename);
+    return categories;
+  };
+  sidebarData.forEach(async (item1) => {
+    const categories = await fetchCategories(item1.path);
+    categories.forEach((item2) => data.push({ studyid: [item1.path, item2] }));
+  });
   return data;
 }
