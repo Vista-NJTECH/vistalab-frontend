@@ -33,11 +33,7 @@ export default function AddIcon() {
       const formData = new FormData();
       Object.keys(form).forEach((item) => formData.append(item, form[item]));
       console.log(form, formData);
-      const res = await fetch("http://124.223.196.177:8181/study/add", {
-        method: "POST",
-        body: formData,
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      });
+      const res = await fetch("http://124.223.196.177:8181/study/add", { method: "POST", body: formData });
       if (!res.ok) throw new Error("Failed to fetch data");
       const data = await res.json();
       console.log(data);
