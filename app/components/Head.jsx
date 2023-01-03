@@ -5,7 +5,7 @@ import welcome from "./images/welcome.jpg";
 export default function Head() {
   return (
     <div className='frame flex flex-col lg:flex-row items-center justify-between gap-10'>
-      <Image placeholder='blur' src={welcome} alt='welcome' className='object-cover object-center w-[600px]' />
+      <Image placeholder='blur' priority src={welcome} alt='welcome' className='object-cover object-center w-[600px]' />
       <div className='w-full flex flex-col gap-10'>
         <h1 className='title text-3xl'>远景实验室</h1>
         <p className='border-b-2 border-slate-600 text-xl indent-10 flex flex-col'>
