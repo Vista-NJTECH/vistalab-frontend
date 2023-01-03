@@ -3,7 +3,9 @@ import Link from "next/link";
 import { sidebarData } from "./config";
 
 async function StudyCard({ category }) {
-  const res = await fetch(`http://124.223.196.177:8181/study/getcategory?class=${category.path}`);
+  const res = await fetch(`http://124.223.196.177:8181/study/getcategory?class=${category.path}`, {
+    next: { revalidate: 10 },
+  });
   if (!res.ok) throw new Error("Failed to fetch data");
   const data = await res.json();
   const categories = data.data.map((item) => item.coursename);

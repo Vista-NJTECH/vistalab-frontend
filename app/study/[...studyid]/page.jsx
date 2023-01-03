@@ -10,7 +10,10 @@ export default async function Page({
   const decode_studyid1 = decodeURIComponent(studyid1);
   const decode_studyid2 = decodeURIComponent(studyid2);
   const res = await fetch(
-    `http://124.223.196.177:8181/study/getall?class=${decode_studyid1}&subclass=${decode_studyid2}`
+    `http://124.223.196.177:8181/study/getall?class=${decode_studyid1}&subclass=${decode_studyid2}`,
+    {
+      next: { revalidate: 10 },
+    }
   );
   if (!res.ok) throw new Error("Failed to fetch data");
   const data = await res.json();
@@ -48,7 +51,9 @@ export default async function Page({
 export async function generateStaticParams() {
   const data = [];
   const fetchCategories = async (category) => {
-    const res = await fetch(`http://124.223.196.177:8181/study/getcategory?class=${category}`);
+    const res = await fetch(`http://124.223.196.177:8181/study/getcategory?class=${category}`, {
+      next: { revalidate: 10 },
+    });
     if (!res.ok) throw new Error("Failed to fetch data");
     const data = await res.json();
     const categories = data.data.map((item) => item.coursename);
