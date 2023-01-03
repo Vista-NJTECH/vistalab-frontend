@@ -53,9 +53,9 @@ export async function generateStaticParams() {
     const categories = data.data.map((item) => item.coursename);
     return categories;
   };
-  sidebarData.forEach(async (item1) => {
+  for (const item1 of sidebarData) {
     const categories = await fetchCategories(item1.path);
     categories.forEach((item2) => data.push({ studyid: [item1.path, item2] }));
-  });
+  }
   return data;
 }
