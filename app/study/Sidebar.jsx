@@ -23,7 +23,7 @@ async function StudyCard({ category }) {
 
 export default async function Sidebar() {
   return (
-    <div className='w-full max-w-xs flex flex-col gap-4'>
+    <div className='w-full max-w-md md:max-w-xs flex flex-col gap-4'>
       <Link href='/study' className='title text-2xl hover:text-theme'>
         所有课程
       </Link>

@@ -33,7 +33,8 @@ export default async function Page({
                 width={item.width}
                 height={item.height}
                 src={prefix + item.path}
-                placeholder='empty'
+                blurDataURL={item.blur}
+                placeholder='blur'
                 className='rounded-md hover:scale-105 duration-300 shadow-md border-2 border-slate-200 aspect-4/3 object-contain object-center'
               />
             </a>
