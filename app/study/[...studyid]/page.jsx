@@ -37,7 +37,7 @@ export default async function Page({
                 src={prefix + item.path}
                 blurDataURL={item.base64}
                 placeholder='blur'
-                className='rounded-md shadow-md border-2 border-slate-200 aspect-4/3 object-contain object-center'
+                className='rounded-md shadow-md border-2 border-slate-200 aspect-4/3 object-cover object-left-top'
               />
             </a>
           </div>

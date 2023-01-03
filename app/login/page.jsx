@@ -32,7 +32,7 @@ export default function Page() {
           <h1>请先登录</h1>
         </div>
         <div className='flex flex-col w-full gap-1'>
-          <label htmlFor='password' className='pl-2 flex flex-row items-center gap-2 text-slate-700'>
+          <label htmlFor='username' className='pl-2 flex flex-row items-center gap-2 text-slate-700'>
             <FaUserAlt />
             <span className='text-gray-500 font-semibold'>用户名</span>
           </label>

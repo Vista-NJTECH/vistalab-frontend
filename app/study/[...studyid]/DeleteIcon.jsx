@@ -25,12 +25,12 @@ export default function DeleteIcon({ item }) {
   return (
     <div className='title text-xl font-bold group flex flex-row items-center w-full'>
       <h1>{item.title}</h1>
-      <div
+      <button
         onClick={() => (session ? setIsPopup(true) : signIn())}
-        className='group-hover:block hidden duration-300 group-hover:text-slate-800/50 cursor-pointer'
+        className='group-hover:block hidden duration-300 group-hover:text-slate-800/50'
       >
         <MdDelete />
-      </div>
+      </button>
       {isPopup && (
         <Popup title='确认删除' cancelFun={() => setIsPopup(false)} confirmFun={() => handleDelete(item.id)} />
       )}

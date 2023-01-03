@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import AddIcon from "./AddIcon";
 import { sidebarData } from "./config";
 
 async function StudyCard({ category }) {
@@ -26,9 +27,7 @@ async function StudyCard({ category }) {
 export default async function Sidebar() {
   return (
     <div className='w-full max-w-md md:max-w-xs flex flex-col gap-4'>
-      <Link href='/study' className='title text-2xl hover:text-theme'>
-        所有课程
-      </Link>
+      <AddIcon />
       <div className='flex flex-col gap-6'>
         {sidebarData.map((item, index) => (
           <StudyCard category={item} key={index} />
