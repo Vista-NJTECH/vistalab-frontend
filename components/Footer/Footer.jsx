@@ -3,12 +3,13 @@ import Link from "next/link";
 import { FaShare } from "react-icons/fa";
 
 import { footerData } from "./config";
+import MobileFooter from "./MobileFooter";
 import logo from "../../data/logo.png";
 
 export default function Footer() {
   return (
-    <footer className='w-full frame bg-gray-100 flex flex-col gap-20 items-start justify-between'>
-      <div className='flex w-full flex-row items-start justify-between'>
+    <footer className='w-full frame bg-gray-100 flex flex-col gap-10 md:gap-20 items-start justify-between'>
+      <div className='hidden md:flex w-full flex-row items-start justify-between'>
         {Object.keys(footerData).map((item1, index1) => (
           <div key={index1} className='flex flex-col gap-5'>
             <h1>{item1}</h1>
@@ -27,7 +28,7 @@ export default function Footer() {
             </div>
           </div>
         ))}
-        <div className='hidden md:flex flex-col gap-10 items-start'>
+        <div className='flex flex-col gap-10 items-start'>
           <Link
             href='/'
             className='text-2xl font-bold text-slate-800 font-serif italic flex flex-row items-end justify-center gap-2'
@@ -37,6 +38,7 @@ export default function Footer() {
           </Link>
         </div>
       </div>
+      <MobileFooter />
       <span>Copyright &copy; {new Date().getFullYear()}. All rights reserved.</span>
     </footer>
   );

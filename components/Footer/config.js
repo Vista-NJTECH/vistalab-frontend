@@ -16,6 +16,11 @@ export const footerData = {
       isLocal: false,
     },
     {
+      title: "Express.js",
+      href: "https://expressjs.com/",
+      isLocal: false,
+    },
+    {
       title: "Tailwindcss",
       href: "https://tailwindcss.com/",
       isLocal: false,
