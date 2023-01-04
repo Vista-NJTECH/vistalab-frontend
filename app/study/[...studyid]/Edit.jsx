@@ -161,7 +161,7 @@ export default function Edit({ item }) {
                     <input
                       required
                       type='text'
-                      maxLength={20}
+                      maxLength={50}
                       name='coursename'
                       value={form.coursename}
                       onChange={onUpdateInput}
@@ -176,7 +176,7 @@ export default function Edit({ item }) {
                     <input
                       required
                       type='text'
-                      maxLength={20}
+                      maxLength={50}
                       name='title'
                       value={form.title}
                       onChange={onUpdateInput}
@@ -248,7 +248,7 @@ export default function Edit({ item }) {
       <div className='group flex flex-row items-center w-full gap-1 title text-xl font-bold'>
         <h1>{item.title}</h1>
         <button
-          onClick={() => (!session ? setIsEdit(true) : signIn())}
+          onClick={() => (session ? setIsEdit(true) : signIn())}
           className='group-hover:block hidden duration-300 group-hover:text-slate-800/50'
         >
           <FaEdit size={17} />

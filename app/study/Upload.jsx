@@ -102,7 +102,7 @@ export default function Upload() {
                 <input
                   required
                   type='text'
-                  maxLength={20}
+                  maxLength={50}
                   name='coursename'
                   value={form.coursename}
                   onChange={onUpdateInput}
@@ -117,7 +117,7 @@ export default function Upload() {
                 <input
                   required
                   type='text'
-                  maxLength={20}
+                  maxLength={50}
                   name='title'
                   value={form.title}
                   onChange={onUpdateInput}
