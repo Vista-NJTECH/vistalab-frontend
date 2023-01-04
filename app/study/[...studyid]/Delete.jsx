@@ -11,7 +11,11 @@ export default function Delete({ item }) {
   const router = useRouter();
   const { data: session } = useSession();
   const [isPopup, setIsPopup] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [processingMsg, setProcessingMsg] = useState("Processing...");
   const handleDelete = async (id) => {
+    setIsProcessing(true);
+    setProcessingMsg("Processing...");
     fetch("http://124.223.196.177:8181/study/delete", {
       method: "POST",
       body: new URLSearchParams({ id }),
@@ -20,14 +24,15 @@ export default function Delete({ item }) {
       .then((res) => res.json())
       .then((data) => {
         if (data.status) {
-          setIsPopup(false);
-          router.refresh();
+          setProcessingMsg("删除成功");
         } else {
-          throw new Error(data.message);
+          setProcessingMsg("删除失败");
+          console.error(data.message);
         }
       })
       .catch((error) => {
-        throw new Error(error);
+        setProcessingMsg("删除失败");
+        console.error(error);
       });
   };
 
@@ -41,7 +46,22 @@ export default function Delete({ item }) {
         <MdDelete />
       </button>
       {isPopup && (
-        <Popup title='确认删除' cancelFun={() => setIsPopup(false)} confirmFun={() => handleDelete(item.id)} />
+        <Popup
+          before={{
+            title: "确认删除",
+            cancelFun: () => setIsPopup(false),
+            confirmFun: () => handleDelete(item.id),
+          }}
+          after={{
+            isProcessing: isProcessing,
+            message: processingMsg,
+            confirmFun: () => {
+              setIsProcessing(false);
+              setIsPopup(false);
+              router.refresh();
+            },
+          }}
+        />
       )}
     </div>
   );

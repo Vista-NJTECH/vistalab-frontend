@@ -14,7 +14,7 @@ export default function Upload() {
     const router = useRouter();
     const hiddenImageInput = useRef();
     const [isUploading, setIsUploading] = useState(false);
-    const [uploadingMsg, setUpploadingMsg] = useState("Uploading...");
+    const [uploadingMsg, setUpploadingMsg] = useState("Processing...");
     const [form, setForm] = useState({ classification: "", coursename: "", title: "", link: "", studyimg: null });
     const onUpdateInput = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -33,21 +33,22 @@ export default function Upload() {
     const handleSubmit = async (e) => {
       e.preventDefault();
       setIsUploading(true);
-      setUpploadingMsg("Uploading...");
+      setUpploadingMsg("Processing...");
       const formData = new FormData();
       Object.keys(form).forEach((item) => formData.append(item, form[item]));
       fetch("http://124.223.196.177:8181/study/add", { method: "POST", body: formData })
         .then((res) => res.json())
         .then((data) => {
-          if (data.status) setUpploadingMsg("上传成功");
-          else {
+          if (data.status) {
+            setUpploadingMsg("上传成功");
+          } else {
             setUpploadingMsg("上传失败");
-            throw new Error(data.message);
+            console.error(data.message);
           }
         })
         .catch((error) => {
           setUpploadingMsg("上传失败");
-          throw new Error(error);
+          console.error(error);
         });
     };
 
@@ -56,7 +57,7 @@ export default function Upload() {
         {isUploading ? (
           <div className='w-full max-w-xs flex flex-col items-center justify-center gap-4 bg-white p-5 rounded-md'>
             <h1 className='title text-3xl'>{uploadingMsg}</h1>
-            {uploadingMsg !== "Uploading..." && (
+            {uploadingMsg !== "Processing..." && (
               <button
                 onClick={() => {
                   setIsAddNew(false);
