@@ -7,19 +7,24 @@ import { useSession, signIn } from "next-auth/react";
 
 import { Popup } from "../../../components";
 
-export default function DeleteIcon({ item }) {
+export default function Delete({ item }) {
   const router = useRouter();
   const { data: session } = useSession();
   const [isPopup, setIsPopup] = useState(false);
   const handleDelete = async (id) => {
-    fetch("http://124.223.196.177:8181/study/delet", {
+    fetch("http://124.223.196.177:8181/study/delete", {
       method: "POST",
       body: new URLSearchParams({ id }),
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
     })
-      .then(() => {
-        setIsPopup(false);
-        router.refresh();
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status) {
+          setIsPopup(false);
+          router.refresh();
+        } else {
+          throw new Error(data.message);
+        }
       })
       .catch((error) => {
         throw new Error(error);

@@ -37,8 +37,13 @@ export default function Upload() {
       const formData = new FormData();
       Object.keys(form).forEach((item) => formData.append(item, form[item]));
       fetch("http://124.223.196.177:8181/study/add", { method: "POST", body: formData })
-        .then(() => {
-          setUpploadingMsg("上传成功");
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status) setUpploadingMsg("上传成功");
+          else {
+            setUpploadingMsg("上传失败");
+            throw new Error(data.message);
+          }
         })
         .catch((error) => {
           setUpploadingMsg("上传失败");

@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { sidebarData } from "../config";
-import DeleteIcon from "./DeleteIcon";
+import Delete from "./Delete";
 
 export default async function Page({
   params: {
@@ -28,7 +28,7 @@ export default async function Page({
       <div className='grid gap-5 grid-cols-1 md:grid-cols-2'>
         {lessons.map((item, index) => (
           <div key={index} className='flex flex-col items-center justify-start gap-2'>
-            <DeleteIcon item={item} />
+            <Delete item={item} />
             <a href={item.link} target='_blank' className='duration-300 hover:scale-105'>
               <Image
                 alt={item.title}
