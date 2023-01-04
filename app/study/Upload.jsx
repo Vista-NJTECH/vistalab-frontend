@@ -82,7 +82,7 @@ export default function Upload() {
                   defaultValue
                   name='classification'
                   onChange={onUpdateInput}
-                  className='bg-gray-200 rounded-md p-2 outline-none'
+                  className='bg-gray-100 rounded-md p-2 outline-none'
                 >
                   <option disabled value>
                     -- select an option --
@@ -106,7 +106,7 @@ export default function Upload() {
                   name='coursename'
                   value={form.coursename}
                   onChange={onUpdateInput}
-                  className='bg-gray-200 rounded-md p-2 outline-none'
+                  className='bg-gray-100 rounded-md p-2 outline-none'
                 />
               </div>
 
@@ -121,7 +121,7 @@ export default function Upload() {
                   name='title'
                   value={form.title}
                   onChange={onUpdateInput}
-                  className='bg-gray-200 rounded-md p-2 outline-none'
+                  className='bg-gray-100 rounded-md p-2 outline-none'
                 />
               </div>
 
@@ -136,7 +136,7 @@ export default function Upload() {
                   name='link'
                   value={form.link}
                   onChange={onUpdateInput}
-                  className='bg-gray-200 rounded-md p-2 outline-none'
+                  className='bg-gray-100 rounded-md p-2 outline-none'
                 />
               </div>
 
@@ -151,7 +151,7 @@ export default function Upload() {
                 <button type='button' className='btn px-2 py-1 mb-2' onClick={() => hiddenImageInput.current.click()}>
                   上传预览图片
                 </button>
-                <div className='flex bg-gray-200 rounded-md flex-wrap h-[40px] overflow-y-auto'>
+                <div className='flex bg-gray-100 rounded-md flex-wrap h-[40px] overflow-y-auto'>
                   {form.studyimg && (
                     <div className='flex flex-row items-center h-fit m-1 py-1 px-2 bg-slate-400 rounded-md'>
                       <div>{form.studyimg.name}</div>

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaShare } from "react-icons/fa";
 
+import LinkCard from "./LinkCard";
 import { footerData } from "./config";
 import MobileFooter from "./MobileFooter";
 import logo from "../../data/logo.png";
@@ -15,15 +15,7 @@ export default function Footer() {
             <h1>{item1}</h1>
             <div className='flex flex-col gap-2'>
               {footerData[item1].map((item2, index2) => (
-                <a
-                  href={item2.href}
-                  key={index2}
-                  target='_blank'
-                  className='flex flex-row gap-1 items-center text-gray-500 hover:text-gray-700'
-                >
-                  <h1>{item2.title}</h1>
-                  {!item2.isLocal && <FaShare size={12} />}
-                </a>
+                <LinkCard item={item2} key={index2} />
               ))}
             </div>
           </div>

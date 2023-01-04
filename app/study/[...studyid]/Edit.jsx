@@ -144,7 +144,7 @@ export default function Edit({ item }) {
                       value={form.classification}
                       name='classification'
                       onChange={onUpdateInput}
-                      className='bg-gray-200 rounded-md p-2 outline-none'
+                      className='bg-gray-100 rounded-md p-2 outline-none'
                     >
                       {sidebarData.map((item, index) => (
                         <option value={item.path} key={index}>
@@ -165,7 +165,7 @@ export default function Edit({ item }) {
                       name='coursename'
                       value={form.coursename}
                       onChange={onUpdateInput}
-                      className='bg-gray-200 rounded-md p-2 outline-none'
+                      className='bg-gray-100 rounded-md p-2 outline-none'
                     />
                   </div>
 
@@ -180,7 +180,7 @@ export default function Edit({ item }) {
                       name='title'
                       value={form.title}
                       onChange={onUpdateInput}
-                      className='bg-gray-200 rounded-md p-2 outline-none'
+                      className='bg-gray-100 rounded-md p-2 outline-none'
                     />
                   </div>
 
@@ -195,7 +195,7 @@ export default function Edit({ item }) {
                       name='link'
                       value={form.link}
                       onChange={onUpdateInput}
-                      className='bg-gray-200 rounded-md p-2 outline-none'
+                      className='bg-gray-100 rounded-md p-2 outline-none'
                     />
                   </div>
 
@@ -214,7 +214,7 @@ export default function Edit({ item }) {
                     >
                       上传预览图片
                     </button>
-                    <div className='flex bg-gray-200 rounded-md flex-wrap h-[40px] overflow-y-auto'>
+                    <div className='flex bg-gray-100 rounded-md flex-wrap h-[40px] overflow-y-auto'>
                       {form.studyimg && (
                         <div className='flex flex-row items-center h-fit m-1 py-1 px-2 bg-slate-400 rounded-md'>
                           <div>{form.studyimg.name}</div>
