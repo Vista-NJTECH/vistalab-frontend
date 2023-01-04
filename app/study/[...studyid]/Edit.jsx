@@ -61,7 +61,6 @@ export default function Edit({ item }) {
       setIsUploading(true);
       setUpploadingMsg("Processing...");
       const formData = new FormData();
-      console.log(form);
       for (const item of Object.keys(form)) {
         if (form[item] === "") {
           setUpploadingMsg("更新失败");
@@ -70,7 +69,7 @@ export default function Edit({ item }) {
         }
         formData.append(item, form[item]);
       }
-      fetch("http://124.223.196.177:8181/study/add", { method: "POST", body: formData })
+      fetch("http://124.223.196.177:8181/study/update", { method: "POST", body: formData })
         .then((res) => res.json())
         .then((data) => {
           if (data.status) {
