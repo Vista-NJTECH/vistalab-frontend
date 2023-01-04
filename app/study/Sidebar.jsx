@@ -11,11 +11,15 @@ async function StudyCard({ category }) {
   const data = await res.json();
   const categories = data.data.map((item) => item.coursename);
   return (
-    <div className='flex flex-col gap-1 p-2 shadow-md text-gray-400 border-2 border-slate-200 rounded-md'>
-      <h1 className='text-xl font-semibold'>{category.title}</h1>
+    <div className='flex flex-col gap-2'>
+      <h1 className='text-xl font-semibold text-gray-400'>{category.title}</h1>
       <div className='flex flex-col gap-1'>
         {categories.map((item, index) => (
-          <Link key={index} href={"/study/" + category.path + "/" + item} className='text-slate-800 hover:text-theme'>
+          <Link
+            key={index}
+            href={"/study/" + category.path + "/" + item}
+            className='text-slate-800 pl-3 hover:text-theme'
+          >
             {item}
           </Link>
         ))}

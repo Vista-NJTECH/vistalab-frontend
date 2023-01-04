@@ -27,7 +27,7 @@ export default function Edit({ item }) {
       link: item.link,
       studyimg: null,
     });
-    const [isPopup, setIsPopup] = useState(false);
+    const [isDelete, setIsDelete] = useState(false);
     const [isProcessing, setIsProcessing] = useState(false);
     const [processingMsg, setProcessingMsg] = useState("Processing...");
 
@@ -88,11 +88,11 @@ export default function Edit({ item }) {
 
     return (
       <>
-        {isPopup ? (
+        {isDelete ? (
           <Popup
             before={{
               title: "确认删除",
-              cancelFun: () => setIsPopup(false),
+              cancelFun: () => setIsDelete(false),
               confirmFun: () => handleDelete(item.id),
             }}
             after={{
@@ -100,7 +100,7 @@ export default function Edit({ item }) {
               message: processingMsg,
               confirmFun: () => {
                 setIsProcessing(false);
-                setIsPopup(false);
+                setIsDelete(false);
                 setIsEdit(false);
                 router.refresh();
               },
@@ -130,7 +130,7 @@ export default function Edit({ item }) {
               >
                 <div className='flex flex-row items-center'>
                   <h1 className='title text-2xl'>更新课程</h1>
-                  <button onClick={() => setIsPopup(true)} className='text-red-500 hover:text-red-600'>
+                  <button onClick={() => setIsDelete(true)} className='text-red-500 hover:text-red-600'>
                     <MdDelete size={20} />
                   </button>
                 </div>
