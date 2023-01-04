@@ -17,11 +17,8 @@ export default function Upload() {
     const hiddenImageInput = useRef();
     const [isUploading, setIsUploading] = useState(false);
     const [uploadingMsg, setUpploadingMsg] = useState("Processing...");
-    const [form, setForm] = useState({ classification: "", coursename: "", title: "", link: "", studyimg: null });
-    const onUpdateInput = (e) => {
-      setForm({ ...form, [e.target.name]: e.target.value });
-      console.log(form);
-    };
+    const [form, setForm] = useState({ classification: "", coursename: "", title: "", link: "", studyimg: "" });
+    const onUpdateInput = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
     const FileCard = ({ file }) => {
       if (file)
@@ -40,7 +37,14 @@ export default function Upload() {
       setIsUploading(true);
       setUpploadingMsg("Processing...");
       const formData = new FormData();
-      Object.keys(form).forEach((item) => formData.append(item, form[item]));
+      for (const item of Object.keys(form)) {
+        if (form[item] === "") {
+          setUpploadingMsg("上传失败");
+          console.error("表单中有未填项");
+          return;
+        }
+        formData.append(item, form[item]);
+      }
       fetch("http://124.223.196.177:8181/study/add", { method: "POST", body: formData })
         .then((res) => res.json())
         .then((data) => {
@@ -86,11 +90,15 @@ export default function Upload() {
                   大类
                 </label>
                 <select
+                  required
+                  defaultValue
                   name='classification'
-                  value={form.classification}
                   onChange={onUpdateInput}
                   className='bg-gray-200 rounded-md p-2 outline-none'
                 >
+                  <option disabled value>
+                    -- select an option --
+                  </option>
                   {sidebarData.map((item, index) => (
                     <option value={item.path} key={index}>
                       {item.title}
