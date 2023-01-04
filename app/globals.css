@@ -39,13 +39,4 @@ th {
   color: white;
 }
 
-@layer base {
-  [data-nextjs-scroll-focus-boundary] {
-    display: flex;
-    flex: 1 1 0%;
-    width: 100%;
-    height: 100%;
-  }
-}
-
 @tailwind utilities;
