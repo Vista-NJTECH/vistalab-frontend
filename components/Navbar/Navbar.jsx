@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { navbarData } from "./config";
-import logo from "./logo.png";
+import logo from "../../data/logo.png";
 import MobileNavbar from "./MobileNavbar";
 import Login from "./Login";
 
