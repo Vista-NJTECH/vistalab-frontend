@@ -1,6 +1,13 @@
 # Vistalab
 
-## 一、如何开发
+## 1. 如何开发
+
+主目录下添加`.env`文件，用于配置 Next-Auth 的环境变量：
+
+```env
+NEXT_AUTH_SECRET="8GYrPDgw9wj5213UHWIm"
+NEXTAUTH_URL="https://vistalab.mraddict.one/"
+```
 
 安装依赖：
 
@@ -14,9 +21,16 @@ npm install
 npm run dev
 ```
 
-## 二、如何部署
+## 2.如何部署
 
-### 手动部署
+### 2.1. 手动部署
+
+主目录下添加`.env`文件，用于配置 Next-Auth 的环境变量：
+
+```env
+NEXT_AUTH_SECRET="8GYrPDgw9wj5213UHWIm"
+NEXTAUTH_URL="https://vistalab.mraddict.one/"
+```
 
 安装依赖：
 
@@ -36,7 +50,14 @@ npm run build
 npm start
 ```
 
-### Docker 部署
+### 2.2. Docker 部署
+
+主目录下添加`.env`文件，用于配置 Next-Auth 的环境变量：
+
+```env
+NEXT_AUTH_SECRET="8GYrPDgw9wj5213UHWIm"
+NEXTAUTH_URL="https://vistalab.mraddict.one/"
+```
 
 编译 Docker 镜像：
 
