@@ -1,13 +1,19 @@
 # Vistalab
 
-## 1. 如何开发
+> 主页地址：
+>
+> - [https://vistalab.mraddict.one/](https://vistalab.mraddict.one/)
 
-主目录下添加`.env`文件，用于配置 Next-Auth 的环境变量：
+## 1. 添加 Next-auth 环境变量
+
+由于 Next-auth 部署时需要几个环境变量，因此需要在主目录下手动添加`.env`文件，内容如下：
 
 ```env
 NEXT_AUTH_SECRET="8GYrPDgw9wj5213UHWIm"
 NEXTAUTH_URL="https://vistalab.mraddict.one/"
 ```
+
+## 2. 如何开发
 
 安装依赖：
 
@@ -21,16 +27,9 @@ npm install
 npm run dev
 ```
 
-## 2.如何部署
+## 3.如何部署
 
-### 2.1. 手动部署
-
-主目录下添加`.env`文件，用于配置 Next-Auth 的环境变量：
-
-```env
-NEXT_AUTH_SECRET="8GYrPDgw9wj5213UHWIm"
-NEXTAUTH_URL="https://vistalab.mraddict.one/"
-```
+### 3.1. 手动部署
 
 安装依赖：
 
@@ -50,14 +49,7 @@ npm run build
 npm start
 ```
 
-### 2.2. Docker 部署
-
-主目录下添加`.env`文件，用于配置 Next-Auth 的环境变量：
-
-```env
-NEXT_AUTH_SECRET="8GYrPDgw9wj5213UHWIm"
-NEXTAUTH_URL="https://vistalab.mraddict.one/"
-```
+### 3.3. Docker 部署
 
 编译 Docker 镜像：
 
@@ -69,22 +61,4 @@ docker build -t vistalab-frontend .
 
 ```bash
 docker run --restart=unless-stopped -p 8091:3000 -d --name vistalab-frontend vistalab-frontend
-```
-
-停止 Docker 容器：
-
-```bash
-docker stop vistalab-frontend
-```
-
-删除 Docker 容器：
-
-```bash
-docker rm vistalab-frontend
-```
-
-删除 Docker 镜像：
-
-```bash
-docker rmi vistalab-frontend
 ```
