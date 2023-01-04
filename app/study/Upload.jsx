@@ -17,20 +17,8 @@ export default function Upload() {
     const hiddenImageInput = useRef();
     const [isUploading, setIsUploading] = useState(false);
     const [uploadingMsg, setUpploadingMsg] = useState("Processing...");
-    const [form, setForm] = useState({ classification: "", coursename: "", title: "", link: "", studyimg: "" });
+    const [form, setForm] = useState({ classification: "", coursename: "", title: "", link: "", studyimg: null });
     const onUpdateInput = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-
-    const FileCard = ({ file }) => {
-      if (file)
-        return (
-          <div className='flex flex-row items-center h-fit m-1 py-1 px-2 bg-slate-400 rounded-md'>
-            <div>{file.name}</div>
-            <button className='text-green-700' onClick={() => setForm({ ...form, studyimg: null })}>
-              <AiFillCloseCircle />
-            </button>
-          </div>
-        );
-    };
 
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -164,7 +152,14 @@ export default function Upload() {
                   上传预览图片
                 </button>
                 <div className='flex bg-gray-200 rounded-md flex-wrap h-[40px] overflow-y-auto'>
-                  <FileCard file={form.studyimg} />
+                  {form.studyimg && (
+                    <div className='flex flex-row items-center h-fit m-1 py-1 px-2 bg-slate-400 rounded-md'>
+                      <div>{form.studyimg.name}</div>
+                      <button className='text-green-700' onClick={() => setForm({ ...form, studyimg: null })}>
+                        <AiFillCloseCircle />
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
 

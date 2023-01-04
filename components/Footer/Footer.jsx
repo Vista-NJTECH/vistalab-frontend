@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaShareSquare } from "react-icons/fa";
+import { FaShare } from "react-icons/fa";
 
 import { footerData } from "./config";
 import logo from "../../data/logo.png";
@@ -18,10 +18,10 @@ export default function Footer() {
                   href={item2.href}
                   key={index2}
                   target='_blank'
-                  className='flex flex-row gap-2 items-center text-gray-500 hover:text-gray-700'
+                  className='flex flex-row gap-1 items-center text-gray-500 hover:text-gray-700'
                 >
                   <h1>{item2.title}</h1>
-                  {!item2.isLocal && <FaShareSquare size={12} />}
+                  {!item2.isLocal && <FaShare size={12} />}
                 </a>
               ))}
             </div>
