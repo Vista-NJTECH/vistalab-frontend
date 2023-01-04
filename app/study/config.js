@@ -4,7 +4,7 @@ export const sidebarData = [
     path: "Embedded",
   },
   {
-    title: "算法",
+    title: "软件",
     path: "Software",
   },
 ];

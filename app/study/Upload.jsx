@@ -6,6 +6,8 @@ import { BsFillPlusCircleFill } from "react-icons/bs";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { useSession, signIn } from "next-auth/react";
 
+import { sidebarData } from "./config";
+
 export default function Upload() {
   const { data: session } = useSession();
   const [isAddNew, setIsAddNew] = useState(false);
@@ -16,7 +18,10 @@ export default function Upload() {
     const [isUploading, setIsUploading] = useState(false);
     const [uploadingMsg, setUpploadingMsg] = useState("Processing...");
     const [form, setForm] = useState({ classification: "", coursename: "", title: "", link: "", studyimg: null });
-    const onUpdateInput = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+    const onUpdateInput = (e) => {
+      setForm({ ...form, [e.target.name]: e.target.value });
+      console.log(form);
+    };
 
     const FileCard = ({ file }) => {
       if (file)
@@ -80,15 +85,18 @@ export default function Upload() {
                 <label htmlFor='classification' className='title'>
                   大类
                 </label>
-                <input
-                  required
-                  type='text'
-                  maxLength={20}
+                <select
                   name='classification'
                   value={form.classification}
                   onChange={onUpdateInput}
                   className='bg-gray-200 rounded-md p-2 outline-none'
-                />
+                >
+                  {sidebarData.map((item, index) => (
+                    <option value={item.path} key={index}>
+                      {item.title}
+                    </option>
+                  ))}
+                </select>
               </div>
 
               <div className='flex flex-col gap-1 w-full'>
