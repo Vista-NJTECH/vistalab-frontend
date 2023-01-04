@@ -1,8 +1,4 @@
-# Vistalab
-
-> 主页地址：
->
-> - [https://vistalab.mraddict.one/](https://vistalab.mraddict.one/)
+# Vistalab 主页前端
 
 ## 1. 本地开发
 
@@ -24,7 +20,7 @@ npm run dev
 
 ```env
 NEXT_AUTH_SECRET="8GYrPDgw9wj5213UHWIm"
-NEXTAUTH_URL="https://vistalab.mraddict.one/"
+NEXTAUTH_URL="http://www.vistalab.online/"
 ```
 
 编译 Docker 镜像：
@@ -38,3 +34,13 @@ docker build -t vistalab-frontend .
 ```bash
 docker run --restart=unless-stopped -p 8091:3000 -d --name vistalab-frontend vistalab-frontend
 ```
+
+## 3. 说明
+
+主页网址：
+
+- [http://www.vistalab.online/](http://www.vistalab.online/)
+
+后端 Github：
+
+- [https://github.com/510Lab/vistalab-backend/](https://github.com/510Lab/vistalab-backend/)
