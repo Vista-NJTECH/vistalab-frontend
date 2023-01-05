@@ -29,7 +29,7 @@ export default function Schedule({ schedule }) {
         backgroundColor: isScheduleValid ? "#80808040" : `${taskImportance[schedule.level].color}40`,
       }}
     >
-      <div className='w-full flex flex-row items-center justify-between'>
+      <div className='w-full flex flex-col md:flex-row items-start justify-between gap-1'>
         <div className='flex flex-row items-center gap-3'>
           <span
             className='p-1 rounded-full text-white items-center'

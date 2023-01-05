@@ -32,7 +32,7 @@ export default async function Sidebar() {
   return (
     <div className='md:w-64 h-fit md:sticky md:top-3 flex flex-col gap-4'>
       <Upload />
-      <div className='flex flex-col gap-6'>
+      <div className='flex flex-col gap-4'>
         {sidebarData.map((item, index) => (
           <StudyCard category={item} key={index} />
         ))}
