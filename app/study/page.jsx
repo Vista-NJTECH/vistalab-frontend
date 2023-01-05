@@ -1,7 +1,34 @@
-export default function Page() {
+import Image from "next/image";
+
+import { Edit } from "./components";
+
+export default async function Page() {
+  const res = await fetch(`http://124.223.196.177:8181/study/getall`, { cache: "no-store" });
+  if (!res.ok) throw new Error("Failed to fetch data");
+  const data = await res.json();
+  const lessons = data.data;
+  const prefix = data.prefix;
   return (
-    <div className='title text-2xl'>
-      <h1>选择一个课程查看详细信息</h1>
+    <div className='w-full flex flex-col gap-5'>
+      <h1 className='title text-xl bg-theme text-white px-2 py-1 w-fit rounded-md'>所有课程</h1>
+      <div className='grid gap-7 grid-cols-1 md:grid-cols-2'>
+        {lessons.map((item, index) => (
+          <div key={index} className='flex flex-col items-center justify-between gap-2'>
+            <Edit item={item} />
+            <a href={item.link} target='_blank'>
+              <Image
+                alt={item.title}
+                width={item.width}
+                height={item.height}
+                src={prefix + item.path}
+                blurDataURL={item.base64}
+                placeholder='blur'
+                className='rounded-md shadow-md hover:shadow-xl duration-500 aspect-4/3 object-cover object-left-top'
+              />
+            </a>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

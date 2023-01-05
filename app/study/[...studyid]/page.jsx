@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { sidebarData } from "../config";
-import Edit from "./Edit";
+import { Edit } from "../components";
 
 export default async function Page({
   params: {
@@ -27,11 +27,11 @@ export default async function Page({
         <h1>|</h1>
         <h1 className='title text-xl'>{decode_studyid2}</h1>
       </div>
-      <div className='grid gap-10 grid-cols-1 md:grid-cols-2'>
+      <div className='grid gap-7 grid-cols-1 md:grid-cols-2'>
         {lessons.map((item, index) => (
-          <div key={index} className='flex flex-col items-center justify-start gap-2'>
+          <div key={index} className='flex flex-col items-center justify-between gap-2'>
             <Edit item={item} />
-            <a href={item.link} target='_blank' className='duration-300 hover:scale-105'>
+            <a href={item.link} target='_blank'>
               <Image
                 alt={item.title}
                 width={item.width}
@@ -39,7 +39,7 @@ export default async function Page({
                 src={prefix + item.path}
                 blurDataURL={item.base64}
                 placeholder='blur'
-                className='rounded-md shadow-md border-2 border-slate-200 aspect-4/3 object-cover object-left-top'
+                className='rounded-md shadow-md hover:shadow-xl duration-500 aspect-4/3 object-cover object-left-top'
               />
             </a>
           </div>

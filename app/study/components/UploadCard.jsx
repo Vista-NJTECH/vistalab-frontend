@@ -4,9 +4,9 @@ import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AiFillCloseCircle } from "react-icons/ai";
 
-import { sidebarData } from "./config";
+import { sidebarData } from "../config";
 
-export default function UploadCard({ setIsAddNew }) {
+export default function UploadCard({ setIsUpload }) {
   const router = useRouter();
   const hiddenImageInput = useRef();
   const [isUploading, setIsUploading] = useState(false);
@@ -51,7 +51,7 @@ export default function UploadCard({ setIsAddNew }) {
           {uploadingMsg !== "Processing..." && (
             <button
               onClick={() => {
-                setIsAddNew(false);
+                setIsUpload(false);
                 router.refresh();
               }}
               className='btn px-2 py-1'
@@ -158,7 +158,7 @@ export default function UploadCard({ setIsAddNew }) {
             </div>
 
             <div className='w-full gap-2 flex flex-row items-center justify-between'>
-              <button type='button' onClick={() => setIsAddNew(false)} className='w-full btn py-2 px-2'>
+              <button type='button' onClick={() => setIsUpload(false)} className='w-full btn py-2 px-2'>
                 取消
               </button>
               <button type='submit' className='w-full btn py-2 px-2'>

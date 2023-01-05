@@ -8,17 +8,17 @@ import { useRouter } from "next/navigation";
 import { Popup } from "../../../components";
 import { sidebarData } from "../config";
 
-export default function EditCard({ item, setIsEdit }) {
+export default function EditCard({ course, setIsEdit }) {
   const router = useRouter();
   const hiddenImageInput = useRef();
   const [isUploading, setIsUploading] = useState(false);
   const [uploadingMsg, setUpploadingMsg] = useState("Processing...");
   const [form, setForm] = useState({
-    id: item.id,
-    classification: item.classification,
-    coursename: item.coursename,
-    title: item.title,
-    link: item.link,
+    id: course.id,
+    classification: course.classification,
+    coursename: course.coursename,
+    title: course.title,
+    link: course.link,
     studyimg: null,
   });
   const [isDelete, setIsDelete] = useState(false);
@@ -86,7 +86,7 @@ export default function EditCard({ item, setIsEdit }) {
           before={{
             title: "确认删除",
             cancelFun: () => setIsDelete(false),
-            confirmFun: () => handleDelete(item.id),
+            confirmFun: () => handleDelete(course.id),
           }}
           after={{
             isProcessing: isProcessing,

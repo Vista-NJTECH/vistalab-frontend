@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import Upload from "./Upload";
+import { Upload } from "./components";
 import { sidebarData } from "./config";
 
 async function StudyCard({ category }) {
@@ -12,13 +12,13 @@ async function StudyCard({ category }) {
   const categories = data.data.map((item) => item.coursename);
   return (
     <div className='flex flex-col gap-2'>
-      <h1 className='text-xl font-semibold text-gray-400'>{category.title}</h1>
+      <h1 className='w-fit text-xl font-semibold text-gray-400'>{category.title}</h1>
       <div className='flex flex-col gap-1'>
         {categories.map((item, index) => (
           <Link
             key={index}
             href={"/study/" + category.path + "/" + item}
-            className='text-slate-800 pl-3 hover:text-theme'
+            className='w-fit text-slate-800 pl-3 hover:text-theme'
           >
             {item}
           </Link>
@@ -30,7 +30,7 @@ async function StudyCard({ category }) {
 
 export default async function Sidebar() {
   return (
-    <div className='w-full max-w-md md:max-w-xs flex flex-col gap-4'>
+    <div className='md:w-64 h-fit md:sticky md:top-3 flex flex-col gap-4'>
       <Upload />
       <div className='flex flex-col gap-6'>
         {sidebarData.map((item, index) => (

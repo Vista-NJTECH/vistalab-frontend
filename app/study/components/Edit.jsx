@@ -12,7 +12,7 @@ export default function Edit({ item }) {
 
   return (
     <div className='w-full'>
-      <div className='group flex flex-row items-center w-full gap-1 title text-xl font-bold'>
+      <div className='group flex flex-row items-center w-full gap-1 title text-xl'>
         <h1>{item.title}</h1>
         <button
           onClick={() => (session ? setIsEdit(true) : signIn())}
@@ -21,7 +21,7 @@ export default function Edit({ item }) {
           <FaEdit size={17} />
         </button>
       </div>
-      {isEdit && <EditCard item={item} setIsEdit={setIsEdit} />}
+      {isEdit && <EditCard course={item} setIsEdit={setIsEdit} />}
     </div>
   );
 }
