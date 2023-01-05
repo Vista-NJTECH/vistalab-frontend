@@ -13,7 +13,7 @@ export default function Head() {
 
   return (
     <div className='w-fit flex flex-row items-center justify-start gap-1 group cursor-pointer'>
-      <h1 className='title text-2xl'>所有日程</h1>
+      <h1 className='title text-2xl'>有效日程</h1>
       <button
         onClick={() => (session ? setIsUpload(true) : signIn())}
         className='duration-300 hidden group-hover:block group-hover:text-slate-800/50'
