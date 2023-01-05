@@ -12,9 +12,7 @@ async function StudyCard({ category }) {
   const categories = data.data.map((item) => item.coursename);
   return (
     <div className='flex flex-col gap-2'>
-      <Link href={`/study/${category.path}`} className='w-fit text-xl font-semibold text-gray-400 hover:text-theme'>
-        {category.title}
-      </Link>
+      <h1 className='w-fit text-xl font-semibold text-gray-400'>{category.title}</h1>
       <div className='flex flex-col gap-1'>
         {categories.map((item, index) => (
           <Link

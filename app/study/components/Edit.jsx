@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { BsHash } from "react-icons/bs";
 import { FaEdit } from "react-icons/fa";
 import { useSession, signIn } from "next-auth/react";
 

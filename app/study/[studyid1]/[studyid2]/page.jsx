@@ -16,7 +16,7 @@ export default async function Page({ params: { studyid1, studyid2 } }) {
   const prefix = data.prefix;
   return (
     <div className='w-full flex flex-col gap-5'>
-      <div className='flex flex-row items-center justify-start gap-2'>
+      <div className='flex flex-row items-center justify-start gap-1'>
         <Link href='/study' className='title text-xl text-theme hover:underline'>
           所有课程
         </Link>
