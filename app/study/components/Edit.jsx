@@ -33,13 +33,13 @@ export default function Edit({ course }) {
           </Link>
           <Link
             href={`/study/${course.classification}/${course.coursename}`}
-            className='bg-indigo-500 hover:bg-purple-700 duration-500 text-white text-xs font-semibold p-1 rounded-md'
+            className='bg-indigo-500 hover:bg-indigo-700 duration-500 text-white text-xs font-semibold p-1 rounded-md'
           >
             {course.coursename}
           </Link>
         </div>
         {course.tags && (
-          <div className='flex flex-row gap-2'>
+          <div className='flex flex-row gap-1'>
             {course.tags.split(",").map((item, index) => (
               <div key={index} className='flex flex-row items-center'>
                 <h1 className='text-theme font-bold'>#</h1>

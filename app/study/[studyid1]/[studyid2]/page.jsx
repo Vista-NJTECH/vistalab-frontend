@@ -40,3 +40,19 @@ export default async function Page({ params: { studyid1, studyid2 } }) {
     </div>
   );
 }
+
+export async function generateStaticParams() {
+  const data = [];
+  const fetchCategories = async (category) => {
+    const res = await fetch(`http://124.223.196.177:8181/study/getcategory?class=${category}`, { cache: "no-store" });
+    if (!res.ok) throw new Error("Failed to fetch data");
+    const data = await res.json();
+    const categories = data.data.map((item) => item.coursename);
+    return categories;
+  };
+  for (const item1 of sidebarData) {
+    const categories = await fetchCategories(item1.path);
+    categories.forEach((item2) => data.push({ studyid1: item1.path, studyid2: item2 }));
+  }
+  return data;
+}
