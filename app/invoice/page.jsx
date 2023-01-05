@@ -1,5 +1,5 @@
 export default async function Page() {
-  const res = await fetch("http://124.223.196.177:8181/api/allinvoice");
+  const res = await fetch("http://124.223.196.177:8181/invoice/getall");
   if (!res.ok) throw new Error("Failed to fetch data");
   const data = await res.json();
   return (

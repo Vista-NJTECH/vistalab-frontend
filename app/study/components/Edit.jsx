@@ -12,7 +12,7 @@ export default function Edit({ course }) {
   const [isEdit, setIsEdit] = useState(false);
 
   return (
-    <div className='w-full flex flex-col items-start justify-between gap-1'>
+    <div className='w-full flex flex-col items-start justify-between gap-2'>
       <div className='group flex flex-row items-center w-full gap-1 title text-xl'>
         <h1>{course.title}</h1>
         <button

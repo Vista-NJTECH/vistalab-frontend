@@ -14,7 +14,7 @@ export default function CourseCard({ prefix, course }) {
           src={prefix + course.path}
           blurDataURL={course.base64}
           placeholder='blur'
-          className='rounded-md shadow-md hover:shadow-xl duration-500 aspect-4/3 object-cover object-left-top'
+          className='rounded-md shadow-md border-2 border-blue-300 hover:shadow-xl duration-500 aspect-4/3 object-cover object-left-top'
         />
       </a>
     </div>

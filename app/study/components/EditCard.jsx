@@ -84,7 +84,7 @@ export default function EditCard({ course, setIsEdit }) {
       {isDelete ? (
         <Popup
           before={{
-            title: "确认删除",
+            title: `确认删除 '${course.title}'`,
             cancelFun: () => setIsDelete(false),
             confirmFun: () => handleDelete(course.id),
           }}
@@ -100,7 +100,7 @@ export default function EditCard({ course, setIsEdit }) {
           }}
         />
       ) : (
-        <div className='fixed top-0 left-0 w-screen h-screen bg-black/20 flex items-center justify-center'>
+        <div className='frame fixed top-0 left-0 w-screen h-screen bg-black/20 flex items-center justify-center'>
           {isUploading ? (
             <div className='flex flex-col items-center justify-center gap-4 bg-white p-5 rounded-md'>
               <h1 className='title text-3xl'>{uploadingMsg}</h1>

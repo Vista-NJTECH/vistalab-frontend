@@ -2,15 +2,24 @@
 
 import { useState } from "react";
 import { FaEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+import { useSession, signIn } from "next-auth/react";
 import { BsChevronCompactDown, BsChevronCompactUp } from "react-icons/bs";
 
-import { taskImportance } from "./config";
-import useTimeLeft from "../../lib/useTimeLeft";
-import DetailCard from "./DetailCard";
+import { taskImportance } from "../config";
+import useTimeLeft from "../../../lib/useTimeLeft";
+import Detail from "./Detail";
+import Delete from "./Delete";
+import Update from "./Update";
 
-export default function ScheduleCard({ schedule }) {
+export default function Schedule({ schedule }) {
   const timeLeft = useTimeLeft(schedule.date);
+  const { data: session } = useSession();
+
   const [isDropdown, setIsDropdown] = useState(false);
+  const [isDelete, setIsDelete] = useState(false);
+  const [isUpdate, setIsUpdate] = useState(false);
+
   return (
     <div
       className={`flex flex-col gap-4 rounded-md p-3 shadow-md`}
@@ -29,11 +38,12 @@ export default function ScheduleCard({ schedule }) {
           </span>
           <span className='flex flex-row items-center gap-1'>
             <h1 className='text-xl font-bold'>{schedule.title}</h1>
-            {isDropdown && (
-              <button className='text-gray-600 hover:text-gray-800'>
-                <FaEdit size={17} />
-              </button>
-            )}
+            <button onClick={() => setIsUpdate(true)} className='text-gray-600 hover:text-gray-900'>
+              <FaEdit size={17} />
+            </button>
+            <button onClick={() => setIsDelete(true)} className='text-gray-600 hover:text-gray-900'>
+              <MdDelete size={17} />
+            </button>
           </span>
         </div>
         <div className='flex flex-row items-center justify-center gap-2'>
@@ -46,7 +56,9 @@ export default function ScheduleCard({ schedule }) {
           </button>
         </div>
       </div>
-      {isDropdown && <DetailCard schedule={schedule} />}
+      {isDropdown && <Detail schedule={schedule} />}
+      {isDelete && <Delete schedule={schedule} isDelete={isDelete} setIsDelete={setIsDelete} />}
+      {isUpdate && <Update schedule={schedule} setIsUpdate={setIsUpdate} />}
     </div>
   );
 }

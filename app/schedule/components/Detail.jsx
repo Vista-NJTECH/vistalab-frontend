@@ -1,7 +1,7 @@
-import useTimeLeft from "../../lib/useTimeLeft";
-import { taskImportance } from "./config";
+import useTimeLeft from "../../../lib/useTimeLeft";
+import { taskImportance } from "../config";
 
-export default function DetailCard({ schedule }) {
+export default function Detail({ schedule }) {
   return (
     <div className='w-full flex flex-col gap-1'>
       <div className='flex flex-row'>
@@ -14,11 +14,7 @@ export default function DetailCard({ schedule }) {
       </div>
       <div className='flex flex-row'>
         <span>参与人员：</span>
-        <span className='flex flex-row gap-1'>
-          {schedule.persons.split(",").map((item, index) => (
-            <div key={index}>{item}</div>
-          ))}
-        </span>
+        <span>{schedule.persons}</span>
       </div>
       <div className='flex flex-row'>
         <span>剩余时间：</span>
