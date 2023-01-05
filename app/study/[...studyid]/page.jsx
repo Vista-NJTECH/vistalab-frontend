@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { sidebarData } from "../config";
 import { Edit } from "../components";
@@ -21,9 +22,9 @@ export default async function Page({
   return (
     <div className='w-full flex flex-col gap-5'>
       <div className='flex flex-row items-center justify-start gap-2'>
-        <h1 className='title text-xl bg-theme text-white px-2 py-1 rounded-md'>
-          {sidebarData.find((item) => item.path === decode_studyid1).title}
-        </h1>
+        <Link href='/study' className='btn px-2 py-1 w-fit text-xl'>
+          所有课程
+        </Link>
         <h1>|</h1>
         <h1 className='title text-xl'>{decode_studyid2}</h1>
       </div>

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { Edit } from "./components";
 
@@ -10,7 +11,9 @@ export default async function Page() {
   const prefix = data.prefix;
   return (
     <div className='w-full flex flex-col gap-5'>
-      <h1 className='title text-xl bg-theme text-white px-2 py-1 w-fit rounded-md'>所有课程</h1>
+      <Link href='/study' className='btn px-2 py-1 w-fit text-xl'>
+        所有课程
+      </Link>
       <div className='grid gap-7 grid-cols-1 md:grid-cols-2'>
         {lessons.map((item, index) => (
           <div key={index} className='flex flex-col items-center justify-between gap-2'>
