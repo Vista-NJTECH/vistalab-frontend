@@ -14,6 +14,7 @@ import Update from "./Update";
 
 export default function Schedule({ schedule }) {
   const timeLeft = useTimeLeft(schedule.date);
+  const isScheduleValid = timeLeft === 0 || schedule.state !== 1;
   const { data: session } = useSession();
 
   const [isDropdown, setIsDropdown] = useState(false);
@@ -24,24 +25,32 @@ export default function Schedule({ schedule }) {
     <div
       className={`flex flex-col gap-4 rounded-md p-3 shadow-md`}
       style={{
-        border: `solid 2px ${taskImportance[schedule.level].color}`,
-        backgroundColor: `${taskImportance[schedule.level].color}40`,
+        border: `solid 2px ${isScheduleValid ? "#808080" : taskImportance[schedule.level].color}`,
+        backgroundColor: isScheduleValid ? "#80808040" : `${taskImportance[schedule.level].color}40`,
       }}
     >
       <div className='w-full flex flex-row items-center justify-between'>
         <div className='flex flex-row items-center gap-3'>
           <span
             className='p-1 rounded-full text-white items-center'
-            style={{ backgroundColor: taskImportance[schedule.level].color }}
+            style={{
+              backgroundColor: isScheduleValid ? "#808080" : taskImportance[schedule.level].color,
+            }}
           >
             {taskImportance[schedule.level].icon}
           </span>
           <span className='flex flex-row items-center gap-1'>
             <h1 className='text-xl font-bold'>{schedule.title}</h1>
-            <button onClick={() => setIsUpdate(true)} className='text-gray-600 hover:text-gray-900'>
+            <button
+              onClick={() => (session ? setIsUpdate(true) : signIn())}
+              className='text-gray-600 hover:text-gray-900'
+            >
               <FaEdit size={17} />
             </button>
-            <button onClick={() => setIsDelete(true)} className='text-gray-600 hover:text-gray-900'>
+            <button
+              onClick={() => (session ? setIsDelete(true) : signIn())}
+              className='text-gray-600 hover:text-gray-900'
+            >
               <MdDelete size={17} />
             </button>
           </span>
