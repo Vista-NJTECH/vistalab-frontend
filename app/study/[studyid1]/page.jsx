@@ -5,7 +5,7 @@ import { CourseCard } from "../components";
 
 export default async function Page({ params: { studyid1 } }) {
   const decode_studyid1 = decodeURIComponent(studyid1);
-  const res = await fetch(`http://124.223.196.177:8181/study/getall?class=${decode_studyid1}`, { cache: "no-store" });
+  const res = await fetch(`${process.env.BACKEND_URL}study/getall?class=${decode_studyid1}`, { cache: "no-store" });
   if (!res.ok) throw new Error("Failed to fetch data");
   const data = await res.json();
   const lessons = data.data;

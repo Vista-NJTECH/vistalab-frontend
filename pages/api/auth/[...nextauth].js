@@ -15,7 +15,7 @@ export const authOptions = {
       },
       async authorize(credentials, req) {
         const { username, password } = credentials;
-        const res = await fetch("http://124.223.196.177:8181/api/login", {
+        const res = await fetch(`${process.env.BACKEND_URL}api/login`, {
           method: "POST",
           body: new URLSearchParams({ username, password }),
           headers: { "Content-Type": "application/x-www-form-urlencoded" },

@@ -35,7 +35,7 @@ export default function Update({ schedule, setIsUpdate }) {
         return;
       }
     }
-    fetch("http://124.223.196.177:8181/schedule/update", {
+    fetch(`${process.env.BACKEND_URL}schedule/update`, {
       method: "POST",
       body: new URLSearchParams(form),
       headers: { "Content-Type": "application/x-www-form-urlencoded" },

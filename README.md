@@ -16,11 +16,12 @@ npm run dev
 
 ## 2. Docker 部署
 
-在主目录下添加`.env`文件，用于配置 Next-auth 环境变量：
+在主目录下添加`.env`文件，配置环境变量：
 
 ```env
 NEXT_AUTH_SECRET="8GYrPDgw9wj5213UHWIm"
 NEXTAUTH_URL="http://www.vistalab.online/"
+BACKEND_URL="http://124.223.196.177:8181/"
 ```
 
 编译 Docker 镜像：

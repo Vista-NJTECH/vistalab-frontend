@@ -14,7 +14,7 @@ export default function Delete({ schedule, isDelete, setIsDelete }) {
   const handleDelete = async (id) => {
     setIsProcessing(true);
     setProcessingMsg("Processing...");
-    fetch("http://124.223.196.177:8181/schedule/delete", {
+    fetch(`${process.env.BACKEND_URL}schedule/delete`, {
       method: "POST",
       body: new URLSearchParams({ id }),
       headers: { "Content-Type": "application/x-www-form-urlencoded" },

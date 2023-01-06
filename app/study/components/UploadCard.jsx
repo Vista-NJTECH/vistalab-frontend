@@ -27,7 +27,7 @@ export default function UploadCard({ setIsUpload }) {
       }
       formData.append(item, form[item]);
     }
-    fetch("http://124.223.196.177:8181/study/add", { method: "POST", body: formData })
+    fetch(`${process.env.BACKEND_URL}study/add`, { method: "POST", body: formData })
       .then((res) => res.json())
       .then((data) => {
         if (data.status) {

@@ -25,7 +25,7 @@ export default function Upload({ setIsUpload }) {
         return;
       }
     }
-    fetch("http://124.223.196.177:8181/schedule/add", {
+    fetch(`${process.env.BACKEND_URL}schedule/add`, {
       method: "POST",
       body: new URLSearchParams(form),
       headers: { "Content-Type": "application/x-www-form-urlencoded" },

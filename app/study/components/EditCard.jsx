@@ -30,7 +30,7 @@ export default function EditCard({ course, setIsEdit }) {
   const handleDelete = async (id) => {
     setIsProcessing(true);
     setProcessingMsg("Processing...");
-    fetch("http://124.223.196.177:8181/study/delete", {
+    fetch(`${process.env.BACKEND_URL}study/delete`, {
       method: "POST",
       body: new URLSearchParams({ id }),
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -63,7 +63,7 @@ export default function EditCard({ course, setIsEdit }) {
       }
       formData.append(item, form[item]);
     }
-    fetch("http://124.223.196.177:8181/study/update", { method: "POST", body: formData })
+    fetch(`${process.env.BACKEND_URL}study/update`, { method: "POST", body: formData })
       .then((res) => res.json())
       .then((data) => {
         if (data.status) {

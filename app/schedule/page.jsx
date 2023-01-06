@@ -3,7 +3,7 @@ import { Schedule, Head } from "./components";
 import useTimeLeft from "../../lib/useTimeLeft";
 
 export default async function Page() {
-  const res = await fetch(`http://124.223.196.177:8181/schedule/getall`, { cache: "no-store" });
+  const res = await fetch(`${process.env.BACKEND_URL}schedule/getall`, { cache: "no-store" });
   if (!res.ok) throw new Error("Failed to fetch data");
   const data = await res.json();
   const validData = [];
