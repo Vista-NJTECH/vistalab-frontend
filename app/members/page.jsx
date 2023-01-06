@@ -1,3 +1,5 @@
+import "./style.css";
+
 export default async function Members() {
   const res = await fetch(`${process.env.BACKEND_URL}member/getall`);
   if (!res.ok) throw new Error("Failed to fetch data");
