@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useSession, signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 import InvoiceTable from "./InvoiceTable";
+import { useInvoiceStateContext } from "./InvoiceContextProvider";
 
 function Error({ title, button }) {
   return (
@@ -20,23 +20,7 @@ function Error({ title, button }) {
 export default function Table() {
   const router = useRouter();
   const { data: session } = useSession();
-
-  const [invoice, setInvoice] = useState({ data: [] });
-
-  useEffect(() => {
-    async function fetchInvoice(token) {
-      fetch(`${process.env.BACKEND_URL}invoice/getall`, {
-        headers: { Authorization: token },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.status) setInvoice(data);
-          else console.error(data.message);
-        })
-        .catch((error) => console.error(error));
-    }
-    if (session) fetchInvoice(session.user.token);
-  }, [session]);
+  const { invoice } = useInvoiceStateContext();
 
   return (
     <>
@@ -45,7 +29,7 @@ export default function Table() {
       ) : invoice.data.length === 0 ? (
         <Error title='暂无数据' button={{ title: "Reload", onClick: () => router.refresh() }} />
       ) : (
-        <InvoiceTable invoice={invoice} />
+        <InvoiceTable />
       )}
     </>
   );
