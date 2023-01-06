@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSession, signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 import InvoiceTable from "./InvoiceTable";
 
@@ -17,10 +18,10 @@ function Error({ title, button }) {
 }
 
 export default function Table() {
-  const [invoice, setInvoice] = useState({ data: [] });
-  const [reRetchData, setReFetchData] = useState(false);
-
+  const router = useRouter();
   const { data: session } = useSession();
+
+  const [invoice, setInvoice] = useState({ data: [] });
 
   useEffect(() => {
     async function fetchInvoice(token) {
@@ -35,14 +36,14 @@ export default function Table() {
         .catch((error) => console.error(error));
     }
     if (session) fetchInvoice(session.user.token);
-  }, [reRetchData]);
+  }, [session]);
 
   return (
     <>
       {!session ? (
         <Error title='登录后才能查看' button={{ title: "Login", onClick: () => signIn() }} />
       ) : invoice.data.length === 0 ? (
-        <Error title='暂无数据' button={{ title: "Reload", onClick: () => setReFetchData(!reRetchData) }} />
+        <Error title='暂无数据' button={{ title: "Reload", onClick: () => router.refresh() }} />
       ) : (
         <InvoiceTable invoice={invoice} />
       )}
