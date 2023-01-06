@@ -12,12 +12,13 @@ export default function Head() {
   const [isUpload, setIsUpload] = useState(false);
 
   return (
-    <div className='w-fit flex flex-row items-center justify-start gap-1 group cursor-pointer'>
+    <div className='w-full flex flex-row items-center justify-between'>
       <h1 className='title text-2xl'>有效日程</h1>
       <button
         onClick={() => (session ? setIsUpload(true) : signIn())}
-        className='duration-300 hidden group-hover:block group-hover:text-slate-800/50'
+        className='flex flex-row items-center gap-1 text-gray-600 font-bold hover:text-gray-800'
       >
+        <h1>添加</h1>
         <BsFillPlusCircleFill />
       </button>
       {isUpload && <Upload setIsUpload={setIsUpload} />}

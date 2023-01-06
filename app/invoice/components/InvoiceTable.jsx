@@ -24,7 +24,7 @@ export default function InvoiceTable() {
       </thead>
       <tbody>
         {invoice.data.map((item, index) => (
-          <tr key={index} className={`${index % 2 === 1 ? "bg-gray-100" : ""}`}>
+          <tr key={index} style={{ backgroundColor: index % 2 === 1 && "#f2f2f2" }}>
             <td className='p-2'>{index}</td>
             <td className='p-2 max-w-[150px]'>{item.title}</td>
             <td className='p-2'>{item.applicant}</td>
