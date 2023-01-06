@@ -21,7 +21,6 @@ npm run dev
 ```env
 NEXT_AUTH_SECRET="8GYrPDgw9wj5213UHWIm"
 NEXTAUTH_URL="https://www.vistalab.top/"
-BACKEND_URL="http://124.223.196.177:8181/"
 ```
 
 编译 Docker 镜像：
