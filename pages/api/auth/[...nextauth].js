@@ -5,14 +5,13 @@ export const authOptions = {
   session: { strategy: "jwt" },
   secret: process.env.NEXT_AUTH_SECRET,
 
+  pages: {
+    signIn: "/login",
+  },
+
   providers: [
     CredentialsProvider({
-      type: "credentials",
       name: "credentials",
-      credentials: {
-        username: { label: "username", type: "text", placeholder: "用户名" },
-        password: { label: "password", type: "password", placeholder: "密码" },
-      },
       async authorize(credentials, req) {
         const { username, password } = credentials;
         const res = await fetch(`${process.env.BACKEND_URL}api/login`, {
@@ -22,13 +21,23 @@ export const authOptions = {
         });
         if (!res.ok) return null;
         const data = await res.json();
-        if (data.status) return null;
-        return { user: username, token: data.token };
+        const user = {
+          name: username,
+          token: data.token,
+        };
+        return user;
       },
     }),
   ],
-  pages: {
-    signIn: "/login",
+  callbacks: {
+    jwt: async ({ token, user }) => {
+      user && (token.user = user);
+      return token;
+    },
+    session: async ({ session, token }) => {
+      session.user = token.user;
+      return session;
+    },
   },
 };
 

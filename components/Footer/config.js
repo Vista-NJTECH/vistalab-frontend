@@ -38,6 +38,11 @@ export const footerData = {
       isLocal: false,
     },
     {
+      title: "后端API文档",
+      href: "https://backend.vistalab.top/apidoc/index.html",
+      isLocal: false,
+    },
+    {
       title: "电子组培训文档",
       href: "https://book.jinhun.moe/Intro.html",
       isLocal: false,

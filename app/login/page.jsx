@@ -13,11 +13,15 @@ export default function Page() {
   const onUpdateInput = (e) => setForm({ ...form, [e.target.name]: e.target.value });
   const onSubmitForm = async (e) => {
     e.preventDefault();
-    await signIn("credentials", {
+    signIn("credentials", {
       username: form.username,
       password: form.password,
       callbackUrl: callbackUrl || "/",
-    });
+    })
+      .then((res) => {
+        if (!res.ok) console.log(res.error);
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
