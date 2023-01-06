@@ -33,14 +33,17 @@ export default function Table() {
       ) : invoice.data.length === 0 ? (
         <Error title='暂无数据' button={{ title: "Reload", onClick: () => router.refresh() }} />
       ) : (
-        <div className='w-full flex flex-col items-end gap-1'>
-          <button
-            onClick={() => setIsUpload(true)}
-            className='flex flex-row items-center gap-1 text-gray-600 font-bold hover:text-gray-800'
-          >
-            <h1>添加</h1>
-            <BsFillPlusCircleFill />
-          </button>
+        <div className='w-full flex flex-col gap-1'>
+          <div className='w-full flex flex-row items-center justify-between'>
+            <h1 className='title text-2xl'>发票报销</h1>
+            <button
+              onClick={() => setIsUpload(true)}
+              className='flex flex-row items-center gap-1 text-gray-600 font-bold hover:text-gray-800'
+            >
+              <h1>添加</h1>
+              <BsFillPlusCircleFill />
+            </button>
+          </div>
           <InvoiceTable />
           {isUpload && <Upload setIsUpload={setIsUpload} />}
         </div>
