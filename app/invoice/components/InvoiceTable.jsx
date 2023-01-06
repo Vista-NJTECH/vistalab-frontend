@@ -16,7 +16,7 @@ export default function InvoiceTable() {
           <th className='p-2 bg-green-600 text-white'>申请人</th>
           <th className='p-2 bg-green-600 text-white'>类别</th>
           <th className='p-2 bg-green-600 text-white'>时间</th>
-          <th className='p-2 bg-green-600 text-white'>价格</th>
+          <th className='p-2 bg-green-600 text-white'>金额</th>
           <th className='p-2 bg-green-600 text-white'>备注</th>
           <th className='p-2 bg-green-600 text-white'>状态</th>
           <th className='p-2 bg-green-600 text-white'>操作</th>
@@ -26,7 +26,7 @@ export default function InvoiceTable() {
         {invoice.data.map((item, index) => (
           <tr key={index} className={`${index % 2 === 1 ? "bg-gray-100" : ""}`}>
             <td className='p-2'>{index}</td>
-            <td className='p-2'>{item.title}</td>
+            <td className='p-2 max-w-[150px]'>{item.title}</td>
             <td className='p-2'>{item.applicant}</td>
             <td className='p-2'>{item.category}</td>
             <td className='p-2'>{new Date(item.time).toISOString().split("T")[0]}</td>

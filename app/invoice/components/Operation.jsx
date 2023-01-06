@@ -22,11 +22,11 @@ export default function Operation({ record }) {
       >
         <ImDownload3 />
       </button>
-      <button onClick={() => setIsDelete(true)} className='text-gray-700 hover:text-gray-900 mx-1'>
-        <MdDelete />
-      </button>
-      <button onClick={() => setIsToggle(true)} className='text-gray-700 hover:text-gray-900'>
+      <button onClick={() => setIsToggle(true)} className='text-gray-700 hover:text-gray-900 mx-1'>
         {record.state === 1 ? <FaToggleOn /> : <FaToggleOff />}
+      </button>
+      <button onClick={() => setIsDelete(true)} className='text-gray-700 hover:text-gray-900'>
+        <MdDelete />
       </button>
       {isDelete && <Delete record={record} isDelete={isDelete} setIsDelete={setIsDelete} />}
       {isToggle && <Toggle record={record} isToggle={isToggle} setIsToggle={setIsToggle} />}

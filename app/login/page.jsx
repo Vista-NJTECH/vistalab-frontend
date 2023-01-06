@@ -19,9 +19,9 @@ export default function Page() {
       callbackUrl: callbackUrl || "/",
     })
       .then((res) => {
-        if (!res.ok) console.log(res.error);
+        if (!res.ok) console.error(res.error);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.error(error));
   };
 
   return (

@@ -12,7 +12,7 @@ export default function Popup({ before, after }) {
         </div>
       ) : (
         before && (
-          <div className='bg-white p-5 rounded-xl flex flex-col items-center justify-center gap-5'>
+          <div className='bg-white max-w-sm p-5 rounded-xl flex flex-col items-center justify-center gap-5'>
             <h1 className='title text-2xl'>{before.title}</h1>
             <div className='flex flex-row gap-5'>
               {before.cancelFun && (
