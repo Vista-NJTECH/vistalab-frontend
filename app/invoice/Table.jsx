@@ -1,7 +1,10 @@
 "use client";
 
 import { BsDot } from "react-icons/bs";
+import { ImDownload3 } from "react-icons/im";
 import { useEffect, useState } from "react";
+
+import useDownloadFile from "../../lib/useDownloadFile";
 
 function Error({ title, button }) {
   return (
@@ -27,10 +30,11 @@ function InvoiceTable({ invoice }) {
           <th className='p-2 bg-green-600 text-white'>价格</th>
           <th className='p-2 bg-green-600 text-white'>备注</th>
           <th className='p-2 bg-green-600 text-white'>状态</th>
+          <th className='p-2 bg-green-600 text-white'>下载</th>
         </tr>
       </thead>
       <tbody>
-        {invoice.map((item, index) => (
+        {invoice.data.map((item, index) => (
           <tr key={index} className={index % 2 === 1 ? "bg-gray-100" : ""}>
             <td className='pl-2'>{index}</td>
             <td className='pl-2'>{item.invoicename}</td>
@@ -40,6 +44,16 @@ function InvoiceTable({ invoice }) {
             <td className='pl-2'>￥{item.amount}</td>
             <td className='pl-2'>{item.remark}</td>
             <td className={`${item.state === 1 ? "text-green-700" : "text-red-600"}`}>{<BsDot size={40} />}</td>
+            <td className='pl-2'>
+              <button
+                onClick={() =>
+                  item.path ? useDownloadFile(invoice.prefix + item.path, item.invoicename + ".pdf") : null
+                }
+                className={`text-gray-700 hover:text-gray-900 ${item.path ? "" : "cursor-not-allowed"}`}
+              >
+                <ImDownload3 />
+              </button>
+            </td>
           </tr>
         ))}
       </tbody>
@@ -48,7 +62,7 @@ function InvoiceTable({ invoice }) {
 }
 
 export default function Table() {
-  const [invoice, setInvoice] = useState([]);
+  const [invoice, setInvoice] = useState({ data: [] });
   const [reRetchData, setReFetchData] = useState(false);
 
   useEffect(() => {
@@ -57,7 +71,7 @@ export default function Table() {
         .then((res) => res.json())
         .then((data) => {
           if (data.status) {
-            setInvoice(data.data);
+            setInvoice(data);
           } else {
             console.error(data.message);
           }
@@ -71,7 +85,7 @@ export default function Table() {
 
   return (
     <>
-      {invoice.length === 0 ? (
+      {invoice.data.length === 0 ? (
         <Error title='暂无数据' button={{ title: "Reload", onClick: () => setReFetchData(!reRetchData) }} />
       ) : (
         <InvoiceTable invoice={invoice} />
