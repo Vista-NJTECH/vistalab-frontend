@@ -32,13 +32,13 @@ function InvoiceTable({ invoice }) {
       <tbody>
         {invoice.map((item, index) => (
           <tr key={index} className={index % 2 === 1 ? "bg-gray-100" : ""}>
-            <td className='p-2'>{index}</td>
-            <td className='p-2'>{item.invoicename}</td>
-            <td className='p-2'>{item.applicant}</td>
-            <td className='p-2'>{item.category}</td>
-            <td className='p-2'>{new Date(item.time).toISOString().split("T")[0]}</td>
-            <td className='p-2'>￥{item.amount}</td>
-            <td className='p-2'>{item.remark}</td>
+            <td className='pl-2'>{index}</td>
+            <td className='pl-2'>{item.invoicename}</td>
+            <td className='pl-2'>{item.applicant}</td>
+            <td className='pl-2'>{item.category}</td>
+            <td className='pl-2'>{new Date(item.time).toISOString().split("T")[0]}</td>
+            <td className='pl-2'>￥{item.amount}</td>
+            <td className='pl-2'>{item.remark}</td>
             <td className={`${item.state === 1 ? "text-green-700" : "text-red-600"}`}>{<BsDot size={40} />}</td>
           </tr>
         ))}

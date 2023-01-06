@@ -4,7 +4,7 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ["124.223.196.177"],
+    domains: ["backend.vistalab.top"],
   },
   env: {
     BACKEND_URL: "https://backend.vistalab.top/",
