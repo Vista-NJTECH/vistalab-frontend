@@ -27,10 +27,12 @@ export default function Delete({ schedule, isDelete, setIsDelete }) {
           setProcessingMsg("删除失败");
           console.error(data.message);
         }
+        router.refresh();
       })
       .catch((error) => {
         setProcessingMsg("删除失败");
         console.error(error);
+        router.refresh();
       });
   };
 
@@ -49,7 +51,6 @@ export default function Delete({ schedule, isDelete, setIsDelete }) {
             confirmFun: () => {
               setIsProcessing(false);
               setIsDelete(false);
-              router.refresh();
             },
           }}
         />

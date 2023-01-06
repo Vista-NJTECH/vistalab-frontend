@@ -48,6 +48,7 @@ export default function Update({ schedule, setIsUpdate }) {
           setSubmitMsg("更新失败");
           console.error(data.message);
         }
+        router.refresh();
       })
       .catch((error) => {
         setSubmitMsg("更新失败");
@@ -65,7 +66,6 @@ export default function Update({ schedule, setIsUpdate }) {
               onClick={() => {
                 setIsSubmit(false);
                 setIsUpdate(false);
-                router.refresh();
               }}
               className='btn px-2 py-1'
             >

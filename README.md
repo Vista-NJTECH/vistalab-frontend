@@ -20,7 +20,7 @@ npm run dev
 
 ```env
 NEXT_AUTH_SECRET="8GYrPDgw9wj5213UHWIm"
-NEXTAUTH_URL="http://www.vistalab.online/"
+NEXTAUTH_URL="https://www.vistalab.top/"
 BACKEND_URL="http://124.223.196.177:8181/"
 ```
 
@@ -40,7 +40,7 @@ docker run --restart=unless-stopped -p 8091:3000 -d --name vistalab-frontend vis
 
 主页网址：
 
-- [http://www.vistalab.online/](http://www.vistalab.online/)
+- [https://www.vistalab.top/](https://www.vistalab.top/)
 
 后端 Github：
 

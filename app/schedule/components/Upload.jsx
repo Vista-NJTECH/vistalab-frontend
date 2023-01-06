@@ -38,6 +38,7 @@ export default function Upload({ setIsUpload }) {
           setSubmitMsg("添加失败");
           console.error(data.message);
         }
+        router.refresh();
       })
       .catch((error) => {
         setSubmitMsg("添加失败");
@@ -55,7 +56,6 @@ export default function Upload({ setIsUpload }) {
               onClick={() => {
                 setIsSubmit(false);
                 setIsUpload(false);
-                router.refresh();
               }}
               className='btn px-2 py-1'
             >

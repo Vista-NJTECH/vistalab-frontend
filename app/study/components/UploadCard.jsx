@@ -36,6 +36,7 @@ export default function UploadCard({ setIsUpload }) {
           setUpploadingMsg("上传失败");
           console.error(data.message);
         }
+        router.refresh();
       })
       .catch((error) => {
         setUpploadingMsg("上传失败");
@@ -52,7 +53,6 @@ export default function UploadCard({ setIsUpload }) {
             <button
               onClick={() => {
                 setIsUpload(false);
-                router.refresh();
               }}
               className='btn px-2 py-1'
             >

@@ -43,6 +43,7 @@ export default function EditCard({ course, setIsEdit }) {
           setProcessingMsg("删除失败");
           console.error(data.message);
         }
+        router.refresh();
       })
       .catch((error) => {
         setProcessingMsg("删除失败");
@@ -72,6 +73,7 @@ export default function EditCard({ course, setIsEdit }) {
           setUpploadingMsg("更新失败");
           console.error(data.message);
         }
+        router.refresh();
       })
       .catch((error) => {
         setUpploadingMsg("更新失败");
@@ -95,7 +97,6 @@ export default function EditCard({ course, setIsEdit }) {
               setIsProcessing(false);
               setIsDelete(false);
               setIsEdit(false);
-              router.refresh();
             },
           }}
         />
@@ -108,7 +109,6 @@ export default function EditCard({ course, setIsEdit }) {
                 <button
                   onClick={() => {
                     setIsEdit(false);
-                    router.refresh();
                   }}
                   className='btn px-2 py-1'
                 >
