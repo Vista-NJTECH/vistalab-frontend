@@ -7,8 +7,10 @@ export default async function Sidebar() {
   const competitions = data.data.map((item) => item.name);
 
   return (
-    <div className='w-full max-w-xs flex flex-col gap-3'>
-      <h1 className='title text-3xl'>竞赛信息</h1>
+    <div className='w-72 h-fit md:sticky md:top-3 flex flex-col gap-3'>
+      <Link href='/competition' className='title text-2xl'>
+        竞赛信息
+      </Link>
       <div className='flex flex-col gap-1'>
         {competitions.map((item, index) => (
           <Link className='text-gray-700 hover:text-theme w-fit' href={`/competition/${item}`} key={index}>

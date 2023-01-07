@@ -1,28 +1,36 @@
+import { FaShare } from "react-icons/fa";
+
+import { colorfulColors } from "./config";
+
 function CompetitionCard({ competition }) {
   return (
-    <div className='flex flex-col gap-3'>
-      <h1 className='title text-2xl'>{competition.name}</h1>
-      <div className='flex flex-col justify-start gap-3 shadow-md bg-slate-100 p-2 rounded-md'>
+    <div className='flex flex-col gap-5'>
+      <h1 className='title text-3xl'>{competition.name}</h1>
+      <div className='flex flex-col gap-3 shadow-xl bg-slate-100 p-2 rounded-md'>
         <div className='flex flex-row gap-1'>
           <span className='whitespace-nowrap title'>简介：</span>
-          <span>{competition.introduction}</span>
+          <span className='title'>{competition.introduction}</span>
         </div>
-        <div className='flex flex-row items-center gap-2'>
+        <div className='flex flex-row items-center gap-1'>
           <span className='whitespace-nowrap title'>链接：</span>
-          <span className='flex flex-row gap-1'>
+          <span className='flex flex-row gap-2'>
             {Object.keys(competition.link).map((item, index) => (
               <a
                 href={[competition.link[item]]}
                 key={index}
                 target='_blank'
-                className='bg-purple-600 py-1 px-2 rounded-md text-white'
+                style={{ backgroundColor: colorfulColors[index % colorfulColors.length] }}
+                className='flex flex-row items-center gap-1 py-1 px-2 rounded-md text-white'
               >
-                {item}
+                <span>{item}</span>
+                <span>
+                  <FaShare size={10} />
+                </span>
               </a>
             ))}
           </span>
         </div>
-        <div className='flex flex-row gap-1'>
+        <div className='flex flex-col md:flex-row gap-1'>
           <span className='whitespace-nowrap title'>详情：</span>
           <span>{competition.detail}</span>
         </div>
