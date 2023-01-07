@@ -22,7 +22,12 @@ export const authOptions = {
         if (!res.ok) return null;
         const data = await res.json();
         const user = {
-          name: username,
+          username: data.userinfo.username,
+          nickname: data.userinfo.name,
+          email: data.userinfo.email,
+          level: data.userinfo.level,
+          created_time: data.userinfo.created_time,
+          avatar: data.userinfo.avatar,
           token: data.token,
         };
         return user;
