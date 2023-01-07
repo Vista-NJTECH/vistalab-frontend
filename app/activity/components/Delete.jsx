@@ -16,7 +16,7 @@ function DeleteCard({ activity, isDelete, setIsDelete }) {
   const handleDelete = async (id) => {
     setIsProcessing(true);
     setProcessingMsg("Processing...");
-    fetch(`${process.env.BACKEND_URL}schedule/delete`, {
+    fetch(`${process.env.BACKEND_URL}activity/delete`, {
       method: "POST",
       body: new URLSearchParams({ id }),
       headers: { "Content-Type": "application/x-www-form-urlencoded" },

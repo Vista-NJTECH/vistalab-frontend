@@ -2,7 +2,6 @@ import Image from "next/image";
 import { MdOutlineDateRange } from "react-icons/md";
 
 import { Upload, Delete, Update } from "./components";
-import { activitiesData } from "./config";
 import useTimeAgo from "../../lib/useTimeAgo";
 
 function ActivityCard({ prefix, activity, isOdd }) {

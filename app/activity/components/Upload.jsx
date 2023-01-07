@@ -19,17 +19,18 @@ function UploadCard({ setIsUpload }) {
     e.preventDefault();
     setIsSubmit(true);
     setSubmitMsg("Processing...");
+    const formData = new FormData();
     for (const item of Object.keys(form)) {
       if (form[item] === "" || form[item] === null) {
         setSubmitMsg("添加失败");
         console.error("表单中有未填项");
         return;
       }
+      formData.append(item, form[item]);
     }
-    fetch(`${process.env.BACKEND_URL}schedule/add`, {
+    fetch(`${process.env.BACKEND_URL}activity/add`, {
       method: "POST",
-      body: new URLSearchParams(form),
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: formData,
     })
       .then((res) => res.json())
       .then((data) => {
