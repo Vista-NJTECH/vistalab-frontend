@@ -1,7 +1,7 @@
 import { Head, Awards, Stacks, Certificates, Activities } from "./components";
 
 async function fetchData(path) {
-  const res = await fetch(`${process.env.BACKEND_URL}${path}`, { next: { revalidate: 60 } });
+  const res = await fetch(`${process.env.BACKEND_URL}${path}`, { cache: "no-cache" });
   if (!res.ok) throw new Error("Failed to fetch data");
   const data = await res.json();
   return data;
