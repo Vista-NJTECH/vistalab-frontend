@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import { FaEdit } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import { AiFillCloseCircle } from "react-icons/ai";
 import { useSession, signIn } from "next-auth/react";
 
 function UpdateCard({ activity, setIsUpdate }) {

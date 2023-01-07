@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { AiFillCloseCircle } from "react-icons/ai";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 import { useSession, signIn } from "next-auth/react";
 

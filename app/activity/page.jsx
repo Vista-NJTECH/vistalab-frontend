@@ -8,7 +8,7 @@ function ActivityCard({ prefix, activity, isOdd }) {
   const timeAgo = useTimeAgo(activity.date);
   return (
     <>
-      <div className='w-full hidden md:flex flex-row items-center justify-between rounded-md shadow-lg bg-slate-100'>
+      <div className='w-full hidden md:flex flex-row items-center justify-between gap-5 rounded-md shadow-lg bg-slate-100'>
         {isOdd && (
           <div className='max-w-[450px]'>
             <Image
@@ -22,7 +22,7 @@ function ActivityCard({ prefix, activity, isOdd }) {
             />
           </div>
         )}
-        <div className='p-4 max-w-md'>
+        <div className='p-4 w-1/2'>
           <div className='flex flex-row gap-2'>
             <h1 className='text-2xl title'>{activity.title}</h1>
             <div className='flex flex-row gap-1'>
@@ -54,7 +54,7 @@ function ActivityCard({ prefix, activity, isOdd }) {
         )}
       </div>
       <div className='w-full md:hidden flex flex-col items-start justify-between rounded-md shadow-lg bg-slate-100'>
-        <div className='max-w-[450px]'>
+        <div>
           <Image
             src={prefix + activity.img.path}
             width={activity.img.width}
@@ -92,7 +92,7 @@ export default async function Page() {
   const prefix = activitiesData.prefix;
 
   return (
-    <div className='frame flex flex-col items-center justify-center gap-5 md:gap-10'>
+    <div className='frame md:w-5/6 flex flex-col items-center justify-center gap-5 md:gap-10'>
       <div className='w-full flex flex-row items-center justify-between'>
         <h1 className='title text-3xl'>最近的动态</h1>
         <Upload />

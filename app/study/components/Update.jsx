@@ -7,7 +7,7 @@ import { useSession, signIn } from "next-auth/react";
 
 import EditCard from "./EditCard";
 
-export default function Edit({ course }) {
+function UpdateCard({ course }) {
   const { data: session } = useSession();
   const [isEdit, setIsEdit] = useState(false);
 
@@ -50,5 +50,19 @@ export default function Edit({ course }) {
       </div>
       {isEdit && <EditCard course={course} setIsEdit={setIsEdit} />}
     </div>
+  );
+}
+
+export default function Update({ course }) {
+  const { data: session } = useSession();
+  const [isUpdate, setIsUpdate] = useState(false);
+
+  return (
+    <>
+      <button onClick={() => (session ? setIsUpdate(true) : signIn())} className='text-gray-600 hover:text-gray-800'>
+        <FaEdit size={17} />
+      </button>
+      {isUpdate && <UpdateCard course={course} setIsUpdate={setIsUpdate} />}
+    </>
   );
 }
