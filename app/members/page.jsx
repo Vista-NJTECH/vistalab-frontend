@@ -3,7 +3,7 @@ export default async function Members() {
   if (!res.ok) throw new Error("Failed to fetch data");
   const data = await res.json();
   return (
-    <div className='frame w-full flex flex-col items-start justify-center gap-1'>
+    <div className='frame w-full flex flex-col items-start justify-center gap-2'>
       <div className='flex flex-row items-center justify-between'>
         <h1 className='title text-2xl'>成员信息</h1>
       </div>

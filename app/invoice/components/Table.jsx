@@ -33,7 +33,7 @@ export default function Table() {
       ) : invoice.data.length === 0 ? (
         <Error title='暂无数据' button={{ title: "Reload", onClick: () => router.refresh() }} />
       ) : (
-        <div className='w-full flex flex-col gap-1'>
+        <div className='w-full flex flex-col gap-2'>
           <div className='w-full flex flex-row items-center justify-between'>
             <h1 className='title text-2xl'>发票报销</h1>
             <button

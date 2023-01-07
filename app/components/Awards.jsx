@@ -1,22 +1,19 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
-import { awardsData } from "./config";
-
-export default function Awards() {
+export default function Awards({ awardsData }) {
   const yearsData = Object.keys(awardsData);
   const [currentIndex, setCurrentIndex] = useState(yearsData[0]);
-  const YearCard = ({ item }) => {
-    const commonStyle =
-      "p-3 title text-2xl border-l-4 w-full flex flex-row items-center justify-between cursor-pointer duration-500";
+
+  function YearCard({ item }) {
     return (
       <div
         onClick={() => setCurrentIndex(item)}
-        className={
-          currentIndex === item ? `bg-slate-200 border-theme ${commonStyle}` : `border-slate-400  ${commonStyle}`
-        }
+        className={`p-3 title text-2xl border-l-4 w-full flex flex-row items-center justify-between cursor-pointer duration-500 ${
+          currentIndex === item ? "bg-slate-200 border-theme" : "border-slate-400"
+        }`}
       >
         <span>{item}</span>
         {currentIndex === item && (
@@ -26,15 +23,17 @@ export default function Awards() {
         )}
       </div>
     );
-  };
-  const AwardCard = ({ item, index }) => {
+  }
+
+  function AwardCard({ item, index }) {
     return (
       <div className='flex flex-row items-start justify-start gap-2 text-xl'>
         <span>{`${index}.`}</span>
         <h1>{item}</h1>
       </div>
     );
-  };
+  }
+
   return (
     <div className='px-5 md:px-48 py-10 md:py-28 flex flex-col md:flex-row gap-5 md:gap-10 items-center justify-center bg-slate-100'>
       <div className='w-full md:w-1/3 flex flex-col items-center justify-start gap-4 md:gap-7 rounded-r-none md:pl-16 md:py-10'>

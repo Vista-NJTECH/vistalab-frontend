@@ -1,7 +1,8 @@
-import Link from "next/link";
 import Image from "next/image";
 import { MdOutlineDateRange } from "react-icons/md";
 
+import { Upload, Delete, Update } from "./components";
+import { activitiesData } from "./config";
 import useTimeAgo from "../../lib/useTimeAgo";
 
 function ActivityCard({ prefix, activity, isOdd }) {
@@ -23,7 +24,13 @@ function ActivityCard({ prefix, activity, isOdd }) {
           </div>
         )}
         <div className='p-4 max-w-md'>
-          <div className='text-2xl title'>{activity.title}</div>
+          <div className='flex flex-row gap-2'>
+            <h1 className='text-2xl title'>{activity.title}</h1>
+            <div className='flex flex-row gap-1'>
+              <Update activity={activity} />
+              <Delete activity={activity} />
+            </div>
+          </div>
           <span className='flex flex-row items-center gap-2 text-slate-500 mb-3'>
             <div className='flex flex-row items-center'>
               <MdOutlineDateRange />
@@ -60,7 +67,13 @@ function ActivityCard({ prefix, activity, isOdd }) {
           />
         </div>
         <div className='p-4'>
-          <div className='text-2xl title'>{activity.title}</div>
+          <div className='flex flex-row gap-2'>
+            <h1 className='text-2xl title'>{activity.title}</h1>
+            <div className='flex flex-row gap-1'>
+              <Update activity={activity} />
+              <Delete activity={activity} />
+            </div>
+          </div>
           <span className='flex flex-row items-center gap-1 text-slate-500 mb-3'>
             <MdOutlineDateRange />
             <p>{activity.date}</p>
@@ -73,20 +86,23 @@ function ActivityCard({ prefix, activity, isOdd }) {
   );
 }
 
-export default function Activities({ activitiesData }) {
+export default async function Page() {
+  const res = await fetch(`${process.env.BACKEND_URL}activity/getactivity`, { cache: "no-cache" });
+  if (!res.ok) throw new Error("Failed to fetch data");
+  const activitiesData = await res.json();
   const prefix = activitiesData.prefix;
 
   return (
-    <div className='frame flex flex-col items-center justify-center gap-5 md:gap-16'>
-      <h1 className='title text-3xl'>我们最近的动态</h1>
+    <div className='frame flex flex-col items-center justify-center gap-5 md:gap-10'>
+      <div className='w-full flex flex-row items-center justify-between'>
+        <h1 className='title text-3xl'>最近的动态</h1>
+        <Upload />
+      </div>
       <div className='flex flex-col items-center justify-center gap-10'>
         {activitiesData.data.map((item, index) => (
           <ActivityCard key={index} prefix={prefix} activity={item} isOdd={index % 2 === 0} />
         ))}
       </div>
-      <Link href='/activity' className='btn p-3'>
-        查看更多动态...
-      </Link>
     </div>
   );
 }

@@ -34,7 +34,7 @@ function AvatarNormal() {
         height={30}
         src={session.user.avatar}
         alt='avatar'
-        className='w-full h-full object-cover object-center rounded-full cursor-pointer'
+        className='object-cover object-center rounded-full cursor-pointer'
       />
       <div className='hidden group-hover:flex absolute right-0 top-[30px] w-32 flex-col items-center'>
         <div className='w-full flex flex-row items-end justify-end mr-2 text-white'>
