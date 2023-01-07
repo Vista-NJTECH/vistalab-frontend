@@ -11,7 +11,7 @@ import { useInvoiceStateContext } from "./InvoiceContextProvider";
 
 function Error({ title, button }) {
   return (
-    <div className='flex flex-col items-center justify-center gap-3'>
+    <div className='w-full flex flex-col items-center justify-center gap-3'>
       <h1 className='title text-2xl'>{title}</h1>
       <button type='button' className='btn py-2 px-4' onClick={button.onClick}>
         {button.title}
