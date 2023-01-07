@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { Upload } from "./components";
 import { sidebarData } from "./config";
 
 async function fetchCategory(category) {
@@ -36,7 +35,7 @@ export default async function Sidebar() {
   const data = await Promise.all(sidebarData.map((item) => fetchCategory(item)));
   return (
     <div className='md:w-64 h-fit md:sticky md:top-3 flex flex-col gap-4'>
-      <Upload />
+      <h1 className='title text-2xl'>所有课程</h1>
       <div className='flex flex-col gap-4'>
         {data.map((item, index) => (
           <CategoryCard category={item} key={index} />

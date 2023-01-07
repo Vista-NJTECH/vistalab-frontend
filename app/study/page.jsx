@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { CourseCard } from "./components";
+import { CourseCard, Upload } from "./components";
 
 export default async function Page() {
   const res = await fetch(`${process.env.BACKEND_URL}study/getall`, { cache: "no-store" });
@@ -10,9 +10,12 @@ export default async function Page() {
   const prefix = data.prefix;
   return (
     <div className='w-full flex flex-col gap-5'>
-      <Link href='/study' className='w-fit title text-xl text-theme hover:underline'>
-        所有课程
-      </Link>
+      <div className='w-full flex flex-row items-center justify-between'>
+        <Link href='/study' className='w-fit title text-xl text-theme hover:underline'>
+          所有课程
+        </Link>
+        <Upload />
+      </div>
       <div className='grid gap-5 grid-cols-1 md:grid-cols-3'>
         {lessons.map((item, index) => (
           <CourseCard key={index} prefix={prefix} course={item} />

@@ -191,7 +191,7 @@ export default function Update({ schedule, setIsUpdate }) {
                 取消
               </button>
               <button type='submit' className='w-full btn py-2 px-2'>
-                上传
+                更新
               </button>
             </div>
           </form>

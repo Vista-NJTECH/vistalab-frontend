@@ -2,14 +2,18 @@ import Image from "next/image";
 import Link from "next/link";
 
 import Update from "./Update";
+import Delete from "./Delete";
 
 export default function CourseCard({ prefix, course }) {
   return (
     <div className='flex flex-col items-center justify-between gap-2'>
       <div className='w-full flex flex-col items-start justify-between gap-2'>
-        <div className='flex flex-row items-center w-full gap-1 title text-xl'>
-          <h1>{course.title}</h1>
-          <Update />
+        <div className='flex flex-row items-center w-full gap-2'>
+          <h1 className='title text-xl'>{course.title}</h1>
+          <div className='flex flex-row gap-1'>
+            <Update course={course} />
+            <Delete course={course} />
+          </div>
         </div>
         <div className='w-full flex flex-row items-center justify-between'>
           <div className='flex flex-row gap-2'>
