@@ -1,9 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { FaEdit } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
-import { useSession, signIn } from "next-auth/react";
 import { BsChevronCompactDown, BsChevronCompactUp } from "react-icons/bs";
 
 import { taskImportance } from "../config";
@@ -15,11 +12,8 @@ import Update from "./Update";
 export default function Schedule({ schedule }) {
   const timeLeft = useTimeLeft(schedule.date);
   const isScheduleValid = timeLeft === 0 || schedule.state !== 1;
-  const { data: session } = useSession();
 
   const [isDropdown, setIsDropdown] = useState(false);
-  const [isDelete, setIsDelete] = useState(false);
-  const [isUpdate, setIsUpdate] = useState(false);
 
   return (
     <div
@@ -41,18 +35,8 @@ export default function Schedule({ schedule }) {
           </span>
           <span className='flex flex-row items-center gap-1'>
             <h1 className='text-xl font-bold'>{schedule.title}</h1>
-            <button
-              onClick={() => (session ? setIsUpdate(true) : signIn())}
-              className='text-gray-600 hover:text-gray-900'
-            >
-              <FaEdit size={17} />
-            </button>
-            <button
-              onClick={() => (session ? setIsDelete(true) : signIn())}
-              className='text-gray-600 hover:text-gray-900'
-            >
-              <MdDelete size={17} />
-            </button>
+            <Update schedule={schedule} />
+            <Delete schedule={schedule} />
           </span>
         </div>
         <div className='flex flex-row items-center justify-center gap-2'>
@@ -66,8 +50,6 @@ export default function Schedule({ schedule }) {
         </div>
       </div>
       {isDropdown && <Detail schedule={schedule} />}
-      {isDelete && <Delete schedule={schedule} isDelete={isDelete} setIsDelete={setIsDelete} />}
-      {isUpdate && <Update schedule={schedule} setIsUpdate={setIsUpdate} />}
     </div>
   );
 }

@@ -34,7 +34,6 @@ function DeleteCard({ activity, isDelete, setIsDelete }) {
       .catch((error) => {
         setProcessingMsg("删除失败");
         console.error(error);
-        router.refresh();
       });
   };
 

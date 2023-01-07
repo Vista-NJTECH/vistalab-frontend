@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useSession, signIn } from "next-auth/react";
+import { BsFillPlusCircleFill } from "react-icons/bs";
 
 import { taskImportance } from "../config";
 
-export default function Upload({ setIsUpload }) {
+function UploadCard({ setIsUpload }) {
   const router = useRouter();
 
   const [isSubmit, setIsSubmit] = useState(false);
@@ -194,5 +196,23 @@ export default function Upload({ setIsUpload }) {
         </div>
       )}
     </div>
+  );
+}
+
+export default function Upload() {
+  const { data: session } = useSession();
+  const [isUpload, setIsUpload] = useState(false);
+
+  return (
+    <>
+      <button
+        onClick={() => (session ? setIsUpload(true) : signIn())}
+        className='flex flex-row items-center gap-1 text-gray-600 font-bold hover:text-gray-800'
+      >
+        <h1>添加</h1>
+        <BsFillPlusCircleFill />
+      </button>
+      {isUpload && <UploadCard setIsUpload={setIsUpload} />}
+    </>
   );
 }

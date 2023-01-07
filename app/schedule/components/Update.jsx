@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { FaEdit } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import { useSession, signIn } from "next-auth/react";
 
 import { taskImportance } from "../config";
 
-export default function Update({ schedule, setIsUpdate }) {
+function UpdateCard({ schedule, setIsUpdate }) {
   const router = useRouter();
 
   const [isSubmit, setIsSubmit] = useState(false);
@@ -198,5 +200,19 @@ export default function Update({ schedule, setIsUpdate }) {
         </div>
       )}
     </div>
+  );
+}
+
+export default function Update({ schedule }) {
+  const { data: session } = useSession();
+  const [isUpdate, setIsUpdate] = useState(false);
+
+  return (
+    <>
+      <button onClick={() => (session ? setIsUpdate(true) : signIn())} className='text-gray-600 hover:text-gray-900'>
+        <FaEdit size={17} />
+      </button>
+      {isUpdate && <UpdateCard schedule={schedule} setIsUpdate={setIsUpdate} />}
+    </>
   );
 }

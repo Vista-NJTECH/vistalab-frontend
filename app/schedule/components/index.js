@@ -1,2 +1,2 @@
 export { default as Schedule } from "./Schedule";
-export { default as Head } from "./Head";
+export { default as Upload } from "./Upload";

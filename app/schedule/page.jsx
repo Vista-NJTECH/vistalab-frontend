@@ -1,4 +1,4 @@
-import { Schedule, Head } from "./components";
+import { Schedule, Upload } from "./components";
 
 import useTimeLeft from "../../lib/useTimeLeft";
 
@@ -19,7 +19,10 @@ export default async function Page() {
     <div className='frame w-full flex flex-col gap-5'>
       {validData.length !== 0 && (
         <div className='flex flex-col gap-2'>
-          <Head />
+          <div className='w-full flex flex-row items-center justify-between'>
+            <h1 className='title text-2xl'>有效日程</h1>
+            <Upload />
+          </div>
           {validData.map((item, index) => (
             <Schedule key={index} schedule={item} />
           ))}

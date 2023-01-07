@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { MdDelete } from "react-icons/md";
 import { useRouter } from "next/navigation";
+import { useSession, signIn } from "next-auth/react";
 
 import { Popup } from "../../../components";
 
-export default function Delete({ schedule, isDelete, setIsDelete }) {
+function DeleteCard({ schedule, isDelete, setIsDelete }) {
   const router = useRouter();
 
   const [isProcessing, setIsProcessing] = useState(false);
@@ -32,7 +34,6 @@ export default function Delete({ schedule, isDelete, setIsDelete }) {
       .catch((error) => {
         setProcessingMsg("删除失败");
         console.error(error);
-        router.refresh();
       });
   };
 
@@ -55,6 +56,20 @@ export default function Delete({ schedule, isDelete, setIsDelete }) {
           }}
         />
       )}
+    </>
+  );
+}
+
+export default function Delete({ schedule }) {
+  const { data: session } = useSession();
+  const [isDelete, setIsDelete] = useState(false);
+
+  return (
+    <>
+      <button onClick={() => (session ? setIsDelete(true) : signIn())} className='text-gray-600 hover:text-gray-900'>
+        <MdDelete size={17} />
+      </button>
+      {isDelete && <DeleteCard schedule={schedule} isDelete={isDelete} setIsDelete={setIsDelete} />}
     </>
   );
 }
