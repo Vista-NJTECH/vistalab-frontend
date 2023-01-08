@@ -24,6 +24,7 @@ function UploadCard({ setIsUpload }) {
     setIsUploading(true);
     setProcessingMsg("Processing...");
     const formData = new FormData();
+    if (form.studyimg === null) delete form.studyimg;
     for (const item of Object.keys(form)) {
       if (form[item] === "") {
         setProcessingMsg("表单中有未填项");
