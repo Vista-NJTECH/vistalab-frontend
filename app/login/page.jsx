@@ -9,6 +9,7 @@ export default function Page() {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl");
   const loginError = searchParams.get("error");
+
   const [form, setForm] = useState({ username: "", password: "" });
   const onUpdateInput = (e) => setForm({ ...form, [e.target.name]: e.target.value });
   const onSubmitForm = async (e) => {
