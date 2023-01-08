@@ -2,11 +2,12 @@
 
 import { useRef, useState } from "react";
 import { useSession } from "next-auth/react";
+import { BsFillPlusCircleFill } from "react-icons/bs";
 import { AiFillCloseCircle } from "react-icons/ai";
 
 import { useInvoiceStateContext } from "./InvoiceContextProvider";
 
-export default function Upload({ setIsUpload }) {
+function UploadCard({ setIsUpload }) {
   const hiddenFileInput = useRef();
 
   const { data: session } = useSession();
@@ -158,5 +159,22 @@ export default function Upload({ setIsUpload }) {
         </div>
       )}
     </div>
+  );
+}
+
+export default function Upload() {
+  const [isUpload, setIsUpload] = useState(false);
+
+  return (
+    <>
+      <button
+        onClick={() => setIsUpload(true)}
+        className='flex flex-row items-center gap-1 text-gray-600 font-bold hover:text-gray-800'
+      >
+        <h1>添加</h1>
+        <BsFillPlusCircleFill />
+      </button>
+      {isUpload && <UploadCard setIsUpload={setIsUpload} />}
+    </>
   );
 }

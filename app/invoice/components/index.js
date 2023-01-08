@@ -1,2 +1,2 @@
-export { default as Table } from "./Table";
+export { default as InvoiceTable } from "./InvoiceTable";
 export { InvoiceContextProvider } from "./InvoiceContextProvider";

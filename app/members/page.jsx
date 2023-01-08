@@ -1,7 +1,25 @@
+import Link from "next/link";
+import { unstable_getServerSession } from "next-auth/next";
+
+import { authOptions } from "../../pages/api/auth/[...nextauth]";
+
 export default async function Members() {
+  const session = await unstable_getServerSession(authOptions);
+
+  if (!session)
+    return (
+      <div className='w-full flex flex-col items-center justify-center gap-3'>
+        <h1 className='title text-2xl'>登录后才能查看</h1>
+        <Link href={{ pathname: "/login", query: { callbackUrl: "/members" } }} className='btn py-2 px-4'>
+          Login
+        </Link>
+      </div>
+    );
+
   const res = await fetch(`${process.env.BACKEND_URL}member/getall`);
   if (!res.ok) throw new Error("Failed to fetch data");
   const data = await res.json();
+
   return (
     <div className='frame w-full flex flex-col items-start justify-center gap-2'>
       <div className='flex flex-row items-center justify-between'>

@@ -1,11 +1,6 @@
 export const footerData = {
   Frameworks: [
     {
-      title: "Node.js",
-      href: "https://nodejs.org/en/",
-      isLocal: false,
-    },
-    {
       title: "React.js",
       href: "https://reactjs.org/",
       isLocal: false,
@@ -18,6 +13,11 @@ export const footerData = {
     {
       title: "Express.js",
       href: "https://expressjs.com/",
+      isLocal: false,
+    },
+    {
+      title: "NextAuth.js",
+      href: "https://next-auth.js.org/",
       isLocal: false,
     },
     {
