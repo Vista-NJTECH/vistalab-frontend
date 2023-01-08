@@ -56,7 +56,7 @@ function ActivityCard({ prefix, activity, isOdd }) {
             blurDataURL={activity.img.base64}
             alt='activity'
             placeholder='blur'
-            className='rounded-t-mdobject-cover object-center'
+            className='rounded-t-md object-cover object-center'
           />
         </div>
         <div className='p-4'>
