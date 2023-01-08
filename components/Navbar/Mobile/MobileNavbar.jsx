@@ -5,8 +5,8 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { RxCross1 } from "react-icons/rx";
 import { useState } from "react";
 
-import { navbarData } from "./config";
-import Login from "./Login";
+import Avatar from "./Avatar";
+import { navbarData } from "../config";
 
 export default function MobileNavbar() {
   const [isExpand, setIsExpand] = useState(false);
@@ -41,7 +41,7 @@ export default function MobileNavbar() {
         {navbarData.map((item, index) => (
           <Navbarcard key={index} item={item} />
         ))}
-        <Login />
+        <Avatar />
       </div>
     </div>
   );
