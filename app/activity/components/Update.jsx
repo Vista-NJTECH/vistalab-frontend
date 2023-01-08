@@ -28,8 +28,9 @@ function UpdateCard({ activity, setIsUpdate }) {
     setIsSubmit(true);
     setProcessingMsg("Processing...");
     const formData = new FormData();
+    if (form.img === null) delete form.img;
     for (const item of Object.keys(form)) {
-      if (form[item] === "") {
+      if (form[item] === "" || form[item] === null) {
         setProcessingMsg("表单中有未填项");
         console.error("表单中有未填项");
         return;

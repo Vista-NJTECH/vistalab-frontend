@@ -31,8 +31,9 @@ function UpdateCard({ course, setIsUpdate }) {
     setIsUploading(true);
     setProcessingMsg("Processing...");
     const formData = new FormData();
+    if (form.studyimg === null) delete form.studyimg;
     for (const item of Object.keys(form)) {
-      if (form[item] === "") {
+      if (form[item] === "" || form[item] === null) {
         setProcessingMsg("表单中有未填项");
         console.error("表单中有未填项");
         return;
