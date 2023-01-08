@@ -10,14 +10,14 @@ export default function Login() {
     return (
       <div className='w-full flex flex-col gap-1 items-center'>
         <Image
-          width={30}
-          height={30}
+          width={50}
+          height={50}
           src={session.user.avatar}
           alt='avatar'
           className='object-cover object-center rounded-full cursor-pointer'
         />
-        <h1 className='text-gray-700'>Hello, {session.user.nickname}</h1>
-        <button type='button' onClick={() => signOut()} className='btn w-full py-1'>
+        <h1 className='text-gray-700 text-xl'>Hello, {session.user.nickname}</h1>
+        <button type='button' onClick={() => signOut()} className='btn w-full py-2 text-xl'>
           退出
         </button>
       </div>
