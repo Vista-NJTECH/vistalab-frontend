@@ -34,7 +34,7 @@ export default function MobileNavbar() {
         {isExpand ? <RxCross1 /> : <AiOutlineMenu />}
       </button>
       <div
-        className={`w-full flex flex-col items-start gap-4 px-5 py-5 absolute left-0 top-16 bg-white shadow-md duration-500 ${
+        className={`w-full flex flex-col items-start gap-3 px-5 py-5 absolute left-0 top-16 bg-white shadow-md duration-500 ${
           isExpand ? "translate-x-0" : "translate-x-[-100%]"
         }`}
       >

@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export default async function Sidebar() {
-  const res = await fetch(`${process.env.BACKEND_URL}competition/getall`, { cache: "no-cache" });
+  const res = await fetch(`${process.env.BACKEND_URL}competition/getall`, { cache: "no-store" });
   if (!res.ok) throw new Error("Failed to fetch data");
   const data = await res.json();
   const competitions = data.data.map((item) => item.name);

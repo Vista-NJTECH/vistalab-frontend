@@ -86,7 +86,7 @@ function ActivityCard({ prefix, activity, isOdd }) {
 }
 
 export default async function Page() {
-  const res = await fetch(`${process.env.BACKEND_URL}activity/getactivity`, { cache: "no-cache" });
+  const res = await fetch(`${process.env.BACKEND_URL}activity/getactivity`, { cache: "no-store" });
   if (!res.ok) throw new Error("Failed to fetch data");
   const activitiesData = await res.json();
   const prefix = activitiesData.prefix;

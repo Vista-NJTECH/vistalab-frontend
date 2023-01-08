@@ -8,7 +8,7 @@ export default function Login() {
 
   if (session) {
     return (
-      <div className='md:hidden w-full flex flex-col gap-1 items-center'>
+      <div className='w-full flex flex-col gap-1 items-center'>
         <Image
           width={30}
           height={30}
@@ -25,11 +25,7 @@ export default function Login() {
   }
 
   return (
-    <button
-      type='button'
-      onClick={() => signIn()}
-      className='btn w-full p-3 text-xl lg:text-base lg:px-3 lg:py-1 lg:w-fit'
-    >
+    <button type='button' onClick={() => signIn()} className='btn w-full p-3 text-xl'>
       登录
     </button>
   );

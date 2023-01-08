@@ -9,7 +9,7 @@ export default function Avatar() {
 
   if (session) {
     return (
-      <div className='hidden md:flex flex-row gap-1 items-center relative group'>
+      <div className='flex flex-row gap-1 items-center relative group'>
         <Image
           width={30}
           height={30}
@@ -32,11 +32,7 @@ export default function Avatar() {
     );
   }
   return (
-    <button
-      type='button'
-      onClick={() => signIn()}
-      className='btn w-full p-3 text-xl lg:text-base lg:px-3 lg:py-1 lg:w-fit'
-    >
+    <button type='button' onClick={() => signIn()} className='btn text-base px-3 py-1 w-fit'>
       登录
     </button>
   );

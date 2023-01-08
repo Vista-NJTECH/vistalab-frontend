@@ -29,14 +29,14 @@ export const navbarData = [
     href: "/competition",
     icon: <FaFlagCheckered />,
   },
-  // {
-  //   title: "成员信息",
-  //   href: "/members",
-  //   icon: <FaUserAlt />,
-  // },
   {
     title: "发票报销",
     href: "/invoice",
     icon: <AiFillAccountBook />,
+  },
+  {
+    title: "成员信息",
+    href: "/members",
+    icon: <FaUserAlt />,
   },
 ];
