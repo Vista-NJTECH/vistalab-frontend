@@ -13,7 +13,7 @@ function UpdateCard({ course, setIsUpdate }) {
   const hiddenImageInput = useRef();
   const { data: session } = useSession();
 
-  const [isUploading, setIsUploading] = useState(false);
+  const [isSubmit, setIsSubmit] = useState(false);
   const [processingMsg, setProcessingMsg] = useState("Processing...");
   const [form, setForm] = useState({
     id: course.id,
@@ -28,7 +28,7 @@ function UpdateCard({ course, setIsUpdate }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsUploading(true);
+    setIsSubmit(true);
     setProcessingMsg("Processing...");
     const formData = new FormData();
     if (form.studyimg === null) delete form.studyimg;
@@ -53,7 +53,6 @@ function UpdateCard({ course, setIsUpdate }) {
           setProcessingMsg(data.message);
           console.error(data.message);
         }
-        router.refresh();
       })
       .catch((error) => {
         setProcessingMsg("更新失败");
@@ -63,13 +62,15 @@ function UpdateCard({ course, setIsUpdate }) {
 
   return (
     <div className='frame fixed top-0 left-0 w-screen h-screen bg-black/20 flex items-center justify-center'>
-      {isUploading ? (
+      {isSubmit ? (
         <div className='flex flex-col items-center justify-center gap-4 bg-white p-5 rounded-md'>
           <h1 className='title text-3xl'>{processingMsg}</h1>
           {processingMsg !== "Processing..." && (
             <button
               onClick={() => {
+                setIsSubmit(false);
                 setIsUpdate(false);
+                router.refresh();
               }}
               className='btn px-2 py-1'
             >

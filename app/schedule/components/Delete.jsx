@@ -29,7 +29,6 @@ function DeleteCard({ schedule, isDelete, setIsDelete }) {
           setProcessingMsg(data.message);
           console.error(data.message);
         }
-        router.refresh();
       })
       .catch((error) => {
         setProcessingMsg("删除失败");
@@ -52,6 +51,7 @@ function DeleteCard({ schedule, isDelete, setIsDelete }) {
             confirmFun: () => {
               setIsProcessing(false);
               setIsDelete(false);
+              router.refresh();
             },
           }}
         />

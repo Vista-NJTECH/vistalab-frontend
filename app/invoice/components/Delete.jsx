@@ -26,7 +26,6 @@ function DeleteCard({ record, isDelete, setIsDelete }) {
       .then((data) => {
         if (data.status) {
           setProcessingMsg("删除成功");
-          router.refresh();
         } else {
           setProcessingMsg(data.message);
           console.error(data.message);
@@ -53,6 +52,7 @@ function DeleteCard({ record, isDelete, setIsDelete }) {
             confirmFun: () => {
               setIsProcessing(false);
               setIsDelete(false);
+              router.refresh();
             },
           }}
         />

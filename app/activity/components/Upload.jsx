@@ -41,7 +41,6 @@ function UploadCard({ setIsUpload }) {
           setProcessingMsg(data.message);
           console.error(data.message);
         }
-        router.refresh();
       })
       .catch((error) => {
         setProcessingMsg("添加失败");
@@ -59,6 +58,7 @@ function UploadCard({ setIsUpload }) {
               onClick={() => {
                 setIsSubmit(false);
                 setIsUpload(false);
+                router.refresh();
               }}
               className='btn px-2 py-1'
             >

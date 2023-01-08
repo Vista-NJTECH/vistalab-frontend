@@ -26,7 +26,6 @@ function ToggleCard({ record, isToggle, setIsToggle }) {
       .then((data) => {
         if (data.status) {
           setProcessingMsg("更新成功");
-          router.refresh();
         } else {
           setProcessingMsg(data.message);
           console.error(data.message);
@@ -53,6 +52,7 @@ function ToggleCard({ record, isToggle, setIsToggle }) {
             confirmFun: () => {
               setIsProcessing(false);
               setIsToggle(false);
+              router.refresh();
             },
           }}
         />

@@ -49,7 +49,6 @@ function UpdateCard({ activity, setIsUpdate }) {
           setProcessingMsg(data.message);
           console.error(data.message);
         }
-        router.refresh();
       })
       .catch((error) => {
         setProcessingMsg("更新失败");
@@ -67,6 +66,7 @@ function UpdateCard({ activity, setIsUpdate }) {
               onClick={() => {
                 setIsSubmit(false);
                 setIsUpdate(false);
+                router.refresh();
               }}
               className='btn px-2 py-1'
             >

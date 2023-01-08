@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { IoMdRefresh } from "react-icons/io";
 
 export default function Error({ error, reset }) {
   useEffect(() => {
@@ -9,10 +10,10 @@ export default function Error({ error, reset }) {
 
   return (
     <div className='frame w-full flex flex-col items-center justify-center gap-3'>
-      <p className='title text-xl'>Something went wrong!</p>
-      <button onClick={() => reset()} className='btn py-2 px-4'>
-        Reload
+      <button className='text-theme shadow-md hover:shadow-xl rounded-full'>
+        <IoMdRefresh size={40} />
       </button>
+      <p className='title text-xl'>Something went wrong!</p>
     </div>
   );
 }
