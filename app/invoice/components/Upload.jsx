@@ -4,14 +4,13 @@ import { useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 import { AiFillCloseCircle } from "react-icons/ai";
-
-import { useInvoiceStateContext } from "./InvoiceContextProvider";
+import { useRouter } from "next/navigation";
 
 function UploadCard({ setIsUpload }) {
+  const router = useRouter();
   const hiddenFileInput = useRef();
 
   const { data: session } = useSession();
-  const { fetchInvoice } = useInvoiceStateContext();
 
   const [isSubmit, setIsSubmit] = useState(false);
   const [submitMsg, setSubmitMsg] = useState("Processing...");
@@ -41,6 +40,7 @@ function UploadCard({ setIsUpload }) {
       .then((data) => {
         if (data.status) {
           setSubmitMsg("添加成功");
+          router.refresh();
         } else {
           setSubmitMsg("添加失败");
           console.error(data.message);
@@ -62,7 +62,6 @@ function UploadCard({ setIsUpload }) {
               onClick={() => {
                 setIsSubmit(false);
                 setIsUpload(false);
-                fetchInvoice();
               }}
               className='btn px-2 py-1'
             >

@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { FaToggleOff, FaToggleOn } from "react-icons/fa";
 
 import { Popup } from "../../../components";
-import { useInvoiceStateContext } from "./InvoiceContextProvider";
 
-export default function Toggle({ record, isToggle, setIsToggle }) {
+function ToggleCard({ record, isToggle, setIsToggle }) {
+  const router = useRouter();
   const { data: session } = useSession();
-  const { fetchInvoice } = useInvoiceStateContext();
 
   const [isProcessing, setIsProcessing] = useState(false);
   const [processingMsg, setProcessingMsg] = useState("Processing...");
@@ -25,6 +26,7 @@ export default function Toggle({ record, isToggle, setIsToggle }) {
       .then((data) => {
         if (data.status) {
           setProcessingMsg("更新成功");
+          router.refresh();
         } else {
           setProcessingMsg("更新失败");
           console.error(data.message);
@@ -51,11 +53,23 @@ export default function Toggle({ record, isToggle, setIsToggle }) {
             confirmFun: () => {
               setIsProcessing(false);
               setIsToggle(false);
-              fetchInvoice();
             },
           }}
         />
       )}
+    </>
+  );
+}
+
+export default function Toggle({ record }) {
+  const [isToggle, setIsToggle] = useState(false);
+
+  return (
+    <>
+      <button onClick={() => setIsToggle(true)} className='text-gray-700 hover:text-gray-900 mx-1'>
+        {record.state === 1 ? <FaToggleOn /> : <FaToggleOff />}
+      </button>
+      {isToggle && <ToggleCard record={record} isToggle={isToggle} setIsToggle={setIsToggle} />}
     </>
   );
 }

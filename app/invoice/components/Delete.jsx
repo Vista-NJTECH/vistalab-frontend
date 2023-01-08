@@ -1,14 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { MdDelete } from "react-icons/md";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 import { Popup } from "../../../components";
-import { useInvoiceStateContext } from "./InvoiceContextProvider";
 
-export default function Delete({ record, isDelete, setIsDelete }) {
+function DeleteCard({ record, isDelete, setIsDelete }) {
+  const router = useRouter();
   const { data: session } = useSession();
-  const { fetchInvoice } = useInvoiceStateContext();
 
   const [isProcessing, setIsProcessing] = useState(false);
   const [processingMsg, setProcessingMsg] = useState("Processing...");
@@ -25,6 +26,7 @@ export default function Delete({ record, isDelete, setIsDelete }) {
       .then((data) => {
         if (data.status) {
           setProcessingMsg("删除成功");
+          router.refresh();
         } else {
           setProcessingMsg("删除失败");
           console.error(data.message);
@@ -51,11 +53,23 @@ export default function Delete({ record, isDelete, setIsDelete }) {
             confirmFun: () => {
               setIsProcessing(false);
               setIsDelete(false);
-              fetchInvoice();
             },
           }}
         />
       )}
+    </>
+  );
+}
+
+export default function Delete({ record }) {
+  const [isDelete, setIsDelete] = useState(false);
+
+  return (
+    <>
+      <button onClick={() => setIsDelete(true)} className='text-gray-600 hover:text-gray-800'>
+        <MdDelete size={20} />
+      </button>
+      {isDelete && <DeleteCard record={record} isDelete={isDelete} setIsDelete={setIsDelete} />}
     </>
   );
 }
