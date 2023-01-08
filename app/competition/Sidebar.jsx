@@ -11,7 +11,7 @@ export default async function Sidebar() {
       <Link href='/competition' className='title text-2xl'>
         竞赛信息
       </Link>
-      <div className='flex flex-col gap-1'>
+      <div className='flex flex-col gap-2'>
         {competitions.map((item, index) => (
           <Link className='text-gray-700 hover:text-theme w-fit' href={`/competition/${item}`} key={index}>
             {item}
