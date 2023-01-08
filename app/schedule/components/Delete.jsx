@@ -26,7 +26,7 @@ function DeleteCard({ schedule, isDelete, setIsDelete }) {
         if (data.status) {
           setProcessingMsg("删除成功");
         } else {
-          setProcessingMsg("删除失败");
+          setProcessingMsg(data.message);
           console.error(data.message);
         }
         router.refresh();

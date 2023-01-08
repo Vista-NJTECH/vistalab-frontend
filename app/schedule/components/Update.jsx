@@ -11,7 +11,7 @@ function UpdateCard({ schedule, setIsUpdate }) {
   const router = useRouter();
 
   const [isSubmit, setIsSubmit] = useState(false);
-  const [submitMsg, setSubmitMsg] = useState("Processing...");
+  const [processingMsg, setProcessingMsg] = useState("Processing...");
 
   const [form, setForm] = useState({
     id: schedule.id,
@@ -29,10 +29,10 @@ function UpdateCard({ schedule, setIsUpdate }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmit(true);
-    setSubmitMsg("Processing...");
+    setProcessingMsg("Processing...");
     for (const item of Object.keys(form)) {
       if (form[item] === "") {
-        setSubmitMsg("更新失败");
+        setProcessingMsg("表单中有未填项");
         console.error("表单中有未填项");
         return;
       }
@@ -45,15 +45,15 @@ function UpdateCard({ schedule, setIsUpdate }) {
       .then((res) => res.json())
       .then((data) => {
         if (data.status) {
-          setSubmitMsg("更新成功");
+          setProcessingMsg("更新成功");
         } else {
-          setSubmitMsg("更新失败");
+          setProcessingMsg(data.message);
           console.error(data.message);
         }
         router.refresh();
       })
       .catch((error) => {
-        setSubmitMsg("更新失败");
+        setProcessingMsg("更新失败");
         console.error(error);
       });
   };
@@ -62,8 +62,8 @@ function UpdateCard({ schedule, setIsUpdate }) {
     <div className='frame fixed top-0 left-0 w-screen h-screen bg-black/20 flex items-center justify-center'>
       {isSubmit ? (
         <div className='flex flex-col items-center justify-center gap-4 bg-white p-5 rounded-md'>
-          <h1 className='title text-3xl'>{submitMsg}</h1>
-          {submitMsg !== "Processing..." && (
+          <h1 className='title text-3xl'>{processingMsg}</h1>
+          {processingMsg !== "Processing..." && (
             <button
               onClick={() => {
                 setIsSubmit(false);

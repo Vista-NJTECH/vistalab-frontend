@@ -28,7 +28,7 @@ function ToggleCard({ record, isToggle, setIsToggle }) {
           setProcessingMsg("更新成功");
           router.refresh();
         } else {
-          setProcessingMsg("更新失败");
+          setProcessingMsg(data.message);
           console.error(data.message);
         }
       })

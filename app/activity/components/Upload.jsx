@@ -11,7 +11,7 @@ function UploadCard({ setIsUpload }) {
   const hiddenFileInput = useRef();
 
   const [isSubmit, setIsSubmit] = useState(false);
-  const [submitMsg, setSubmitMsg] = useState("Processing...");
+  const [processingMsg, setProcessingMsg] = useState("Processing...");
 
   const [form, setForm] = useState({ title: "", date: "", img: null, detail: "" });
   const onUpdateInput = (e) => setForm({ ...form, [e.target.name]: e.target.value });
@@ -19,11 +19,11 @@ function UploadCard({ setIsUpload }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmit(true);
-    setSubmitMsg("Processing...");
+    setProcessingMsg("Processing...");
     const formData = new FormData();
     for (const item of Object.keys(form)) {
       if (form[item] === "" || form[item] === null) {
-        setSubmitMsg("添加失败");
+        setProcessingMsg("表单中有未填项");
         console.error("表单中有未填项");
         return;
       }
@@ -36,15 +36,15 @@ function UploadCard({ setIsUpload }) {
       .then((res) => res.json())
       .then((data) => {
         if (data.status) {
-          setSubmitMsg("添加成功");
+          setProcessingMsg("添加成功");
         } else {
-          setSubmitMsg("添加失败");
+          setProcessingMsg(data.message);
           console.error(data.message);
         }
         router.refresh();
       })
       .catch((error) => {
-        setSubmitMsg("添加失败");
+        setProcessingMsg("添加失败");
         console.error(error);
       });
   };
@@ -53,8 +53,8 @@ function UploadCard({ setIsUpload }) {
     <div className='frame fixed top-0 left-0 w-screen h-screen bg-black/20 flex items-center justify-center'>
       {isSubmit ? (
         <div className='flex flex-col items-center justify-center gap-4 bg-white p-5 rounded-md'>
-          <h1 className='title text-3xl'>{submitMsg}</h1>
-          {submitMsg !== "Processing..." && (
+          <h1 className='title text-3xl'>{processingMsg}</h1>
+          {processingMsg !== "Processing..." && (
             <button
               onClick={() => {
                 setIsSubmit(false);

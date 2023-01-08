@@ -9,6 +9,7 @@ import { Popup } from "../../../components";
 
 function DeleteCard({ course, isDelete, setIsDelete }) {
   const router = useRouter();
+  const { data: session } = useSession();
 
   const [isProcessing, setIsProcessing] = useState(false);
   const [processingMsg, setProcessingMsg] = useState("Processing...");
@@ -19,14 +20,14 @@ function DeleteCard({ course, isDelete, setIsDelete }) {
     fetch(`${process.env.BACKEND_URL}study/delete`, {
       method: "POST",
       body: new URLSearchParams({ id }),
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      headers: { "Content-Type": "application/x-www-form-urlencoded", Authorization: session.user.token },
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.status) {
           setProcessingMsg("删除成功");
         } else {
-          setProcessingMsg("删除失败");
+          setProcessingMsg(data.message);
           console.error(data.message);
         }
         router.refresh();

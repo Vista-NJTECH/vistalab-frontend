@@ -28,7 +28,7 @@ function DeleteCard({ record, isDelete, setIsDelete }) {
           setProcessingMsg("删除成功");
           router.refresh();
         } else {
-          setProcessingMsg("删除失败");
+          setProcessingMsg(data.message);
           console.error(data.message);
         }
       })

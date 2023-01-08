@@ -11,9 +11,10 @@ import { sidebarData } from "../config";
 function UpdateCard({ course, setIsUpdate }) {
   const router = useRouter();
   const hiddenImageInput = useRef();
+  const { data: session } = useSession();
 
   const [isUploading, setIsUploading] = useState(false);
-  const [uploadingMsg, setUpploadingMsg] = useState("Processing...");
+  const [processingMsg, setProcessingMsg] = useState("Processing...");
   const [form, setForm] = useState({
     id: course.id,
     classification: course.classification,
@@ -28,29 +29,33 @@ function UpdateCard({ course, setIsUpdate }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsUploading(true);
-    setUpploadingMsg("Processing...");
+    setProcessingMsg("Processing...");
     const formData = new FormData();
     for (const item of Object.keys(form)) {
       if (form[item] === "") {
-        setUpploadingMsg("更新失败");
+        setProcessingMsg("表单中有未填项");
         console.error("表单中有未填项");
         return;
       }
       formData.append(item, form[item]);
     }
-    fetch(`${process.env.BACKEND_URL}study/update`, { method: "POST", body: formData })
+    fetch(`${process.env.BACKEND_URL}study/update`, {
+      method: "POST",
+      body: formData,
+      headers: { Authorization: session.user.token },
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.status) {
-          setUpploadingMsg("更新成功");
+          setProcessingMsg("更新成功");
         } else {
-          setUpploadingMsg("更新失败");
+          setProcessingMsg(data.message);
           console.error(data.message);
         }
         router.refresh();
       })
       .catch((error) => {
-        setUpploadingMsg("更新失败");
+        setProcessingMsg("更新失败");
         console.error(error);
       });
   };
@@ -59,8 +64,8 @@ function UpdateCard({ course, setIsUpdate }) {
     <div className='frame fixed top-0 left-0 w-screen h-screen bg-black/20 flex items-center justify-center'>
       {isUploading ? (
         <div className='flex flex-col items-center justify-center gap-4 bg-white p-5 rounded-md'>
-          <h1 className='title text-3xl'>{uploadingMsg}</h1>
-          {uploadingMsg !== "Processing..." && (
+          <h1 className='title text-3xl'>{processingMsg}</h1>
+          {processingMsg !== "Processing..." && (
             <button
               onClick={() => {
                 setIsUpdate(false);
