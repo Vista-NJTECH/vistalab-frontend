@@ -1,13 +1,30 @@
-import Link from "next/link";
+"use client";
 
+import { useState, useEffect } from "react";
 import { CourseCard, Upload } from "./components";
 
-export default async function Page() {
-  const res = await fetch(`${process.env.BACKEND_URL}study/getrecommend`, { cache: "no-store" });
-  if (!res.ok) throw new Error("Failed to fetch data");
-  const data = await res.json();
-  const lessons = data.data;
-  const prefix = data.prefix;
+export default function Page() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [allPagesNum, setAllPagesNum] = useState(1);
+  const [lessons, setLessons] = useState({ data: [] });
+
+  async function fetchStudyData(page) {
+    await fetch(`${process.env.BACKEND_URL}study/getall?page=${page}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status) {
+          setLessons(data);
+          setAllPagesNum(data.pagecount);
+        } else {
+          console.error(data.message);
+        }
+      })
+      .catch((error) => console.error(error));
+  }
+
+  useEffect(() => {
+    fetchStudyData(currentPage);
+  }, [currentPage]);
 
   return (
     <div className='w-full flex flex-col gap-5'>
@@ -18,8 +35,21 @@ export default async function Page() {
         <Upload />
       </div>
       <div className='grid gap-5 grid-cols-1 md:grid-cols-3'>
-        {lessons.map((item, index) => (
-          <CourseCard key={index} prefix={prefix} course={item} />
+        {lessons.data.map((item, index) => (
+          <CourseCard key={index} prefix={lessons.prefix} course={item} />
+        ))}
+      </div>
+      <div className='w-full flex flex-row items-center justify-center gap-2'>
+        {[...Array(allPagesNum)].map((item, index) => (
+          <button
+            onClick={() => {
+              setCurrentPage(index + 1);
+              window.scroll({ top: 0, behavior: "auto" });
+            }}
+            className={`${index + 1 === currentPage ? "bg-gray-400" : "bg-theme"} text-white py-1 px-3 rounded-md`}
+          >
+            {index + 1}
+          </button>
         ))}
       </div>
     </div>
