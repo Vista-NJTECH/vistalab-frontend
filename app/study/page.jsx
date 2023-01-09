@@ -1,14 +1,18 @@
 "use client";
 
 import { useState, useEffect } from "react";
+
+import { Spin } from "../../components";
 import { CourseCard, Upload } from "./components";
 
 export default function Page() {
   const [currentPage, setCurrentPage] = useState(1);
   const [allPagesNum, setAllPagesNum] = useState(1);
   const [lessons, setLessons] = useState({ data: [] });
+  const [isLoading, setIsloading] = useState(false);
 
   async function fetchStudyData(page) {
+    setIsloading(true);
     await fetch(`${process.env.BACKEND_URL}study/getall?page=${page}`)
       .then((res) => res.json())
       .then((data) => {
@@ -18,8 +22,12 @@ export default function Page() {
         } else {
           console.error(data.message);
         }
+        setIsloading(false);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        setIsloading(false);
+      });
   }
 
   useEffect(() => {
@@ -34,11 +42,15 @@ export default function Page() {
         </h1>
         <Upload />
       </div>
-      <div className='grid gap-5 grid-cols-1 md:grid-cols-3'>
-        {lessons.data.map((item, index) => (
-          <CourseCard key={index} prefix={lessons.prefix} course={item} />
-        ))}
-      </div>
+      {isLoading ? (
+        <Spin />
+      ) : (
+        <div className='grid gap-5 grid-cols-1 md:grid-cols-3'>
+          {lessons.data.map((item, index) => (
+            <CourseCard key={index} prefix={lessons.prefix} course={item} />
+          ))}
+        </div>
+      )}
       <div className='w-full flex flex-row items-center justify-center gap-2'>
         {[...Array(allPagesNum)].map((item, index) => (
           <button
