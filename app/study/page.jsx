@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 import { Spin } from "../../components";
@@ -37,13 +38,15 @@ export default function Page() {
   return (
     <div className='w-full flex flex-col gap-5'>
       <div className='w-full flex flex-row items-center justify-between'>
-        <h1 href='/study' className='w-fit title text-xl'>
-          推荐课程
-        </h1>
+        <Link href='/study' className='title text-xl text-theme hover:underline'>
+          所有课程
+        </Link>
         <Upload />
       </div>
       {isLoading ? (
-        <Spin />
+        <div className='w-full flex items-center justify-center py-10'>
+          <Spin />
+        </div>
       ) : (
         <div className='grid gap-5 grid-cols-1 md:grid-cols-3'>
           {lessons.data.map((item, index) => (
