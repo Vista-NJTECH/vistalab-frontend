@@ -21,6 +21,7 @@ export const authOptions = {
         });
         if (!res.ok) return null;
         const data = await res.json();
+        if (!data.status) return null;
         const user = {
           username: data.userinfo.username,
           nickname: data.userinfo.name,

@@ -28,8 +28,14 @@ export default function Page() {
   return (
     <div className='frame flex flex-col items-center justify-center w-full'>
       <form onSubmit={onSubmitForm} className='flex flex-col w-full md:max-w-xs gap-5'>
-        {loginError && <h1 className='title text-xl text-center bg-red-400 p-2 rounded-xl text-white'>登录失败</h1>}
-        <h1 className='title text-3xl text-center'>登录</h1>
+        <div className='flex flex-col gap-2'>
+          {loginError && (
+            <h1 className='font-semibold text-center bg-[#EB455F80] border-2 border-[#EB455F] p-1 rounded-md'>
+              登录失败
+            </h1>
+          )}
+          <h1 className='title text-3xl text-center'>登录</h1>
+        </div>
         <div className='flex flex-col gap-3'>
           <div className='flex flex-col w-full gap-1'>
             <label htmlFor='username' className='pl-2 flex flex-row items-center gap-2 text-gray-500 font-semibold'>
