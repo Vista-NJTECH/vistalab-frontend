@@ -1,19 +1,11 @@
 import Link from "next/link";
 
 import { sidebarData } from "../../config";
-import { CourseCard, Upload } from "../../components";
+import { CourseBody, Upload } from "../../components";
 
 export default async function Page({ params: { studyid1, studyid2 } }) {
   const decode_studyid1 = decodeURIComponent(studyid1);
   const decode_studyid2 = decodeURIComponent(studyid2);
-  const res = await fetch(
-    `${process.env.BACKEND_URL}study/getall?class=${decode_studyid1}&subclass=${decode_studyid2}`,
-    { cache: "no-store" }
-  );
-  if (!res.ok) throw new Error("Failed to fetch data");
-  const data = await res.json();
-  const lessons = data.data;
-  const prefix = data.prefix;
 
   return (
     <div className='w-full flex flex-col gap-5'>
@@ -36,11 +28,7 @@ export default async function Page({ params: { studyid1, studyid2 } }) {
         </div>
         <Upload />
       </div>
-      <div className='grid gap-5 grid-cols-1 md:grid-cols-3'>
-        {lessons.map((item, index) => (
-          <CourseCard key={index} prefix={prefix} course={item} />
-        ))}
-      </div>
+      <CourseBody url={`&class=${decode_studyid1}&subclass=${decode_studyid2}`} />
     </div>
   );
 }
