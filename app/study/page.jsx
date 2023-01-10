@@ -7,7 +7,7 @@ export default function Page() {
     <div className='w-full flex flex-col gap-5'>
       <div className='w-full flex flex-row items-center justify-between'>
         <Link href='/study' className='title text-xl text-theme hover:underline'>
-          所有课程
+          All
         </Link>
         <Upload />
       </div>

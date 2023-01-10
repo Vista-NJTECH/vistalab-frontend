@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { sidebarData } from "../../config";
 import { CourseBody, Upload } from "../../components";
 
 export default async function Page({ params: { studyid1, studyid2 } }) {
@@ -12,11 +11,11 @@ export default async function Page({ params: { studyid1, studyid2 } }) {
       <div className='w-full flex flex-row items-center justify-between'>
         <div className='flex flex-row items-center justify-start gap-1'>
           <Link href='/study' className='title text-xl text-theme hover:underline'>
-            所有课程
+            All
           </Link>
           <h1>/</h1>
           <Link href={`/study/${decode_studyid1}`} className='title text-xl text-theme hover:underline'>
-            {sidebarData.find((item) => item.path === decode_studyid1).title}
+            {decode_studyid1}
           </Link>
           <h1>/</h1>
           <Link
@@ -35,16 +34,13 @@ export default async function Page({ params: { studyid1, studyid2 } }) {
 
 export async function generateStaticParams() {
   const data = [];
-  const fetchCategories = async (category) => {
-    const res = await fetch(`${process.env.BACKEND_URL}study/getcategory?class=${category}`, { cache: "no-store" });
-    if (!res.ok) throw new Error("Failed to fetch data");
-    const data = await res.json();
-    const categories = data.data.map((item) => item.coursename);
-    return categories;
-  };
-  for (const item1 of sidebarData) {
-    const categories = await fetchCategories(item1.path);
-    categories.forEach((item2) => data.push({ studyid1: item1.path, studyid2: item2 }));
+
+  const res = await fetch(`${process.env.BACKEND_URL}study/getcategory`);
+  if (!res.ok) throw new Error("Failed to fetch data");
+  const resJson = await res.json();
+
+  for (const item1 of resJson.data) {
+    item1.data.forEach((item2) => data.push({ studyid1: item1.title, studyid2: item2 }));
   }
   return data;
 }

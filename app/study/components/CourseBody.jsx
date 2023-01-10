@@ -56,6 +56,7 @@ export default function Page({ url }) {
       <div className='w-full flex flex-row items-center justify-center gap-2'>
         {[...Array(allPagesNum)].map((item, index) => (
           <button
+            key={index}
             onClick={() => {
               setCurrentPage(index + 1);
               window.scroll({ top: 0, behavior: "auto" });
