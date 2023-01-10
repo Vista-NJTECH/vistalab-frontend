@@ -1,5 +1,6 @@
 import { AiFillHome, AiFillAccountBook, AiFillSchedule } from "react-icons/ai";
 import { FaUserAlt, FaFlagCheckered } from "react-icons/fa";
+import { SiCodeproject } from "react-icons/si";
 import { MdSchool } from "react-icons/md";
 import { RiChatSmile3Fill } from "react-icons/ri";
 
@@ -18,6 +19,11 @@ export const navbarData = [
     title: "我要学习",
     href: "/study",
     icon: <MdSchool />,
+  },
+  {
+    title: "项目管理",
+    href: "/project",
+    icon: <SiCodeproject />,
   },
   {
     title: "日程安排",
