@@ -1,48 +1,52 @@
-import { unstable_getServerSession } from "next-auth/next";
-import { authOptions } from "../../pages/api/auth/[...nextauth]";
+import Image from "next/image";
 import Link from "next/link";
+import { AiOutlineCloudUpload } from "react-icons/ai";
+import { unstable_getServerSession } from "next-auth/next";
 
-var user = {
-  name: 'T1',
-  age: '30',
-  location: 'New York',
-  bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, risus eget bibendum congue, est magna malesuada ipsum, ut malesuada enim diam eget turpis. Curabitur suscipit semper magna, eu convallis metus egestas ut.'
-};
+import { authOptions } from "../../pages/api/auth/[...nextauth]";
 
 export default async function Page() {
-  var session = await unstable_getServerSession(authOptions);
+  const session = await unstable_getServerSession(authOptions);
+  console.log(session);
 
-  if (!session){
+  if (!session) {
     return (
       <div className='w-full flex flex-col items-center justify-center gap-3'>
         <h1 className='title text-2xl'>登录后才能查看</h1>
-        <Link href={{ pathname: "/login", query: { callbackUrl: "/invoice" } }} className='btn py-2 px-4'>
+        <Link href={{ pathname: "/login", query: { callbackUrl: "/profile" } }} className='btn py-2 px-4'>
           Login
         </Link>
       </div>
-    )
-  };
-
-  const response = await fetch("http://124.223.196.177:8181/my/userinfo", {
-    headers: { Authorization: session.user.token },
-  });
-  user = (await response.json()).userinfo;
-  console.log(user)
-
+    );
+  }
 
   return (
-    <div className="bg-gray-200 min-w-screen p-8">
-      <h1 className="text-2xl font-medium mb-4">About Me</h1>
-      <div className="bg-white rounded-lg p-4 flex">
-        <img className="w-32 h-32 rounded-full mr-4" src={user.avatar} alt={user.username}/>
-        <div>
-          <p className="text-gray-800 font-medium mb-2">Name: {user.name}</p>
-          <p className="text-gray-800 font-medium mb-2">username: {user.username}</p>
-          <p className="text-gray-800 font-medium mb-2">Email: {user.email}</p>
-          <p className="text-gray-800 font-medium mb-2">创建时间: {user.created_time}</p>
-          <p className="text-gray-800 font-medium mb-2">用户权限组: {user.p_group}</p> 
+    <div className='frame w-full flex flex-col gap-10'>
+      <h1 className='title text-3xl font-bold'>个人信息</h1>
+      <div className='flex flex-row gap-10'>
+        <div className='flex flex-col justify-between'>
+          <p className='text-gray-800 font-medium'>姓名：{session.user.nickname}</p>
+          <p className='text-gray-800 font-medium'>用户名：{session.user.username}</p>
+          <p className='text-gray-800 font-medium'>邮箱：{session.user.email}</p>
+          <p className='text-gray-800 font-medium'>创建时间：{new Date(session.user.created_time).toDateString()}</p>
+          <p className='text-gray-800 font-medium'>用户权限组：{session.user.group}</p>
         </div>
+        <div className='group relative'>
+          <Image
+            width={500}
+            height={500}
+            src={session.user.avatar}
+            alt='avatar'
+            className='w-40 h-40 object-cover object-center rounded-full'
+          />
+          <button
+            type='button'
+            className='opacity-0 group-hover:opacity-100 duration-300 absolute right-0 top-0 p-2 bg-gray-600 text-white rounded-full hover:bg-gray-800'
+          >
+            <AiOutlineCloudUpload size={20} />
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
   );
 }

@@ -39,9 +39,4 @@ export const navbarData = [
     href: "/members",
     icon: <FaUserAlt />,
   },
-  {
-    title: "个人中心",
-    href: "/profile",
-    icon: <FaUserAlt />,
-  },
 ];

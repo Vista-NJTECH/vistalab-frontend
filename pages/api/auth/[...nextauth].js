@@ -27,6 +27,7 @@ export const authOptions = {
           nickname: data.userinfo.name,
           email: data.userinfo.email,
           level: data.userinfo.level,
+          group: data.userinfo.p_group,
           created_time: data.userinfo.created_time,
           avatar: data.userinfo.avatar,
           token: data.token,

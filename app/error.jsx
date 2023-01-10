@@ -10,7 +10,7 @@ export default function Error({ error, reset }) {
 
   return (
     <div className='frame w-full flex flex-col items-center justify-center gap-3'>
-      <button className='text-theme shadow-md hover:shadow-xl rounded-full'>
+      <button onClick={() => reset()} className='text-theme shadow-md hover:shadow-xl rounded-full'>
         <IoMdRefresh size={40} />
       </button>
       <p className='title text-xl'>Something went wrong!</p>
