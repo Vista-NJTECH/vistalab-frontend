@@ -1,11 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 
 import { Spin } from "../../../components";
 import CourseCard from "./CourseCard";
 
 export default function Page({ url }) {
+  const { data: session } = useSession();
+
   const [currentPage, setCurrentPage] = useState(1);
   const [allPagesNum, setAllPagesNum] = useState(1);
   const [lessons, setLessons] = useState({ data: [] });
@@ -13,7 +16,10 @@ export default function Page({ url }) {
 
   async function fetchStudyData(page) {
     setIsloading(true);
-    await fetch(`${process.env.BACKEND_URL}study/getall?page=${page}${url}`)
+    await fetch(
+      `${process.env.BACKEND_URL}study/getall?page=${page}${url}`,
+      session ? { headers: { Authorization: session.user.token } } : null
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.status) {

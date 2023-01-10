@@ -7,7 +7,6 @@ import { authOptions } from "../../pages/api/auth/[...nextauth]";
 
 export default async function Page() {
   const session = await unstable_getServerSession(authOptions);
-  console.log(session);
 
   if (!session) {
     return (
