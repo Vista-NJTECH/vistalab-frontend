@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import Webcam from 'react-webcam'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+const WebcamComponent = () => <Webcam />
 const videoConstraints = {
   width: 400,
   height: 400,
   facingMode: 'user',
 }
 const Profile = () => {
-  const WebcamComponent = () => <Webcam />
   const notify = (msg = "提交成功!", type = "success") => toast(msg, {
       position: toast.POSITION.TOP_CENTER,
       className: 'items-center',
