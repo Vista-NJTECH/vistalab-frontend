@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Webcam from 'react-webcam'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useSearchParams } from "next/navigation";
+import { signIn } from "next-auth/react";
 const WebcamComponent = () => <Webcam />
 const videoConstraints = {
   width: 400,
@@ -9,6 +11,8 @@ const videoConstraints = {
   facingMode: 'user',
 }
 const Profile = () => {
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl");
   const notify = (msg = "提交成功!", type = "success") => toast(msg, {
       position: toast.POSITION.TOP_CENTER,
       className: 'items-center',
@@ -39,7 +43,19 @@ const Profile = () => {
         });
         const result = await response.json();
         result.status ? notify("你好，" + result.userinfo.name) : notify("登陆失败")
-        console.log(result);
+        if(result.status){
+          signIn("credentials", {
+            username: result.userinfo,
+            password: result.token,
+            callbackUrl: callbackUrl || "/",
+          },
+          true)
+          .then((res) => {
+            console.log(res.token)
+            if (!res.ok) console.error(res.error);
+          })
+          .catch((error) => console.error(error));
+        };
       } catch (error) {
         console.error(error);
       }

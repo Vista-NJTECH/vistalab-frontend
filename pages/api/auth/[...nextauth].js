@@ -12,9 +12,9 @@ export const authOptions = {
   providers: [
     CredentialsProvider({
       name: "credentials",
-      async authorize(credentials, req) {
+      async authorize(credentials, facelogin = false, req) {
         const { username, password } = credentials;
-        const res = await fetch(`${process.env.BACKEND_URL}api/login`, {
+        if(!facelogin){const res = await fetch(`${process.env.BACKEND_URL}api/login`, {
           method: "POST",
           body: new URLSearchParams({ username, password }),
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -32,6 +32,35 @@ export const authOptions = {
           avatar: data.userinfo.avatar,
           token: data.token,
         };
+        return user;}else{
+          const user = {
+            username: username.username,
+            nickname: username.name,
+            email: username.email,
+            level: username.level,
+            group: username.p_group,
+            created_time: username.created_time,
+            avatar: username.avatar,
+            token: password,
+          };
+          return user;
+        }
+      },
+    }),
+    CredentialsProvider({
+      name: "face_credentials",
+      async authorize(face_credentials, req) {
+        const { userinfo, token } = face_credentials;
+        const user = {
+          username: userinfo.username,
+          nickname: userinfo.name,
+          email: userinfo.email,
+          level: userinfo.level,
+          group: userinfo.p_group,
+          created_time: userinfo.created_time,
+          avatar: userinfo.avatar,
+          token: token,
+        };
         return user;
       },
     }),
@@ -39,6 +68,7 @@ export const authOptions = {
   callbacks: {
     jwt: async ({ token, user }) => {
       user && (token.user = user);
+      console.log("token" + token)
       return token;
     },
     session: async ({ session, token }) => {
