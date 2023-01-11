@@ -38,7 +38,7 @@ const Profile = () => {
             body: formData
         });
         const result = await response.json();
-        result.status ? notify("登陆成功" + result.userinfo.name) : notify("登陆失败")
+        result.status ? notify("你好，" + result.userinfo.name) : notify("登陆失败")
         console.log(result);
       } catch (error) {
         console.error(error);
