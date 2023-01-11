@@ -37,10 +37,10 @@ function CycleCard({cycle}) {
         <tbody>
           {values.map((item) => (
             <tr key={item.id} className="text-gray-700 hover:bg-gray-100">
-              <td className="border px-4 py-2" style={{maxHeight:'100px',overflowY:'auto'}}>{item.name}</td>
-              <td className="border px-4 py-2" style={{maxHeight:'100px',overflowY:'auto'}}>{item.current_work}</td>
-              <td className="border px-4 py-2" style={{maxHeight:'150px',overflowY:'auto'}}>{item.future_plan}</td>
-              <td className="border px-4 py-2" style={{maxHeight:'150px',overflowY:'auto'}}>{item.remark}</td>
+              <td className="border px-2 py-1" style={{width:'40px',height:'40px',maxHeight:'40px',overflowY:'auto'}}>{item.name}</td>
+              <td className="border px-2 py-1" style={{width:'200px',height:'100px',maxHeight:'100px',overflowY:'auto'}}>{item.current_work}</td>
+              <td className="border px-2 py-1" style={{width:'100px',height:'100px',maxHeight:'100px',overflowY:'auto'}}>{item.future_plan}</td>
+              <td className="border px-2 py-1" style={{width:'100px',height:'100px',maxHeight:'100px',overflowY:'auto'}}>{item.remark}</td>
             </tr>
           ))}
         </tbody>
