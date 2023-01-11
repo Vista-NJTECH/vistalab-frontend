@@ -1,8 +1,40 @@
-import Image from "next/image";
+"use client";
 
+import Image from "next/image";
+import React, { useState } from 'react';
 import welcome from "./images/welcome.jpg";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function Head() {
+  const [text, setText] = useState('');
+  const notify = (msg = "提交成功!", type = "success") => toast(msg, {
+    position: toast.POSITION.TOP_CENTER,
+    className: 'items-center',
+    type: type,
+    autoClose: 1*1000,
+  });
+  const handleChange = event => {
+    setText(event.target.value);
+  }
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    fetch(`${process.env.BACKEND_URL}api/feedback`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: 'text=' + text
+    })
+    .then(response => response.json())
+    .then(data => {
+      data.status ? notify(data.message) : notify("提交成功!", "error")
+      setText('');
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  }
   return (
     <div className='frame flex flex-col lg:flex-row items-center justify-between gap-10'>
       <Image placeholder='blur' priority src={welcome} alt='welcome' className='object-cover object-center w-[600px]' />
@@ -14,19 +46,23 @@ export default function Head() {
           </span>
           <span>你可以在下方留下对我们的建议和想法。</span>
         </p>
-        <form action='/' method='post' className='flex flex-row'>
+        <form className='flex flex-row' onSubmit={handleSubmit}>
           <input
             type='text'
             id='feedback'
-            name='feedback'
+            value={text}
+            onChange={handleChange}
             placeholder='感谢您的反馈'
             className='border-none outline-none rounded-md rounded-r-none p-3 shadow-md flex-1 bg-gray-100'
           />
           <button type='submit' className='btn py-3 px-5 rounded-l-none'>
             发送
           </button>
+          <ToastContainer />
         </form>
       </div>
     </div>
+    
   );
 }
+
