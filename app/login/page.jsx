@@ -4,12 +4,16 @@ import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 import { signIn } from "next-auth/react";
+import Profile from '../components/Profile'
 
 export default function Page() {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl");
   const loginError = searchParams.get("error");
 
+  const [showComponent, setShowComponent] = useState(true);
+
+  
   const [form, setForm] = useState({ username: "", password: "" });
   const onUpdateInput = (e) => setForm({ ...form, [e.target.name]: e.target.value });
   const onSubmitForm = async (e) => {
@@ -74,6 +78,12 @@ export default function Page() {
         <button type='submit' className='btn w-full py-3 rounded-xl'>
           登录
         </button>
+        {!showComponent ?(<div><button onClick={() => setShowComponent(!showComponent)}>
+        开关人脸登录
+      </button> <Profile /></div>) 
+        : (<button onClick={() => setShowComponent(!showComponent)}>
+        开关人脸登录
+      </button>)}
       </form>
     </div>
   );
