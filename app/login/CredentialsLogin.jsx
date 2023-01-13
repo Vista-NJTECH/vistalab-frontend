@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export default function CredentialsLogin() {
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl");
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
   const loginError = searchParams.get("error");
 
   const [form, setForm] = useState({ username: "", password: "" });
@@ -18,7 +18,7 @@ export default function CredentialsLogin() {
     signIn("credentials", {
       username: form.username,
       password: form.password,
-      callbackUrl: callbackUrl || "/",
+      callbackUrl: callbackUrl,
       isFaceLogin: false,
     })
       .then((res) => {
@@ -77,7 +77,10 @@ export default function CredentialsLogin() {
           登录
         </button>
       </form>
-      <Link href='/login?isFaceLogin=true' className='text-sm text-theme hover:underline'>
+      <Link
+        href={{ pathname: "/login", query: { callbackUrl, isFaceLogin: true } }}
+        className='text-sm text-theme hover:underline'
+      >
         人脸识别登录
       </Link>
     </div>

@@ -1,3 +1,4 @@
+import { data } from "autoprefixer";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -42,14 +43,14 @@ export const authOptions = {
         }
 
         const user = {
-          username: username.username,
-          nickname: username.name,
-          email: username.email,
-          level: username.level,
-          group: username.p_group,
-          created_time: username.created_time,
-          avatar: username.avatar,
-          token: password,
+          username: req.body.username,
+          nickname: req.body.nickname,
+          email: req.body.email,
+          level: req.body.level,
+          group: req.body.group,
+          created_time: req.body.created_time,
+          avatar: req.body.avatar,
+          token: req.body.token,
         };
         return user;
       },

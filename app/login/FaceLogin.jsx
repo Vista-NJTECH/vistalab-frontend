@@ -51,16 +51,27 @@ export default function FaceLogin() {
     const data = await res.json();
 
     if (data.status) {
+      notify("登录成功", "success");
       signIn("credentials", {
-        username: data.userinfo,
-        password: data.token,
-        callbackUrl: callbackUrl || "/",
+        username: data.userinfo.username,
+        nickname: data.userinfo.name,
+        email: data.userinfo.email,
+        level: data.userinfo.level,
+        group: data.userinfo.p_group,
+        created_time: data.userinfo.created_time,
+        avatar: data.userinfo.avatar,
+        token: data.token,
+
+        password: "",
         isFaceLogin: true,
+        callbackUrl: callbackUrl || "/",
       })
         .then((res) => {
           if (!res.ok) console.error(res.error);
         })
-        .catch((error) => console.error(error));
+        .catch((error) => {
+          console.error(error);
+        });
     } else {
       notify("登陆失败", "error");
     }
