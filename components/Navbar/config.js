@@ -1,8 +1,8 @@
-import { AiFillHome, AiFillAccountBook, AiFillSchedule } from "react-icons/ai";
-import { FaUserAlt, FaFlagCheckered } from "react-icons/fa";
-import { SiCodeproject } from "react-icons/si";
+import { AiFillHome, AiFillAccountBook, AiFillSchedule, AiFillFlag } from "react-icons/ai";
+import { FaListAlt } from "react-icons/fa";
 import { MdSchool } from "react-icons/md";
 import { RiChatSmile3Fill } from "react-icons/ri";
+import { RiGroupFill } from "react-icons/ri";
 
 export const navbarData = [
   {
@@ -23,7 +23,7 @@ export const navbarData = [
   {
     title: "项目管理",
     href: "/project",
-    icon: <SiCodeproject />,
+    icon: <FaListAlt />,
   },
   {
     title: "日程安排",
@@ -33,7 +33,7 @@ export const navbarData = [
   {
     title: "竞赛信息",
     href: "/competition",
-    icon: <FaFlagCheckered />,
+    icon: <AiFillFlag />,
   },
   {
     title: "发票报销",
@@ -43,6 +43,6 @@ export const navbarData = [
   {
     title: "成员信息",
     href: "/members",
-    icon: <FaUserAlt />,
+    icon: <RiGroupFill />,
   },
 ];

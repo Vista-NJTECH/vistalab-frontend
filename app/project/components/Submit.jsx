@@ -12,14 +12,15 @@ function UploadCard({ setIsUpload }) {
   const [isSubmit, setIsSubmit] = useState(false);
   const [processingMsg, setProcessingMsg] = useState("Processing...");
 
-  const [form, setForm] = useState({ title: "", details: "", link: "", date: ""});
+  const [form, setForm] = useState({ title: "", details: "", link: "", date: "" });
   const onUpdateInput = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-  console.log(session)
-  var token
-  if(!session){
-    token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicGFzc3dvcmQiOiIiLCJ1c2VybmFtZSI6ImRvaXJ5IiwibmFtZSI6IiIsImVtYWlsIjoiIiwiYXZhdGFyIjoiIiwibGV2ZWwiOiIiLCJwX2dyb3VwIjoiZG9pcnksY29tbW9uLHN0dWR5YSxhZG1pbiIsImNyZWF0ZWRfdGltZSI6IiIsImlhdCI6MTY3MzMyNDk0NSwiZXhwIjoxNjc0MTg4OTQ1fQ.SPjPcUdvkXkSpbfNE5sNHbl238UQ9XpXbzAPI5-vs24'
-  }else{
-    token = session
+
+  var token;
+  if (!session) {
+    token =
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicGFzc3dvcmQiOiIiLCJ1c2VybmFtZSI6ImRvaXJ5IiwibmFtZSI6IiIsImVtYWlsIjoiIiwiYXZhdGFyIjoiIiwibGV2ZWwiOiIiLCJwX2dyb3VwIjoiZG9pcnksY29tbW9uLHN0dWR5YSxhZG1pbiIsImNyZWF0ZWRfdGltZSI6IiIsImlhdCI6MTY3MzMyNDk0NSwiZXhwIjoxNjc0MTg4OTQ1fQ.SPjPcUdvkXkSpbfNE5sNHbl238UQ9XpXbzAPI5-vs24";
+  } else {
+    token = session;
   }
 
   const handleSubmit = async (e) => {
@@ -36,8 +37,7 @@ function UploadCard({ setIsUpload }) {
     fetch(`${process.env.BACKEND_URL}project/add`, {
       method: "POST",
       body: new URLSearchParams(form),
-      headers: { "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: token },
+      headers: { "Content-Type": "application/x-www-form-urlencoded", Authorization: token },
     })
       .then((res) => res.json())
       .then((data) => {
