@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 export default function Head() {
   const [feedback, setFeedback] = useState();
 
-  const notify = () =>
+  const notify = (msg, type) =>
     toast(msg, {
       position: toast.POSITION.TOP_CENTER,
       className: "items-center",
@@ -28,11 +28,11 @@ export default function Head() {
       .then((response) => response.json())
       .then((data) => {
         setFeedback("");
-        data.status ? notify(data.message, "success") : notify("提交成功!", "error");
+        data.status ? notify("提交成功", "success") : notify("提交失败", "error");
       })
       .catch((error) => {
         setFeedback("");
-        console.error("Error:", error);
+        console.error(error);
       });
   };
 

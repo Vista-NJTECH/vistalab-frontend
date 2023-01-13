@@ -1,5 +1,6 @@
 import Link from "next/link";
-import {Upload} from "./components"
+import { Upload } from "./components";
+
 export default async function Sidebar() {
   const res = await fetch(`${process.env.BACKEND_URL}project/getall`, { cache: "no-store" });
   if (!res.ok) throw new Error("Failed to fetch data");
