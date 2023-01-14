@@ -1,15 +1,18 @@
 import Link from "next/link";
+import { unstable_getServerSession } from "next-auth";
+
+import { authOptions } from "../../pages/api/auth/[...nextauth]";
 
 function CategoryCard({ category }) {
   return (
-    <div className='flex flex-col gap-2'>
+    <div className='flex flex-col gap-1'>
       <h1 className='w-fit text-xl font-semibold text-gray-400'>{category.title}</h1>
       <div className='flex flex-col gap-1'>
         {category.data.map((item, index) => (
           <Link
             key={index}
             href={"/study/" + category.title + "/" + item}
-            className='w-fit text-slate-800 pl-3 hover:text-theme'
+            className='text-gray-700 hover:text-theme hover:border-theme w-fit border-b border-black'
           >
             {item}
           </Link>
@@ -20,8 +23,11 @@ function CategoryCard({ category }) {
 }
 
 export default async function Sidebar() {
+  const session = await unstable_getServerSession(authOptions);
+
   const res = await fetch(`${process.env.BACKEND_URL}study/getcategory`, {
     cache: "no-store",
+    headers: { Authorization: session ? session.user.token : null },
   });
   if (!res.ok) throw new Error("Failed to fetch data");
   const data = await res.json();

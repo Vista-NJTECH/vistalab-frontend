@@ -15,8 +15,8 @@ export default function Avatar() {
     return (
       <div className='flex flex-row gap-1 items-center relative group'>
         <Image
-          width={32}
-          height={32}
+          width={240}
+          height={240}
           alt='avatar'
           src={avatarUrl}
           className='w-8 h-8 object-cover object-center rounded-full cursor-pointer'

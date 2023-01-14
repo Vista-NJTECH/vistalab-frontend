@@ -13,11 +13,11 @@ export default function Login() {
     return (
       <div className='w-full flex flex-col gap-1 items-center'>
         <Image
-          width={50}
-          height={50}
+          width={240}
+          height={240}
           src={avatarUrl}
           alt='avatar'
-          className='object-cover object-center rounded-full cursor-pointer'
+          className='w-10 h-10 object-cover object-center rounded-full cursor-pointer'
         />
         <h1 className='text-gray-700 text-xl'>Hello, {session.user.nickname}</h1>
         <button type='button' onClick={() => signOut()} className='btn w-full py-2 text-xl'>

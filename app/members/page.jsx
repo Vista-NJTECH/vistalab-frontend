@@ -26,7 +26,7 @@ export default async function Members() {
         <h1 className='title text-2xl'>成员信息</h1>
       </div>
       <div className='w-full overflow-x-auto'>
-        <table className='w-full text-left border-collapse rounded-md'>
+        <table className='w-full text-left border-collapse'>
           <thead>
             <tr>
               <th className='p-2 bg-green-600 text-white'>ID</th>

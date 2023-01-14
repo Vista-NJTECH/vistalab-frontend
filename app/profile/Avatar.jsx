@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 
@@ -12,7 +11,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function Avatar() {
   const hiddenFileInput = useRef();
-  const router = useRouter();
 
   const { avatarUrl, setAvatarUrl } = useStateContext();
   const { data: session } = useSession();
@@ -41,7 +39,6 @@ export default function Avatar() {
         if (data.status) {
           notify("头像更新成功", "success");
           setAvatarUrl(data.url);
-          router.refresh();
         } else {
           notify("头像更新失败", "error");
           console.error(data.message);
@@ -57,8 +54,8 @@ export default function Avatar() {
     <div className='group relative w-fit'>
       <ToastContainer />
       <Image
-        width={500}
-        height={500}
+        width={240}
+        height={240}
         src={avatarUrl}
         alt='avatar'
         className='w-40 h-40 object-cover object-center rounded-full cursor-pointer'
