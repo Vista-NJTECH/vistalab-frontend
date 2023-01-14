@@ -52,6 +52,7 @@ function DeleteCard({ project, isDelete, setIsDelete }) {
             confirmFun: () => {
               setIsProcessing(false);
               setIsDelete(false);
+              router.push("/project");
               router.refresh();
             },
           }}
