@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { unstable_getServerSession } from "next-auth";
 
+import { UploadProject } from "./components";
 import { authOptions } from "../../pages/api/auth/[...nextauth]";
 
 export default async function Sidebar() {
@@ -16,19 +17,24 @@ export default async function Sidebar() {
 
   return (
     <div className='w-full h-fit md:max-w-xs md:sticky md:top-3 flex flex-col gap-3'>
-      <h1 className='title text-2xl'>项目管理</h1>
+      <div className='flex flex-row gap-2'>
+        <h1 className='title text-2xl'>项目管理</h1>
+        <UploadProject />
+      </div>
       <div className='flex flex-col gap-2'>
         {data.data.map((item, index) => (
           <Link
-            className='text-gray-700 hover:text-theme hover:border-theme w-fit border-b border-black'
+            className='text-gray-700 hover:text-theme hover:border-theme w-fit'
             href={{
               pathname: `/project/${item.title}`,
               query: {
                 id: item.id,
+                state: item.state,
                 members: item.members,
-                ddl: item.ddl,
                 detail: item.details,
-                created_time: new Date(item.created_time).toISOString().split("T")[0],
+                cycles: item.cycles,
+                ddl: new Date(item.ddl).toISOString().split("T")[0],
+                stl: new Date(item.stl).toISOString().split("T")[0],
               },
             }}
             key={index}

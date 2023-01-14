@@ -79,7 +79,7 @@ function UploadCard({ setIsUpload }) {
           <h1 className='title text-2xl'>添加新课程</h1>
           <div className='flex flex-col gap-2 w-full'>
             <div className='flex flex-col gap-1 w-full'>
-              <label htmlFor='classification' className='title'>
+              <label htmlFor='classification' className='text-slate-800'>
                 大类
               </label>
               <select
@@ -101,7 +101,7 @@ function UploadCard({ setIsUpload }) {
             </div>
 
             <div className='flex flex-col gap-1 w-full'>
-              <label htmlFor='coursename' className='title'>
+              <label htmlFor='coursename' className='text-slate-800'>
                 小类
               </label>
               <input
@@ -116,7 +116,7 @@ function UploadCard({ setIsUpload }) {
             </div>
 
             <div className='flex flex-col gap-1 w-full'>
-              <label htmlFor='title' className='title'>
+              <label htmlFor='title' className='text-slate-800'>
                 标题
               </label>
               <input
@@ -131,7 +131,7 @@ function UploadCard({ setIsUpload }) {
             </div>
 
             <div className='flex flex-col gap-1 w-full'>
-              <label htmlFor='link' className='title'>
+              <label htmlFor='link' className='text-slate-800'>
                 链接
               </label>
               <input

@@ -80,7 +80,7 @@ function UpdateCard({ project, setIsUpdate }) {
           <h1 className='title text-2xl w-fit'>更新日程</h1>
           <form onSubmit={handleSubmit} className='flex flex-col gap-1 w-full'>
             <div className='flex flex-col w-full'>
-              <label htmlFor='title' className='title'>
+              <label htmlFor='title' className='text-slate-800'>
                 标题
               </label>
               <input
@@ -95,7 +95,7 @@ function UpdateCard({ project, setIsUpdate }) {
             </div>
 
             <div className='flex flex-col w-full'>
-              <label htmlFor='host' className='title'>
+              <label htmlFor='host' className='text-slate-800'>
                 负责人
               </label>
               <input
@@ -110,7 +110,7 @@ function UpdateCard({ project, setIsUpdate }) {
             </div>
 
             <div className='flex flex-col w-full'>
-              <label htmlFor='persons' className='title'>
+              <label htmlFor='persons' className='text-slate-800'>
                 参与人员
               </label>
               <input
@@ -125,7 +125,7 @@ function UpdateCard({ project, setIsUpdate }) {
             </div>
 
             <div className='flex flex-col w-full'>
-              <label htmlFor='date' className='title'>
+              <label htmlFor='date' className='text-slate-800'>
                 截止日期
               </label>
               <input
@@ -139,7 +139,7 @@ function UpdateCard({ project, setIsUpdate }) {
             </div>
 
             <div className='flex flex-col w-full'>
-              <label htmlFor='level' className='title'>
+              <label htmlFor='level' className='text-slate-800'>
                 紧急程度
               </label>
               <select
@@ -158,7 +158,7 @@ function UpdateCard({ project, setIsUpdate }) {
             </div>
 
             <div className='flex flex-col w-full'>
-              <label htmlFor='group' className='title'>
+              <label htmlFor='group' className='text-slate-800'>
                 访问权限
               </label>
               <select
@@ -174,7 +174,7 @@ function UpdateCard({ project, setIsUpdate }) {
             </div>
 
             <div className='flex flex-col w-full'>
-              <label htmlFor='detail' className='title'>
+              <label htmlFor='detail' className='text-slate-800'>
                 详细内容
               </label>
               <textarea

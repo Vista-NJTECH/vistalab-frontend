@@ -9,7 +9,7 @@ function CompetitionCard({ competition }) {
       <div className='flex flex-col gap-3 shadow-xl bg-slate-100 p-2 rounded-md'>
         <div className='flex flex-row gap-1'>
           <span className='whitespace-nowrap title'>简介：</span>
-          <span className='title'>{competition.introduction}</span>
+          <span className='text-slate-800'>{competition.introduction}</span>
         </div>
         <div className='flex flex-row items-center gap-1'>
           <span className='whitespace-nowrap title'>链接：</span>

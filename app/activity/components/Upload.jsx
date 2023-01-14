@@ -71,7 +71,7 @@ function UploadCard({ setIsUpload }) {
           <h1 className='title text-2xl w-fit'>添加动态</h1>
           <form onSubmit={handleSubmit} className='flex flex-col gap-2 w-full'>
             <div className='flex flex-col w-full gap-1'>
-              <label htmlFor='title' className='title'>
+              <label htmlFor='title' className='text-slate-800'>
                 标题
               </label>
               <input
@@ -86,7 +86,7 @@ function UploadCard({ setIsUpload }) {
             </div>
 
             <div className='flex flex-col w-full gap-1'>
-              <label htmlFor='date' className='title'>
+              <label htmlFor='date' className='text-slate-800'>
                 活动时间
               </label>
               <input
@@ -123,7 +123,7 @@ function UploadCard({ setIsUpload }) {
             </div>
 
             <div className='flex flex-col w-full gap-1'>
-              <label htmlFor='detail' className='title'>
+              <label htmlFor='detail' className='text-slate-800'>
                 详细内容
               </label>
               <textarea

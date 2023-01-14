@@ -14,7 +14,7 @@ export default async function Sidebar() {
       <div className='flex flex-col gap-3'>
         {competitions.map((item, index) => (
           <Link
-            className='text-gray-700 hover:text-theme hover:border-theme w-fit border-b border-black'
+            className='text-gray-700 hover:text-theme hover:border-theme w-fit'
             href={`/competition/${item}`}
             key={index}
           >

@@ -1,9 +1,9 @@
 import useTimeLeft from "../../../lib/useTimeLeft";
 import { taskImportance } from "../config";
 
-export default function Detail({ schedule }) {
+export default function Detail({ isDropdown, schedule }) {
   return (
-    <div className='w-full flex flex-col gap-1'>
+    <div className='w-full flex flex-col gap-1' style={{ transition: "opacity 0.5s ease-in-out" }}>
       <div className='flex flex-row'>
         <span>Level：</span>
         <span>{taskImportance[schedule.level].title}</span>

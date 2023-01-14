@@ -12,7 +12,7 @@ function CategoryCard({ category }) {
           <Link
             key={index}
             href={"/study/" + category.title + "/" + item}
-            className='text-gray-700 hover:text-theme hover:border-theme w-fit border-b border-black'
+            className='text-gray-700 hover:text-theme hover:border-theme w-fit'
           >
             {item}
           </Link>

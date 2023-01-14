@@ -12,16 +12,8 @@ function UploadCard({ setIsUpload }) {
   const [isSubmit, setIsSubmit] = useState(false);
   const [processingMsg, setProcessingMsg] = useState("Processing...");
 
-  const [form, setForm] = useState({ title: "", details: "", link: "", date: "" });
+  const [form, setForm] = useState({ title: "", details: "", cycleLength: "", date: "" });
   const onUpdateInput = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-
-  var token;
-  if (!session) {
-    token =
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicGFzc3dvcmQiOiIiLCJ1c2VybmFtZSI6ImRvaXJ5IiwibmFtZSI6IiIsImVtYWlsIjoiIiwiYXZhdGFyIjoiIiwibGV2ZWwiOiIiLCJwX2dyb3VwIjoiZG9pcnksY29tbW9uLHN0dWR5YSxhZG1pbiIsImNyZWF0ZWRfdGltZSI6IiIsImlhdCI6MTY3MzMyNDk0NSwiZXhwIjoxNjc0MTg4OTQ1fQ.SPjPcUdvkXkSpbfNE5sNHbl238UQ9XpXbzAPI5-vs24";
-  } else {
-    token = session;
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,7 +29,7 @@ function UploadCard({ setIsUpload }) {
     fetch(`${process.env.BACKEND_URL}project/add`, {
       method: "POST",
       body: new URLSearchParams(form),
-      headers: { "Content-Type": "application/x-www-form-urlencoded", Authorization: token },
+      headers: { "Content-Type": "application/x-www-form-urlencoded", Authorization: session.user.token },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -74,11 +66,11 @@ function UploadCard({ setIsUpload }) {
         </div>
       ) : (
         <div className='w-full max-w-xs bg-white p-5 rounded-md flex flex-col items-center gap-2'>
-          <h1 className='title text-2xl w-fit'>添加日程</h1>
-          <form onSubmit={handleSubmit} className='flex flex-col gap-1 w-full'>
+          <h1 className='title text-2xl w-fit'>添加项目</h1>
+          <form onSubmit={handleSubmit} className='flex flex-col gap-2 w-full'>
             <div className='flex flex-col w-full'>
-              <label htmlFor='title' className='title'>
-                项目名
+              <label htmlFor='title' className='text-slate-800'>
+                项目名称
               </label>
               <input
                 required
@@ -92,22 +84,21 @@ function UploadCard({ setIsUpload }) {
             </div>
 
             <div className='flex flex-col w-full'>
-              <label htmlFor='details' className='title'>
-                简介
+              <label htmlFor='cycleLength' className='text-slate-800'>
+                单个周期长度
               </label>
               <input
                 required
-                type='text'
-                maxLength={50}
-                name='details'
-                value={form.details}
+                type='number'
+                name='cycleLength'
+                value={form.cycleLength}
                 onChange={onUpdateInput}
                 className='bg-gray-100 rounded-md p-2 outline-none'
               />
             </div>
 
             <div className='flex flex-col w-full'>
-              <label htmlFor='date' className='title'>
+              <label htmlFor='date' className='text-slate-800'>
                 截止日期
               </label>
               <input
@@ -121,14 +112,15 @@ function UploadCard({ setIsUpload }) {
             </div>
 
             <div className='flex flex-col w-full'>
-              <label htmlFor='link' className='title'>
-                链接
+              <label htmlFor='details' className='text-slate-800'>
+                项目简介
               </label>
               <textarea
+                required
                 type='text'
                 maxLength={50}
-                name='link'
-                value={form.link}
+                name='details'
+                value={form.details}
                 onChange={onUpdateInput}
                 className='bg-gray-100 rounded-md p-2 outline-none'
               />
@@ -139,7 +131,7 @@ function UploadCard({ setIsUpload }) {
                 取消
               </button>
               <button type='submit' className='w-full btn py-2 px-2'>
-                上传
+                添加
               </button>
             </div>
           </form>
@@ -149,7 +141,7 @@ function UploadCard({ setIsUpload }) {
   );
 }
 
-export default function Submit() {
+export default function UploadProject() {
   const { data: session } = useSession();
   const [isUpload, setIsUpload] = useState(false);
 

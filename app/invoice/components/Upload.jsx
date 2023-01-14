@@ -74,7 +74,7 @@ function UploadCard({ setIsUpload }) {
           <h1 className='title text-2xl w-fit'>添加发票</h1>
           <form onSubmit={handleSubmit} className='flex flex-col gap-3 w-full'>
             <div className='flex flex-col gap-1 w-full'>
-              <label htmlFor='title' className='title'>
+              <label htmlFor='title' className='text-slate-800'>
                 标题
               </label>
               <input
@@ -89,7 +89,7 @@ function UploadCard({ setIsUpload }) {
             </div>
 
             <div className='flex flex-col w-full'>
-              <label htmlFor='category' className='title'>
+              <label htmlFor='category' className='text-slate-800'>
                 类别
               </label>
               <select
@@ -132,7 +132,7 @@ function UploadCard({ setIsUpload }) {
             </div>
 
             <div className='flex flex-col w-full'>
-              <label htmlFor='remark' className='title'>
+              <label htmlFor='remark' className='text-slate-800'>
                 备注
               </label>
               <textarea

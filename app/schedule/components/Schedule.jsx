@@ -49,7 +49,7 @@ export default function Schedule({ schedule }) {
           </button>
         </div>
       </div>
-      {isDropdown && <Detail schedule={schedule} />}
+      {isDropdown && <Detail isDropdown={isDropdown} schedule={schedule} />}
     </div>
   );
 }

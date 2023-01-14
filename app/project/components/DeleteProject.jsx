@@ -7,7 +7,7 @@ import { useSession, signIn } from "next-auth/react";
 
 import { Popup } from "../../../components";
 
-function DeleteCard({ schedule, isDelete, setIsDelete }) {
+function DeleteCard({ project, isDelete, setIsDelete }) {
   const router = useRouter();
 
   const [isProcessing, setIsProcessing] = useState(false);
@@ -16,7 +16,7 @@ function DeleteCard({ schedule, isDelete, setIsDelete }) {
   const handleDelete = async (id) => {
     setIsProcessing(true);
     setProcessingMsg("Processing...");
-    fetch(`${process.env.BACKEND_URL}schedule/delete`, {
+    fetch(`${process.env.BACKEND_URL}project/delete`, {
       method: "POST",
       body: new URLSearchParams({ id }),
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -41,9 +41,9 @@ function DeleteCard({ schedule, isDelete, setIsDelete }) {
       {isDelete && (
         <Popup
           before={{
-            title: `确认删除 '${schedule.title}'`,
+            title: `确认删除 '${project.title}'`,
             cancelFun: () => setIsDelete(false),
-            confirmFun: () => handleDelete(schedule.id),
+            confirmFun: () => handleDelete(project.id),
           }}
           after={{
             isProcessing: isProcessing,
@@ -60,16 +60,16 @@ function DeleteCard({ schedule, isDelete, setIsDelete }) {
   );
 }
 
-export default function Delete({ schedule }) {
+export default function DeleteProject({ project }) {
   const { data: session } = useSession();
   const [isDelete, setIsDelete] = useState(false);
 
   return (
     <>
       <button onClick={() => (session ? setIsDelete(true) : signIn())} className='text-gray-600 hover:text-gray-900'>
-        <MdDelete size={17} />
+        <MdDelete size={20} />
       </button>
-      {isDelete && <DeleteCard schedule={schedule} isDelete={isDelete} setIsDelete={setIsDelete} />}
+      {isDelete && <DeleteCard project={project} isDelete={isDelete} setIsDelete={setIsDelete} />}
     </>
   );
 }

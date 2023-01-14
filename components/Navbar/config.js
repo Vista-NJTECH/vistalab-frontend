@@ -26,14 +26,14 @@ export const navbarData = [
     icon: <FaListAlt />,
   },
   {
-    title: "日程安排",
-    href: "/schedule",
-    icon: <AiFillSchedule />,
-  },
-  {
     title: "竞赛信息",
     href: "/competition",
     icon: <AiFillFlag />,
+  },
+  {
+    title: "日程安排",
+    href: "/schedule",
+    icon: <AiFillSchedule />,
   },
   {
     title: "发票报销",

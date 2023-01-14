@@ -5,18 +5,15 @@ import { useRouter } from "next/navigation";
 import { useSession, signIn } from "next-auth/react";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 
-function UploadCard({ setIsUpload }) {
+function UploadCard({ setIsUpload, project_id, cycle_id }) {
   const { data: session } = useSession();
   const router = useRouter();
 
   const [isSubmit, setIsSubmit] = useState(false);
   const [processingMsg, setProcessingMsg] = useState("Processing...");
 
-  const [form, setForm] = useState({ title: "", details: "", link: "", date: "" });
+  const [form, setForm] = useState({ id: project_id, cycle: cycle_id, work: "", plan: "", remark: "" });
   const onUpdateInput = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-
-  var token =
-    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicGFzc3dvcmQiOiIiLCJ1c2VybmFtZSI6ImRvaXJ5IiwibmFtZSI6IiIsImVtYWlsIjoiIiwiYXZhdGFyIjoiIiwibGV2ZWwiOiIiLCJwX2dyb3VwIjoiZG9pcnksY29tbW9uLHN0dWR5YSxhZG1pbiIsImNyZWF0ZWRfdGltZSI6IiIsImlhdCI6MTY3MzMyNDk0NSwiZXhwIjoxNjc0MTg4OTQ1fQ.SPjPcUdvkXkSpbfNE5sNHbl238UQ9XpXbzAPI5-vs24";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,10 +26,10 @@ function UploadCard({ setIsUpload }) {
         return;
       }
     }
-    fetch(`${process.env.BACKEND_URL}project/add`, {
+    fetch(`${process.env.BACKEND_URL}project/submit`, {
       method: "POST",
       body: new URLSearchParams(form),
-      headers: { "Content-Type": "application/x-www-form-urlencoded", Authorization: token },
+      headers: { "Content-Type": "application/x-www-form-urlencoded", Authorization: session.user.token },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -69,61 +66,46 @@ function UploadCard({ setIsUpload }) {
         </div>
       ) : (
         <div className='w-full max-w-xs bg-white p-5 rounded-md flex flex-col items-center gap-2'>
-          <h1 className='title text-2xl w-fit'>添加项目</h1>
-          <form onSubmit={handleSubmit} className='flex flex-col gap-1 w-full'>
+          <h1 className='title text-2xl w-fit'>添加进度</h1>
+          <form onSubmit={handleSubmit} className='flex flex-col gap-2 w-full'>
             <div className='flex flex-col w-full'>
-              <label htmlFor='title' className='title'>
-                项目名
-              </label>
-              <input
-                required
-                type='text'
-                maxLength={50}
-                name='title'
-                value={form.title}
-                onChange={onUpdateInput}
-                className='bg-gray-100 rounded-md p-2 outline-none'
-              />
-            </div>
-
-            <div className='flex flex-col w-full'>
-              <label htmlFor='details' className='title'>
-                简介
-              </label>
-              <input
-                required
-                type='text'
-                maxLength={50}
-                name='details'
-                value={form.details}
-                onChange={onUpdateInput}
-                className='bg-gray-100 rounded-md p-2 outline-none'
-              />
-            </div>
-
-            <div className='flex flex-col w-full'>
-              <label htmlFor='date' className='title'>
-                截止日期
-              </label>
-              <input
-                required
-                type='date'
-                name='date'
-                value={form.date}
-                onChange={onUpdateInput}
-                className='bg-gray-100 rounded-md p-2 outline-none'
-              />
-            </div>
-
-            <div className='flex flex-col w-full'>
-              <label htmlFor='link' className='title'>
-                链接
+              <label htmlFor='work' className='text-slate-800'>
+                本周期工作
               </label>
               <textarea
+                required
                 type='text'
                 maxLength={50}
-                name='link'
-                value={form.link}
+                name='work'
+                value={form.work}
+                onChange={onUpdateInput}
+                className='bg-gray-100 rounded-md p-2 outline-none'
+              />
+            </div>
+
+            <div className='flex flex-col w-full'>
+              <label htmlFor='plan' className='text-slate-800'>
+                下周期计划
+              </label>
+              <textarea
+                required
+                type='number'
+                name='plan'
+                value={form.plan}
+                onChange={onUpdateInput}
+                className='bg-gray-100 rounded-md p-2 outline-none'
+              />
+            </div>
+
+            <div className='flex flex-col w-full'>
+              <label htmlFor='remark' className='text-slate-800'>
+                备注与意见
+              </label>
+              <textarea
+                required
+                type='date'
+                name='remark'
+                value={form.remark}
                 onChange={onUpdateInput}
                 className='bg-gray-100 rounded-md p-2 outline-none'
               />
@@ -134,7 +116,7 @@ function UploadCard({ setIsUpload }) {
                 取消
               </button>
               <button type='submit' className='w-full btn py-2 px-2'>
-                上传
+                添加
               </button>
             </div>
           </form>
@@ -144,7 +126,7 @@ function UploadCard({ setIsUpload }) {
   );
 }
 
-export default function Upload() {
+export default function UploadCycle({ project_id, cycle_id }) {
   const { data: session } = useSession();
   const [isUpload, setIsUpload] = useState(false);
 
@@ -154,10 +136,9 @@ export default function Upload() {
         onClick={() => (session ? setIsUpload(true) : signIn())}
         className='flex flex-row items-center gap-1 text-gray-600 font-bold hover:text-gray-800'
       >
-        <h1>添加</h1>
         <BsFillPlusCircleFill />
       </button>
-      {isUpload && <UploadCard setIsUpload={setIsUpload} />}
+      {isUpload && <UploadCard setIsUpload={setIsUpload} project_id={project_id} cycle_id={cycle_id} />}
     </>
   );
 }
