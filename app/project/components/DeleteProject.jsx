@@ -9,6 +9,7 @@ import { Popup } from "../../../components";
 
 function DeleteCard({ project, isDelete, setIsDelete }) {
   const router = useRouter();
+  const { data: session } = useSession();
 
   const [isProcessing, setIsProcessing] = useState(false);
   const [processingMsg, setProcessingMsg] = useState("Processing...");
@@ -19,7 +20,7 @@ function DeleteCard({ project, isDelete, setIsDelete }) {
     fetch(`${process.env.BACKEND_URL}project/delete`, {
       method: "POST",
       body: new URLSearchParams({ id }),
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      headers: { "Content-Type": "application/x-www-form-urlencoded", Authorization: session.user.token },
     })
       .then((res) => res.json())
       .then((data) => {
