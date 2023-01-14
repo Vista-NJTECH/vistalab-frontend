@@ -3,8 +3,11 @@
 import Image from "next/image";
 import { useSession, signIn, signOut } from "next-auth/react";
 
+import { useStateContext } from "../../Provider/Provider";
+
 export default function Login() {
   const { data: session } = useSession();
+  const { avatarUrl } = useStateContext();
 
   if (session) {
     return (
@@ -12,7 +15,7 @@ export default function Login() {
         <Image
           width={50}
           height={50}
-          src={session.user.avatar}
+          src={avatarUrl}
           alt='avatar'
           className='object-cover object-center rounded-full cursor-pointer'
         />

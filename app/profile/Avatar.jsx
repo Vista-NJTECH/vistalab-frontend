@@ -1,16 +1,20 @@
 "use client";
 
+import Image from "next/image";
 import { useRef } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 
+import { useStateContext } from "../../components";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function UploadAvatar() {
+export default function Avatar() {
   const hiddenFileInput = useRef();
   const router = useRouter();
+
+  const { avatarUrl, setAvatarUrl } = useStateContext();
   const { data: session } = useSession();
 
   function notify(msg, type) {
@@ -36,6 +40,7 @@ export default function UploadAvatar() {
       .then((data) => {
         if (data.status) {
           notify("头像更新成功", "success");
+          setAvatarUrl(data.url);
           router.refresh();
         } else {
           notify("头像更新失败", "error");
@@ -49,8 +54,15 @@ export default function UploadAvatar() {
   }
 
   return (
-    <>
+    <div className='group relative w-fit'>
       <ToastContainer />
+      <Image
+        width={500}
+        height={500}
+        src={avatarUrl}
+        alt='avatar'
+        className='w-40 h-40 object-cover object-center rounded-full cursor-pointer'
+      />
       <input type='file' name='avatar' ref={hiddenFileInput} style={{ display: "none" }} onChange={handleUpload} />
       <button
         type='button'
@@ -59,6 +71,6 @@ export default function UploadAvatar() {
       >
         <AiOutlineCloudUpload size={20} />
       </button>
-    </>
+    </div>
   );
 }

@@ -1,12 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
 import { IoTriangleSharp } from "react-icons/io5";
 import { useSession, signIn, signOut } from "next-auth/react";
-import Link from "next/link";
+
+import { useStateContext } from "../../Provider/Provider";
 
 export default function Avatar() {
   const { data: session } = useSession();
+  const { avatarUrl } = useStateContext();
 
   if (session) {
     return (
@@ -15,7 +18,7 @@ export default function Avatar() {
           width={32}
           height={32}
           alt='avatar'
-          src={session.user.avatar}
+          src={avatarUrl}
           className='w-8 h-8 object-cover object-center rounded-full cursor-pointer'
         />
         <div className='hidden group-hover:flex absolute right-0 top-[30px] w-32 flex-col items-center'>

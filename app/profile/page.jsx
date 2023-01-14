@@ -1,8 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { unstable_getServerSession } from "next-auth/next";
 
-import UploadAvatar from "./UploadAvatar";
+import Avatar from "./Avatar";
 import { authOptions } from "../../pages/api/auth/[...nextauth]";
 
 export default async function Page() {
@@ -30,16 +29,7 @@ export default async function Page() {
           <p className='text-gray-800 font-medium'>创建时间：{new Date(session.user.created_time).toDateString()}</p>
           <p className='text-gray-800 font-medium'>用户权限组：{session.user.group}</p>
         </div>
-        <div className='group relative w-fit'>
-          <Image
-            width={500}
-            height={500}
-            src={session.user.avatar}
-            alt='avatar'
-            className='w-40 h-40 object-cover object-center rounded-full cursor-pointer'
-          />
-          <UploadAvatar />
-        </div>
+        <Avatar />
       </div>
     </div>
   );

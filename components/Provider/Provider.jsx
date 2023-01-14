@@ -1,21 +1,40 @@
 "use client";
 
-import { SessionProvider } from "next-auth/react";
+import { SessionProvider, useSession } from "next-auth/react";
 import { createContext, useContext, useState, useEffect } from "react";
 
 const StateContext = createContext();
 
 export const ContextProvider = ({ children }) => {
-  const [testData, setTestData] = useState(null);
+  const { data: session } = useSession();
+  const [avatarUrl, setAvatarUrl] = useState("");
+
+  function updateAvatar() {
+    fetch(`${process.env.BACKEND_URL}my/userinfo`, {
+      headers: { Authorization: session.user.token },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status) {
+          setAvatarUrl(data.userinfo.avatar);
+        } else {
+          console.error(data.message);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
 
   useEffect(() => {
-    setTestData("Hello");
-  }, []);
+    if (session) updateAvatar();
+  }, [session]);
 
   return (
     <StateContext.Provider
       value={{
-        testData,
+        avatarUrl,
+        setAvatarUrl,
       }}
     >
       {children}
