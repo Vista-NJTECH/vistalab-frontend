@@ -23,9 +23,9 @@ export default function UploadAvatar() {
   }
 
   async function handleUpload(e) {
+    if (!e.target.files[0]) return;
     const formData = new FormData();
     formData.append("avatar", e.target.files[0]);
-    notify("头像上传中...", "succcess");
 
     await fetch(`${process.env.BACKEND_URL}my/updateavatar`, {
       method: "POST",

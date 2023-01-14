@@ -12,11 +12,11 @@ export default function Avatar() {
     return (
       <div className='flex flex-row gap-1 items-center relative group'>
         <Image
-          width={30}
-          height={30}
-          src={session.user.avatar}
+          width={32}
+          height={32}
           alt='avatar'
-          className='object-cover object-center rounded-full cursor-pointer'
+          src={session.user.avatar}
+          className='w-8 h-8 object-cover object-center rounded-full cursor-pointer'
         />
         <div className='hidden group-hover:flex absolute right-0 top-[30px] w-32 flex-col items-center'>
           <div className='w-full flex flex-row items-end justify-end mr-2 text-white'>
