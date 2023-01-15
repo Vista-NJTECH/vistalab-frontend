@@ -55,6 +55,11 @@ export const footerData = {
   ],
   Contacts: [
     {
+      title: "反馈中心",
+      href: "/feedback",
+      isLocal: true,
+    },
+    {
       title: "Github组织",
       href: "https://github.com/510Lab/",
       isLocal: false,

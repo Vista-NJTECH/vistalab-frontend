@@ -7,7 +7,7 @@ export default async function Sidebar() {
   const competitions = data.data.map((item) => item.name);
 
   return (
-    <div className='w-full max-w-xs h-fit md:sticky md:top-3 flex flex-col gap-3'>
+    <div className='w-full max-w-xs h-fit md:sticky md:top-3 flex flex-col gap-5'>
       <Link href='/competition' className='title text-2xl'>
         竞赛信息
       </Link>

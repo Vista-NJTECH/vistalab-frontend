@@ -1,7 +1,7 @@
 import DailyFeedbacks from "./DailyFeedbacks";
 
 export default async function Page() {
-  const res = await fetch(`${process.env.BACKEND_URL}feedback/getall`);
+  const res = await fetch(`${process.env.BACKEND_URL}feedback/getall`, { cache: "no-store" });
   if (!res.ok) throw new Error("Failed to fetch data");
   const data = await res.json();
 

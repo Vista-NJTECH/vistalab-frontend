@@ -5,7 +5,7 @@ import { colorfulColors } from "./config";
 function CompetitionCard({ competition }) {
   return (
     <div className='flex flex-col gap-5'>
-      <h1 className='title text-3xl'>{competition.name}</h1>
+      <h1 className='title text-2xl'>{competition.name}</h1>
       <div className='flex flex-col gap-3 shadow-xl bg-slate-100 p-2 rounded-md'>
         <div className='flex flex-row gap-1'>
           <span className='whitespace-nowrap title'>简介：</span>
