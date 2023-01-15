@@ -8,10 +8,11 @@ export default async function Page({ params: { projectid }, searchParams }) {
   const session = await unstable_getServerSession(authOptions);
   const project = { title: decodeURIComponent(projectid), ...searchParams };
 
-  const res = await fetch(`${process.env.BACKEND_URL}project//getproject?id=${project.id}`, {
-    cache: "no-store",
-    headers: { Authorization: session ? session.user.token : null },
-  });
+  const headers = session
+    ? { cache: "no-store", headers: { Authorization: session.user.token } }
+    : { cache: "no-store" };
+
+  const res = await fetch(`${process.env.BACKEND_URL}project//getproject?id=${project.id}`, headers);
   if (!res.ok) throw new Error("Failed to fetch data");
   const data = await res.json();
 
@@ -22,22 +23,24 @@ export default async function Page({ params: { projectid }, searchParams }) {
           <h1 className='title text-2xl'>{project.title}</h1>
           <DeleteProject project={project} />
         </div>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-1 bg-gray-200 rounded-md p-2'>
-          <div className='flex flex-row'>
-            <span>项目成员：</span>
-            <span>{project.members}</span>
-          </div>
-          <div className='flex flex-row'>
-            <span>项目状态：</span>
-            <span>{project.state == 1 ? "进行中" : "已停止"}</span>
-          </div>
-          <div className='flex flex-row'>
-            <span>开始时间：</span>
-            <span>{project.stl}</span>
-          </div>
-          <div className='flex flex-row'>
-            <span>截止时间：</span>
-            <span>{project.ddl}</span>
+        <div className='fle flex-col gap-1 bg-gray-200 rounded-md p-2'>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-1'>
+            <div className='flex flex-row'>
+              <span>项目成员：</span>
+              <span>{project.members}</span>
+            </div>
+            <div className='flex flex-row'>
+              <span>项目状态：</span>
+              <span>{project.state == 1 ? "进行中" : "已停止"}</span>
+            </div>
+            <div className='flex flex-row'>
+              <span>开始时间：</span>
+              <span>{project.stl}</span>
+            </div>
+            <div className='flex flex-row'>
+              <span>截止时间：</span>
+              <span>{project.ddl}</span>
+            </div>
           </div>
           <div className='flex flex-row'>
             <span>项目简介：</span>

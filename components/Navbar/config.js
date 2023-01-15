@@ -3,6 +3,7 @@ import { FaListAlt } from "react-icons/fa";
 import { MdSchool } from "react-icons/md";
 import { RiChatSmile3Fill } from "react-icons/ri";
 import { RiGroupFill } from "react-icons/ri";
+import { BsChatLeftTextFill } from "react-icons/bs";
 
 export const navbarData = [
   {
@@ -44,5 +45,10 @@ export const navbarData = [
     title: "成员信息",
     href: "/members",
     icon: <RiGroupFill />,
+  },
+  {
+    title: "反馈中心",
+    href: "/feedback",
+    icon: <BsChatLeftTextFill />,
   },
 ];

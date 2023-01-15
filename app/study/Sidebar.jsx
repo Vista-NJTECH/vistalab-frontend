@@ -25,10 +25,11 @@ function CategoryCard({ category }) {
 export default async function Sidebar() {
   const session = await unstable_getServerSession(authOptions);
 
-  const res = await fetch(`${process.env.BACKEND_URL}study/getcategory`, {
-    cache: "no-store",
-    headers: { Authorization: session ? session.user.token : null },
-  });
+  const headers = session
+    ? { cache: "no-store", headers: { Authorization: session.user.token } }
+    : { cache: "no-store" };
+
+  const res = await fetch(`${process.env.BACKEND_URL}study/getcategory`, headers);
   if (!res.ok) throw new Error("Failed to fetch data");
   const data = await res.json();
 
