@@ -118,7 +118,7 @@ function UploadCard({ setIsUpload }) {
               <textarea
                 required
                 type='text'
-                maxLength={50}
+                maxLength={200}
                 name='details'
                 value={form.details}
                 onChange={onUpdateInput}

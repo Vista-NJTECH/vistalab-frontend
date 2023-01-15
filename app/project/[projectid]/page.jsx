@@ -12,7 +12,7 @@ export default async function Page({ params: { projectid }, searchParams }) {
     ? { cache: "no-store", headers: { Authorization: session.user.token } }
     : { cache: "no-store" };
 
-  const res = await fetch(`${process.env.BACKEND_URL}project//getproject?id=${project.id}`, headers);
+  const res = await fetch(`${process.env.BACKEND_URL}project/getproject?id=${project.id}`, headers);
   if (!res.ok) throw new Error("Failed to fetch data");
   const data = await res.json();
 
@@ -23,7 +23,7 @@ export default async function Page({ params: { projectid }, searchParams }) {
           <h1 className='title text-2xl'>{project.title}</h1>
           <DeleteProject project={project} />
         </div>
-        <div className='fle flex-col gap-1 bg-gray-200 rounded-md p-2'>
+        <div className='flex flex-col gap-1 bg-gray-200 rounded-md p-2'>
           <div className='grid grid-cols-1 md:grid-cols-2 gap-1'>
             <div className='flex flex-row'>
               <span>项目成员：</span>
@@ -42,9 +42,9 @@ export default async function Page({ params: { projectid }, searchParams }) {
               <span>{project.ddl}</span>
             </div>
           </div>
-          <div className='flex flex-row'>
-            <span>项目简介：</span>
-            <span>{project.detail}</span>
+          <div>
+            <span className='whitespace-nowrap'>项目简介：</span>
+            {project.detail}
           </div>
         </div>
       </div>
