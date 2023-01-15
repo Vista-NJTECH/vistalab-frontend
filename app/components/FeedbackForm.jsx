@@ -25,14 +25,15 @@ export default function FeedbackForm() {
       body: new URLSearchParams({ feedback }),
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
     })
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((data) => {
         setFeedback("");
-        data.status ? notify("提交成功", "success") : notify("提交失败", "error");
+        notify(data.message, data.status ? "success" : "error");
         router.refresh();
       })
       .catch((error) => {
         setFeedback("");
+        notify("提交失败", "error");
         console.error(error);
       });
   };
