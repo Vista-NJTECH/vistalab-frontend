@@ -63,12 +63,12 @@ export default function Delete({ schedule }) {
 
   return (
     <>
-      <ToastContainer />
       {session && (
         <button onClick={() => setIsDelete(true)}>
           <MdDelete size={18} />
         </button>
       )}
+      <ToastContainer />
       {isDelete && <DeleteCard schedule={schedule} isDelete={isDelete} setIsDelete={setIsDelete} />}
     </>
   );

@@ -65,12 +65,12 @@ export default function DeleteProject({ project }) {
 
   return (
     <>
-      <ToastContainer />
       {session && (
         <button onClick={() => setIsDelete(true)}>
           <MdDelete size={18} />
         </button>
       )}
+      <ToastContainer />
       {isDelete && <DeleteCard project={project} isDelete={isDelete} setIsDelete={setIsDelete} />}
     </>
   );

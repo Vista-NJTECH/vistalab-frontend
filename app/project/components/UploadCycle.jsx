@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useSession, signIn } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 
 function UploadCard({ setIsUpload, project_id, cycle_id }) {
@@ -132,12 +132,14 @@ export default function UploadCycle({ project_id, cycle_id }) {
 
   return (
     <>
-      <button
-        onClick={() => (session ? setIsUpload(true) : signIn())}
-        className='flex flex-row items-center gap-1 text-gray-600 font-bold hover:text-gray-800'
-      >
-        <BsFillPlusCircleFill />
-      </button>
+      {session && (
+        <button
+          onClick={() => setIsUpload(true)}
+          className='flex flex-row items-center gap-1 text-gray-600 font-bold hover:text-gray-800'
+        >
+          <BsFillPlusCircleFill />
+        </button>
+      )}
       {isUpload && <UploadCard setIsUpload={setIsUpload} project_id={project_id} cycle_id={cycle_id} />}
     </>
   );

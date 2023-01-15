@@ -3,13 +3,13 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 
-import { Spin } from "../../../components";
 import CourseCard from "./CourseCard";
+import { Spin } from "../../../components";
 import { useStudyStateContext } from "./StudyContextProvider";
 
 export default function Page({ url }) {
   const { data: session } = useSession();
-  const { refreshData, setRefreshData } = useStudyStateContext();
+  const { refreshData } = useStudyStateContext();
 
   const [currentPage, setCurrentPage] = useState(1);
   const [allPagesNum, setAllPagesNum] = useState(1);
@@ -40,7 +40,7 @@ export default function Page({ url }) {
 
   useEffect(() => {
     fetchStudyData(currentPage, url);
-  }, [currentPage, refreshData]);
+  }, [currentPage, refreshData, session]);
 
   return (
     <>

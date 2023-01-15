@@ -209,9 +209,11 @@ export default function Update({ schedule }) {
 
   return (
     <>
-      <button onClick={() => (session ? setIsUpdate(true) : signIn())} className='text-gray-600 hover:text-gray-900'>
-        <FaEdit size={17} />
-      </button>
+      {session && (
+        <button onClick={() => setIsUpdate(true)} className='text-gray-600 hover:text-gray-900'>
+          <FaEdit size={17} />
+        </button>
+      )}
       {isUpdate && <UpdateCard schedule={schedule} setIsUpdate={setIsUpdate} />}
     </>
   );

@@ -64,12 +64,12 @@ export default function Toggle({ record }) {
 
   return (
     <>
-      <ToastContainer />
       {session && (
         <button onClick={() => setIsToggle(true)} className='text-gray-700 hover:text-gray-900 mx-1'>
           {record.state === 1 ? <FaToggleOn /> : <FaToggleOff />}
         </button>
       )}
+      <ToastContainer />
       {isToggle && <ToggleCard record={record} isToggle={isToggle} setIsToggle={setIsToggle} />}
     </>
   );

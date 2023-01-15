@@ -18,7 +18,7 @@ export default async function Page({ params: { projectid }, searchParams }) {
 
   return (
     <div className='w-full flex flex-col gap-7'>
-      <div className='flex flex-col gap-3'>
+      <div className='flex flex-col gap-2'>
         <div className='flex flex-row items-center gap-2'>
           <h1 className='title text-2xl'>{project.title}</h1>
           <DeleteProject project={project} />

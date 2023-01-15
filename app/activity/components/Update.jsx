@@ -166,9 +166,11 @@ export default function Update({ activity }) {
 
   return (
     <>
-      <button onClick={() => (session ? setIsUpdate(true) : signIn())} className='text-gray-600 hover:text-gray-800'>
-        <FaEdit size={17} />
-      </button>
+      {session && (
+        <button onClick={() => setIsUpdate(true)} className='text-gray-600 hover:text-gray-800'>
+          <FaEdit size={17} />
+        </button>
+      )}
       {isUpdate && <UpdateCard activity={activity} setIsUpdate={setIsUpdate} />}
     </>
   );
