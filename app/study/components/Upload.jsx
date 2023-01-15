@@ -1,17 +1,17 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { useRouter } from "next/navigation";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 import { useSession, signIn } from "next-auth/react";
 
 import { sidebarData } from "../config";
+import { useStudyStateContext } from "./StudyContextProvider";
 
 function UploadCard({ setIsUpload }) {
-  const router = useRouter();
   const hiddenImageInput = useRef();
   const { data: session } = useSession();
+  const { refreshData, setRefreshData } = useStudyStateContext();
 
   const [isSubmit, setIsSubmit] = useState(false);
   const [processingMsg, setProcessingMsg] = useState("Processing...");
@@ -63,7 +63,7 @@ function UploadCard({ setIsUpload }) {
               onClick={() => {
                 setIsSubmit(false);
                 setIsUpload(false);
-                router.refresh();
+                setRefreshData(!refreshData);
               }}
               className='btn px-2 py-1'
             >

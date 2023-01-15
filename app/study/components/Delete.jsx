@@ -2,15 +2,15 @@
 
 import { useState } from "react";
 import { MdDelete } from "react-icons/md";
-import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { ToastContainer, toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 import { Popup } from "../../../components";
+import { useStudyStateContext } from "./StudyContextProvider";
 
 function DeleteCard({ course, isDelete, setIsDelete }) {
-  const router = useRouter();
+  const { refreshData, setRefreshData } = useStudyStateContext();
   const { data: session } = useSession();
 
   const notify = (msg, type) =>
@@ -22,8 +22,6 @@ function DeleteCard({ course, isDelete, setIsDelete }) {
     });
 
   const handleDelete = async (id) => {
-    setIsProcessing(true);
-    setProcessingMsg("Processing...");
     fetch(`${process.env.BACKEND_URL}study/delete`, {
       method: "POST",
       body: new URLSearchParams({ id }),
@@ -33,7 +31,7 @@ function DeleteCard({ course, isDelete, setIsDelete }) {
       .then((data) => {
         if (data.status) {
           notify("删除成功", "success");
-          router.refresh();
+          setRefreshData(!refreshData);
         } else {
           notify(data.message, "error");
           console.error(data.message);

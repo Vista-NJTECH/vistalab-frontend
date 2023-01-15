@@ -3,15 +3,15 @@
 import { useState, useRef } from "react";
 import { FaEdit } from "react-icons/fa";
 import { AiFillCloseCircle } from "react-icons/ai";
-import { useRouter } from "next/navigation";
 import { useSession, signIn } from "next-auth/react";
 
 import { sidebarData } from "../config";
+import { useStudyStateContext } from "./StudyContextProvider";
 
 function UpdateCard({ course, setIsUpdate }) {
-  const router = useRouter();
   const hiddenImageInput = useRef();
   const { data: session } = useSession();
+  const { refreshData, setRefreshData } = useStudyStateContext();
 
   const [isSubmit, setIsSubmit] = useState(false);
   const [processingMsg, setProcessingMsg] = useState("Processing...");
@@ -70,7 +70,7 @@ function UpdateCard({ course, setIsUpdate }) {
               onClick={() => {
                 setIsSubmit(false);
                 setIsUpdate(false);
-                router.refresh();
+                setRefreshData(!refreshData);
               }}
               className='btn px-2 py-1'
             >

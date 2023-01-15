@@ -5,16 +5,18 @@ import { useSession } from "next-auth/react";
 
 import { Spin } from "../../../components";
 import CourseCard from "./CourseCard";
+import { useStudyStateContext } from "./StudyContextProvider";
 
 export default function Page({ url }) {
   const { data: session } = useSession();
+  const { refreshData, setRefreshData } = useStudyStateContext();
 
   const [currentPage, setCurrentPage] = useState(1);
   const [allPagesNum, setAllPagesNum] = useState(1);
   const [lessons, setLessons] = useState({ data: [] });
   const [isLoading, setIsloading] = useState(false);
 
-  async function fetchStudyData(page) {
+  async function fetchStudyData(page, url) {
     setIsloading(true);
     await fetch(
       `${process.env.BACKEND_URL}study/getall?page=${page}${url}`,
@@ -37,8 +39,8 @@ export default function Page({ url }) {
   }
 
   useEffect(() => {
-    fetchStudyData(currentPage);
-  }, [currentPage]);
+    fetchStudyData(currentPage, url);
+  }, [currentPage, refreshData]);
 
   return (
     <>
