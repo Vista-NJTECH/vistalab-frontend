@@ -4,19 +4,24 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { FaToggleOff, FaToggleOn } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
 
+import "react-toastify/dist/ReactToastify.css";
 import { Popup } from "../../../components";
 
 function ToggleCard({ record, isToggle, setIsToggle }) {
   const router = useRouter();
   const { data: session } = useSession();
 
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [processingMsg, setProcessingMsg] = useState("Processing...");
+  const notify = (msg, type) =>
+    toast(msg, {
+      position: toast.POSITION.TOP_CENTER,
+      className: "items-center",
+      type: type,
+      autoClose: 1 * 1000,
+    });
 
-  const handleDelete = async (id) => {
-    setIsProcessing(true);
-    setProcessingMsg("Processing...");
+  const handleToggle = async (id) => {
     fetch(`${process.env.BACKEND_URL}invoice/unstate`, {
       method: "POST",
       body: new URLSearchParams({ id }),
@@ -25,15 +30,18 @@ function ToggleCard({ record, isToggle, setIsToggle }) {
       .then((res) => res.json())
       .then((data) => {
         if (data.status) {
-          setProcessingMsg("更新成功");
+          notify("更新成功", "success");
+          router.refresh();
         } else {
-          setProcessingMsg(data.message);
+          notify(data.message, "error");
           console.error(data.message);
         }
+        setIsToggle(false);
       })
       .catch((error) => {
-        setProcessingMsg("更新失败");
+        notify("更新失败", "error");
         console.error(error);
+        setIsToggle(false);
       });
   };
 
@@ -41,20 +49,9 @@ function ToggleCard({ record, isToggle, setIsToggle }) {
     <>
       {isToggle && (
         <Popup
-          before={{
-            title: `确认更新 '${record.title}'`,
-            cancelFun: () => setIsToggle(false),
-            confirmFun: () => handleDelete(record.id),
-          }}
-          after={{
-            isProcessing: isProcessing,
-            message: processingMsg,
-            confirmFun: () => {
-              setIsProcessing(false);
-              setIsToggle(false);
-              router.refresh();
-            },
-          }}
+          title={`确认更新 '${record.title}'`}
+          cancelFun={() => setIsToggle(false)}
+          confirmFun={() => handleToggle(record.id)}
         />
       )}
     </>
@@ -62,13 +59,17 @@ function ToggleCard({ record, isToggle, setIsToggle }) {
 }
 
 export default function Toggle({ record }) {
+  const { data: session } = useSession();
   const [isToggle, setIsToggle] = useState(false);
 
   return (
     <>
-      <button onClick={() => setIsToggle(true)} className='text-gray-700 hover:text-gray-900 mx-1'>
-        {record.state === 1 ? <FaToggleOn /> : <FaToggleOff />}
-      </button>
+      <ToastContainer />
+      {session && (
+        <button onClick={() => setIsToggle(true)} className='text-gray-700 hover:text-gray-900 mx-1'>
+          {record.state === 1 ? <FaToggleOn /> : <FaToggleOff />}
+        </button>
+      )}
       {isToggle && <ToggleCard record={record} isToggle={isToggle} setIsToggle={setIsToggle} />}
     </>
   );
