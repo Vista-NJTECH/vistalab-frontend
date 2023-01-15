@@ -20,7 +20,7 @@ function UploadCard({ setIsUpload, project_id, cycle_id }) {
     setIsSubmit(true);
     setProcessingMsg("Processing...");
     for (const item of Object.keys(form)) {
-      if (form[item] === "") {
+      if (form[item] === "" && item !== "remark") {
         setProcessingMsg("表单中有未填项");
         console.error("表单中有未填项");
         return;
@@ -102,7 +102,6 @@ function UploadCard({ setIsUpload, project_id, cycle_id }) {
                 备注与意见
               </label>
               <textarea
-                required
                 type='date'
                 name='remark'
                 value={form.remark}
