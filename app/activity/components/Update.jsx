@@ -85,7 +85,6 @@ function UpdateCard({ activity, setIsUpdate }) {
               <input
                 required
                 type='text'
-                maxLength={50}
                 name='title'
                 value={form.title}
                 onChange={onUpdateInput}
@@ -137,7 +136,6 @@ function UpdateCard({ activity, setIsUpdate }) {
               <textarea
                 required
                 type='text'
-                maxLength={50}
                 name='detail'
                 value={form.detail}
                 onChange={onUpdateInput}

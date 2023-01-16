@@ -49,7 +49,6 @@ export default function CredentialsLogin() {
               type='text'
               name='username'
               placeholder='用户名'
-              maxLength={100}
               value={form.username}
               onChange={onUpdateInput}
               className='p-4 bg-gray-100 rounded-md outline-none'
@@ -66,7 +65,6 @@ export default function CredentialsLogin() {
               type='password'
               name='password'
               placeholder='密码'
-              maxLength={100}
               value={form.password}
               onChange={onUpdateInput}
               className='p-4 bg-gray-100 rounded-md outline-none'

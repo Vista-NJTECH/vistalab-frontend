@@ -76,7 +76,6 @@ function UploadCard({ setIsUpload }) {
               <input
                 required
                 type='text'
-                maxLength={50}
                 name='title'
                 value={form.title}
                 onChange={onUpdateInput}
@@ -91,7 +90,6 @@ function UploadCard({ setIsUpload }) {
               <input
                 required
                 type='text'
-                maxLength={50}
                 name='host'
                 value={form.host}
                 onChange={onUpdateInput}
@@ -106,7 +104,6 @@ function UploadCard({ setIsUpload }) {
               <input
                 required
                 type='text'
-                maxLength={50}
                 name='persons'
                 value={form.persons}
                 onChange={onUpdateInput}
@@ -176,7 +173,6 @@ function UploadCard({ setIsUpload }) {
               <textarea
                 required
                 type='text'
-                maxLength={50}
                 name='detail'
                 value={form.detail}
                 onChange={onUpdateInput}

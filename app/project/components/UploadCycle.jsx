@@ -75,7 +75,6 @@ function UploadCard({ setIsUpload, project_id, cycle_id }) {
               <textarea
                 required
                 type='text'
-                maxLength={200}
                 name='work'
                 value={form.work}
                 onChange={onUpdateInput}
@@ -91,7 +90,6 @@ function UploadCard({ setIsUpload, project_id, cycle_id }) {
                 required
                 type='number'
                 name='plan'
-                maxLength={200}
                 value={form.plan}
                 onChange={onUpdateInput}
                 className='bg-gray-100 rounded-md p-2 outline-none'
@@ -105,7 +103,6 @@ function UploadCard({ setIsUpload, project_id, cycle_id }) {
               <textarea
                 type='date'
                 name='remark'
-                maxLength={200}
                 value={form.remark}
                 onChange={onUpdateInput}
                 className='bg-gray-100 rounded-md p-2 outline-none'

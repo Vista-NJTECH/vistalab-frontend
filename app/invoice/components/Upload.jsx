@@ -80,7 +80,6 @@ function UploadCard({ setIsUpload }) {
               <input
                 required
                 type='text'
-                maxLength={50}
                 name='title'
                 value={form.title}
                 onChange={onUpdateInput}
@@ -138,7 +137,6 @@ function UploadCard({ setIsUpload }) {
               <textarea
                 required
                 type='text'
-                maxLength={50}
                 name='remark'
                 value={form.remark}
                 onChange={onUpdateInput}

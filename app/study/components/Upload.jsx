@@ -107,7 +107,6 @@ function UploadCard({ setIsUpload }) {
               <input
                 required
                 type='text'
-                maxLength={50}
                 name='coursename'
                 value={form.coursename}
                 onChange={onUpdateInput}
@@ -122,7 +121,6 @@ function UploadCard({ setIsUpload }) {
               <input
                 required
                 type='text'
-                maxLength={50}
                 name='title'
                 value={form.title}
                 onChange={onUpdateInput}
@@ -137,7 +135,6 @@ function UploadCard({ setIsUpload }) {
               <input
                 required
                 type='text'
-                maxLength={100}
                 name='link'
                 value={form.link}
                 onChange={onUpdateInput}

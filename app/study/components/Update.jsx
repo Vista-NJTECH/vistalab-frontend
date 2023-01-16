@@ -111,7 +111,6 @@ function UpdateCard({ course, setIsUpdate }) {
               <input
                 required
                 type='text'
-                maxLength={50}
                 name='coursename'
                 value={form.coursename}
                 onChange={onUpdateInput}
@@ -126,7 +125,6 @@ function UpdateCard({ course, setIsUpdate }) {
               <input
                 required
                 type='text'
-                maxLength={50}
                 name='title'
                 value={form.title}
                 onChange={onUpdateInput}
@@ -141,7 +139,6 @@ function UpdateCard({ course, setIsUpdate }) {
               <input
                 required
                 type='text'
-                maxLength={100}
                 name='link'
                 value={form.link}
                 onChange={onUpdateInput}
