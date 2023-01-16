@@ -1,7 +1,10 @@
 "use client";
 
-import moment from "moment/moment";
 import Delete from "./Delete";
+
+function formateDate(date) {
+  return date.split("T")[0] + " " + date.split("T")[1].split(".")[0];
+}
 
 export default function DailyFeedbacks({ dailyFeedbacks }) {
   return (
@@ -9,7 +12,7 @@ export default function DailyFeedbacks({ dailyFeedbacks }) {
       {dailyFeedbacks.map((item, index) => (
         <div key={index} className='flex flex-row items-center justify-between gap-2'>
           <div className='flex flex-row gap-1'>
-            <span className='whitespace-nowrap'>({moment.utc(item.created_time).format("YYYY-MM-DD hh:mm")})</span>
+            <span className='whitespace-nowrap'>({formateDate(item.created_time)})</span>
             <span className='whitespace-nowrap'>{item.feedback}</span>
           </div>
           <Delete feedback={item} />
