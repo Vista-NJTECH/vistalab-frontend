@@ -26,7 +26,7 @@ export const StudyContextProvider = ({ children }) => {
           console.error(data.message);
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.error(error));
   }
 
   useEffect(() => {

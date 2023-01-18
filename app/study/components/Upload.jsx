@@ -3,21 +3,23 @@
 import { useRef, useState } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { BsFillPlusCircleFill } from "react-icons/bs";
-import { useSession, signIn } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
-import { sidebarData } from "../config";
 import { useStudyStateContext } from "./StudyContextProvider";
 
 function UploadCard({ setIsUpload }) {
   const hiddenImageInput = useRef();
+  const classificationRef = useRef();
   const { data: session } = useSession();
-  const { refreshData, setRefreshData } = useStudyStateContext();
-  const [showSelect, toggleInput] = useState(true);
+  const { sidebarData, setRefreshData } = useStudyStateContext();
+
   const [isSubmit, setIsSubmit] = useState(false);
   const [processingMsg, setProcessingMsg] = useState("Processing...");
   const [form, setForm] = useState({ classification: "", coursename: "", title: "", link: "", studyimg: null });
 
-  const onUpdateInput = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const onUpdateInput = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -63,7 +65,7 @@ function UploadCard({ setIsUpload }) {
               onClick={() => {
                 setIsSubmit(false);
                 setIsUpload(false);
-                setRefreshData(!refreshData);
+                setRefreshData((pre) => (pre = !pre));
               }}
               className='btn px-2 py-1'
             >
@@ -78,38 +80,27 @@ function UploadCard({ setIsUpload }) {
         >
           <h1 className='title text-2xl'>添加新课程</h1>
           <div className='flex flex-col gap-2 w-full'>
-          <div className='flex flex-col gap-1 w-full'>
+            <div className='flex flex-col gap-1 w-full'>
               <label htmlFor='classification' className='text-slate-800'>
                 大类
               </label>
-              <div className="flex">
-                <select
-                  required
-                  defaultValue={sidebarData[0].path}
-                  name='classification'
-                  onChange={onUpdateInput}
-                  className='bg-gray-100 rounded-md p-2 outline-none mr-2'
-                  style={{display: showSelect ? "block" : "none"}}
-                >
-                  <option disabled value>
-                    --请选择--
-                  </option>
-                  {sidebarData.map((item, index) => (
-                    <option value={item.path} key={index}>
-                      {item.title}
-                    </option>
-                  ))}
-                </select>
-                <button onClick={() => toggleInput(false)}>自定义</button>
-              </div>
               <input
-                type="text"
-                placeholder="请输入大类"
-                className="bg-gray-100 rounded-md p-2 outline-none"
+                required
+                type='text'
+                list='classification'
                 name='classification'
+                ref={classificationRef}
+                value={form.classification}
                 onChange={onUpdateInput}
-                style={{display: showSelect ? "none" : "block"}}
+                className='bg-gray-100 rounded-md p-2 outline-none'
               />
+              <datalist id='classification'>
+                {sidebarData.data.map((item, index) => (
+                  <option key={index} value={item.title}>
+                    {item.title}
+                  </option>
+                ))}
+              </datalist>
             </div>
 
             <div className='flex flex-col gap-1 w-full'>
@@ -120,10 +111,22 @@ function UploadCard({ setIsUpload }) {
                 required
                 type='text'
                 name='coursename'
+                list='coursename'
                 value={form.coursename}
                 onChange={onUpdateInput}
                 className='bg-gray-100 rounded-md p-2 outline-none'
               />
+              <datalist id='coursename'>
+                {classificationRef.current !== undefined &&
+                  classificationRef.current.value !== "" &&
+                  sidebarData.data
+                    .find((item) => item.title === classificationRef.current.value)
+                    .data.map((item, index) => (
+                      <option key={index} value={item}>
+                        {item}
+                      </option>
+                    ))}
+              </datalist>
             </div>
 
             <div className='flex flex-col gap-1 w-full'>
