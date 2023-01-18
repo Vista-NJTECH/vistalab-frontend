@@ -12,7 +12,7 @@ function UploadCard({ setIsUpload }) {
   const hiddenImageInput = useRef();
   const { data: session } = useSession();
   const { refreshData, setRefreshData } = useStudyStateContext();
-
+  const [showSelect, toggleInput] = useState(true);
   const [isSubmit, setIsSubmit] = useState(false);
   const [processingMsg, setProcessingMsg] = useState("Processing...");
   const [form, setForm] = useState({ classification: "", coursename: "", title: "", link: "", studyimg: null });
@@ -78,26 +78,38 @@ function UploadCard({ setIsUpload }) {
         >
           <h1 className='title text-2xl'>添加新课程</h1>
           <div className='flex flex-col gap-2 w-full'>
-            <div className='flex flex-col gap-1 w-full'>
+          <div className='flex flex-col gap-1 w-full'>
               <label htmlFor='classification' className='text-slate-800'>
                 大类
               </label>
-              <select
-                required
-                defaultValue
+              <div className="flex">
+                <select
+                  required
+                  defaultValue={sidebarData[0].path}
+                  name='classification'
+                  onChange={onUpdateInput}
+                  className='bg-gray-100 rounded-md p-2 outline-none mr-2'
+                  style={{display: showSelect ? "block" : "none"}}
+                >
+                  <option disabled value>
+                    --请选择--
+                  </option>
+                  {sidebarData.map((item, index) => (
+                    <option value={item.path} key={index}>
+                      {item.title}
+                    </option>
+                  ))}
+                </select>
+                <button onClick={() => toggleInput(false)}>自定义</button>
+              </div>
+              <input
+                type="text"
+                placeholder="请输入大类"
+                className="bg-gray-100 rounded-md p-2 outline-none"
                 name='classification'
                 onChange={onUpdateInput}
-                className='bg-gray-100 rounded-md p-2 outline-none'
-              >
-                <option disabled value>
-                  -- select an option --
-                </option>
-                {sidebarData.map((item, index) => (
-                  <option value={item.path} key={index}>
-                    {item.title}
-                  </option>
-                ))}
-              </select>
+                style={{display: showSelect ? "none" : "block"}}
+              />
             </div>
 
             <div className='flex flex-col gap-1 w-full'>
