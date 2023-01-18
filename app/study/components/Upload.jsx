@@ -118,7 +118,7 @@ function UploadCard({ setIsUpload }) {
               />
               <datalist id='coursename'>
                 {classificationRef.current !== undefined &&
-                  classificationRef.current.value !== "" &&
+                  sidebarData.data.find((item) => item.title === classificationRef.current.value) !== undefined &&
                   sidebarData.data
                     .find((item) => item.title === classificationRef.current.value)
                     .data.map((item, index) => (
