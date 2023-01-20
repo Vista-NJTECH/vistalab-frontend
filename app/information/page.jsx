@@ -11,7 +11,6 @@ import { FiThermometer, FiDroplet, FiSun, FiUsers } from 'react-icons/fi';
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
 export default function Lab() {
-  // 初始化状态
   const [temperature, setTemperature] = useState("");
   const [humidity, setHumidity] = useState("");
   const [weather, setWeather] = useState({
@@ -21,9 +20,7 @@ export default function Lab() {
   });
   const [people, setPeople] = useState("");
 
-  // 模拟数据
   useEffect(() => {
-    // 模拟请求数据的过程
     setTimeout(() => {
       setTemperature("23℃");
       setHumidity("50%");

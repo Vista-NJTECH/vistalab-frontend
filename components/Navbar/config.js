@@ -1,8 +1,9 @@
 import { AiFillHome, AiFillAccountBook, AiFillSchedule, AiFillFlag } from "react-icons/ai";
-import { FaListAlt } from "react-icons/fa";
+import { FaListAlt, FaFlagCheckered } from "react-icons/fa";
 import { MdSchool } from "react-icons/md";
-import { RiChatSmile3Fill } from "react-icons/ri";
+import { RiChatSmile3Fill, RiComputerFill, RiRobotLine } from "react-icons/ri";
 import { RiGroupFill } from "react-icons/ri";
+import { BsBoxSeam } from "react-icons/bs";
 
 export const navbarData = [
   {
@@ -48,20 +49,24 @@ export const navbarData = [
       {
         title: '实验室智慧化信息',
         href: '/information',
+        icon: <RiRobotLine />
       },
       {
         title: '物资信息',
         href: '/',
+        icon: <BsBoxSeam />
       },
       {
         title: '成员信息',
         href: '/members',
+        icon: <RiGroupFill />
       },
       {
         title: '竞赛信息',
         href: '/competition',
+        icon: <FaFlagCheckered />
       },
    ],
-    icon: <RiGroupFill />,
+    icon: <RiComputerFill />,
   },
 ];

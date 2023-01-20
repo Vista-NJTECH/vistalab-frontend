@@ -26,7 +26,7 @@ function NavbarCard({ item }) {
       <div className="flex flex-col">
       {item.subNav.map((subitem, index) => (
       <Link href={subitem.href} key={index} className="my-1">
-      {subitem.title}
+      {subitem.icon}{subitem.title}
       </Link>
       ))}
       </div>
