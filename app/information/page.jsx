@@ -27,7 +27,7 @@
     };
 
     useEffect(() => {
-      const ws = new WebSocket('ws://124.223.196.177:8183');
+      const ws = new WebSocket('wss://backend.vistalab.top/ws');
       ws.onopen = () => {
         console.log('WebSocket connection opened');
         setConnectionStatus(true);
