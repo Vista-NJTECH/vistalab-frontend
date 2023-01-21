@@ -37,7 +37,7 @@ export const navbarData = [
     icon: <AiFillAccountBook />,
   },
   {
-    title: "智慧物联",
+    title: "智慧互联",
     href: "/information",
     icon: <RiHomeGearFill />,
   },
