@@ -2,7 +2,7 @@ import { MdSchool } from "react-icons/md";
 import { BsBoxSeam } from "react-icons/bs";
 import { HiOutlineUsers } from "react-icons/hi";
 import { FaListAlt, FaFlagCheckered } from "react-icons/fa";
-import { RiChatSmile3Fill, RiComputerFill, RiRobotLine } from "react-icons/ri";
+import { RiChatSmile3Fill, RiComputerFill, RiHomeGearFill } from "react-icons/ri";
 import { AiFillHome, AiFillAccountBook, AiFillSchedule } from "react-icons/ai";
 
 export const navbarData = [
@@ -37,14 +37,14 @@ export const navbarData = [
     icon: <AiFillAccountBook />,
   },
   {
+    title: "智慧物联",
+    href: "/information",
+    icon: <RiHomeGearFill />,
+  },
+  {
     title: "信息中心",
     icon: <RiComputerFill />,
     subMenu: [
-      {
-        title: "实验室智慧化信息",
-        href: "/information",
-        icon: <RiRobotLine />,
-      },
       {
         title: "物资信息",
         href: "/",

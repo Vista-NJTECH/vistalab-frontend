@@ -65,7 +65,7 @@ function UploadCard({ setIsUpload, project_id, cycle_id }) {
           )}
         </div>
       ) : (
-        <div className='w-full max-w-2xl bg-white p-5 rounded-md flex flex-col items-center gap-2 text-2xl'>
+        <div className='w-full max-w-xs bg-white p-5 rounded-md flex flex-col items-center gap-2'>
           <h1 className='title text-2xl w-fit'>添加进度</h1>
           <form onSubmit={handleSubmit} className='flex flex-col gap-2 w-full'>
             <div className='flex flex-col w-full'>
