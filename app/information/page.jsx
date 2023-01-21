@@ -9,6 +9,7 @@ import 'react-resizable/css/styles.css';
 import styles from './components/lab.module.css';
 import { FiThermometer, FiDroplet, FiSun } from 'react-icons/fi';
 import { FcInfo } from 'react-icons/fc';
+import { RiBaseStationLine } from 'react-icons/ri';
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
@@ -98,8 +99,8 @@ export default function Page() {
     </div>
     <div key="4" data-grid={{ w: 2, h: 3, x: 8, y: 0 }}>
       <Card>
-      <p>{`people: ${people}`}</p>
-        <p>{`people: ${people}`}</p>
+        <h3><RiBaseStationLine />在线人数</h3>
+        <p>{`Count: ${people}`}</p>
       </Card>
     </div>
     <div key="5" data-grid={{ w: 2, h: 3, x: 10, y: 0 }}>
