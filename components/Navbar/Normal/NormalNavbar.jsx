@@ -7,6 +7,15 @@ import Avatar from "./Avatar";
 import { navbarData } from "../config";
 
 function NavbarCard({ item }) {
+  if (item.subMenu) {
+    return (
+      <div className='cursor-pointer whitespace-nowrap font-semibold text-md text-slate-700 hover:text-theme duration-300 flex flex-row gap-1 items-center justify-center'>
+        <span>{item.icon}</span>
+        <span>{item.title}</span>
+        <AiFillCaretDown />
+      </div>
+    );
+  }
   return (
     <Link
       href={item.href}
@@ -14,11 +23,6 @@ function NavbarCard({ item }) {
     >
       <span>{item.icon}</span>
       <span>{item.title}</span>
-      {item.subMenu && (
-        <span>
-          <AiFillCaretDown />
-        </span>
-      )}
     </Link>
   );
 }

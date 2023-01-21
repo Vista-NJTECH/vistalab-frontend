@@ -38,7 +38,6 @@ export const navbarData = [
   },
   {
     title: "信息中心",
-    href: "/",
     icon: <RiComputerFill />,
     subMenu: [
       {
