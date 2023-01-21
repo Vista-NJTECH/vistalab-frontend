@@ -103,7 +103,9 @@ export default function Page() {
       </Card>
     </div>
     <div key="5" data-grid={{ w: 2, h: 3, x: 10, y: 0 }}>
+    <Card>
     <h3><FcInfo />本页面开发有待时日</h3>
+    </Card>
     </div>
     </ResponsiveReactGridLayout>
     </div>
