@@ -1,37 +1,25 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
+import { AiFillCaretDown } from "react-icons/ai";
 
 import logo from "../../../data/logo.png";
 import Avatar from "./Avatar";
-import { navbarData, subnavbarData } from "../config";
-import { useState } from "react";
+import { navbarData } from "../config";
 
 function NavbarCard({ item }) {
-  const [showSecondary, setShowSecondary] = useState(false);
   return (
-    <div 
-    onMouseEnter={() => setShowSecondary(true)}
-    onMouseLeave={() => setShowSecondary(false)}
-  >
     <Link
       href={item.href}
-      className='font-semibold text-md rounded-md text-slate-700 hover:text-theme duration-300 flex flex-row gap-1 items-center justify-center'
+      className='whitespace-nowrap font-semibold text-md text-slate-700 hover:text-theme duration-300 flex flex-row gap-1 items-center justify-center'
     >
       <span>{item.icon}</span>
       <span>{item.title}</span>
+      {item.subMenu && (
+        <span>
+          <AiFillCaretDown />
+        </span>
+      )}
     </Link>
-    {showSecondary && 
-      <div className="flex flex-col">
-      {item.subNav.map((subitem, index) => (
-      <Link href={subitem.href} key={index} className="my-1">
-      {subitem.icon}{subitem.title}
-      </Link>
-      ))}
-      </div>
-    }
-    </div>
   );
 }
 
@@ -46,8 +34,17 @@ export default function NormalNavbar() {
         <h1>Vistalab</h1>
       </Link>
       <div className='hidden lg:flex flex-row items-center justify-center gap-2'>
-        {navbarData.map((item, index) => (
-          <NavbarCard key={index} item={item} />
+        {navbarData.map((item1, index1) => (
+          <div key={index1} className='relative group'>
+            <NavbarCard item={item1} />
+            {item1.subMenu && (
+              <div className='-translate-y-4 delay-100 scale-y-0 group-hover:translate-y-0 group-hover:scale-y-100 duration-300 origin-top transform-gpu -z-10 absolute top-6 -left-3 flex flex-col items-start gap-1 bg-white p-3 rounded-md shadow-md'>
+                {item1.subMenu.map((item2, index2) => (
+                  <NavbarCard key={index2} item={item2} />
+                ))}
+              </div>
+            )}
+          </div>
         ))}
         <Avatar />
       </div>
