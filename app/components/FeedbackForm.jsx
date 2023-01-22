@@ -47,7 +47,7 @@ export default function FeedbackForm() {
         id='feedback'
         value={feedback}
         onChange={(e) => setFeedback(e.target.value)}
-        placeholder='感谢您的反馈'
+        placeholder='输入sign开启新春活动, 一共四个flag哦 | 感谢您的反馈'
         className='border-none outline-none rounded-md rounded-r-none p-3 shadow-md flex-1 bg-gray-100'
       />
       <button type='submit' className='btn py-3 px-5 rounded-l-none'>
