@@ -77,7 +77,7 @@ export default function Activities({ activitiesData }) {
   const prefix = activitiesData.prefix;
 
   return (
-    <div className='frame flex flex-col items-center justify-center gap-5 md:gap-16'>
+    <div className='frame flex flex-col items-center justify-center gap-5 md:gap-16 py-10 md:py-40'>
       <h1 className='title text-3xl'>我们最近的动态</h1>
       <div className='flex flex-col items-center justify-center gap-10'>
         {activitiesData.data.map((item, index) => (

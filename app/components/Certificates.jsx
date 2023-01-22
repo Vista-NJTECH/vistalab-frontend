@@ -32,7 +32,7 @@ export default function Certificates({ certificatesData }) {
   }, [nextSlide]);
 
   return (
-    <div className='frame w-full flex flex-col items-center justify-center gap-5'>
+    <div className='frame w-full flex flex-col items-center justify-center gap-5 py-10 md:py-40'>
       <h1 className='title text-3xl'>我们获得的奖项</h1>
       <div className='w-full flex flex-col gap-3 items-center justify-center'>
         <div className='w-full flex flex-row items-center justify-center gap-3 md:gap-5'>

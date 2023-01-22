@@ -35,7 +35,7 @@ export default function Awards({ awardsData }) {
   }
 
   return (
-    <div className='px-5 md:px-48 py-10 md:py-28 flex flex-col md:flex-row gap-5 md:gap-10 items-center justify-center bg-slate-100'>
+    <div className='frame py-10 md:py-40 flex flex-col md:flex-row gap-5 md:gap-10 items-center justify-center bg-slate-100'>
       <div className='w-full md:w-1/3 flex flex-col items-center justify-start gap-4 md:gap-7 rounded-r-none md:pl-16 md:py-10'>
         <h1 className='title text-3xl'>我们取得的成果</h1>
         {yearsData.map((item, index) => (

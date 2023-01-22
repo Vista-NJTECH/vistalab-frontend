@@ -12,7 +12,7 @@ export default async function Page() {
   const [awardsData, certificatesData, activitiesData] = await Promise.all(paths.map((item) => fetchData(item)));
 
   return (
-    <div className='flex flex-col gap-10 md:gap-40'>
+    <div className='flex flex-col'>
       <Head />
       <Awards awardsData={awardsData.data} />
       <Certificates certificatesData={certificatesData} />

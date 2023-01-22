@@ -1,11 +1,11 @@
 import Image from "next/image";
-import welcome from "./images/welcome.png";
-import "./styles.css";
+
 import FeedbackForm from "./FeedbackForm";
+import welcome from "../../data/welcome.png";
 
 export default function Head() {
   return (
-    <div className='frame flex flex-col lg:flex-row items-center justify-between gap-10 bg-image'>
+    <div className='frame flex flex-col lg:flex-row items-center justify-between gap-10 py-10 md:py-40 bg-chineseNewYear bg-cover bg-center'>
       <Image placeholder='blur' priority src={welcome} alt='welcome' className='object-cover object-center w-[600px]' />
       <div className='w-full flex flex-col gap-10'>
         <h1 className='title text-3xl'>远景实验室</h1>
