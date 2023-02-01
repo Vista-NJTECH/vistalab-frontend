@@ -31,7 +31,13 @@ export default function Footer() {
         </div>
       </div>
       <MobileFooter />
-      <span>Copyright &copy; {new Date().getFullYear()}. All rights reserved.</span>
+      <div className='flex flex-row gap-2'>
+        <span>Copyright &copy; {new Date().getFullYear()}.</span>
+        <span>All rights reserved.</span>
+        <a href='https://beian.miit.gov.cn/' target='_blank' className='underline hover:text-blue-600'>
+          苏ICP备2022012206号-2
+        </a>
+      </div>
     </footer>
   );
 }
