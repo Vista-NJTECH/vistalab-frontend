@@ -7,9 +7,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        chineseNewYear: "url('../data/chineseNewYear.jpg')",
-      },
       colors: {
         theme: "#3173E9",
       },
