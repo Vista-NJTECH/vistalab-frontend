@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { RxDotFilled, RxDot } from "react-icons/rx";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
-import { RxDotFilled, RxDot } from "react-icons/rx";
 
 export default function Certificates({ certificatesData }) {
   const images = certificatesData.data;

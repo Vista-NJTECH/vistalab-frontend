@@ -8,8 +8,8 @@ async function fetchData(path) {
 }
 
 export default async function Page() {
-  const paths = ["api/achievement", "api/getcert", "activity/getactivity?count=3"];
-  const [awardsData, certificatesData, activitiesData] = await Promise.all(paths.map((item) => fetchData(item)));
+  const paths = ["api/achievement", "api/getcert"];
+  const [awardsData, certificatesData] = await Promise.all(paths.map((item) => fetchData(item)));
 
   return (
     <div className='flex flex-col'>
@@ -17,7 +17,7 @@ export default async function Page() {
       <Awards awardsData={awardsData.data} />
       <Certificates certificatesData={certificatesData} />
       <Stacks />
-      <Activities activitiesData={activitiesData} />
+      <Activities />
     </div>
   );
 }

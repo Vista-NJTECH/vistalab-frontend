@@ -73,7 +73,10 @@ function ActivityCard({ prefix, activity, isOdd }) {
   );
 }
 
-export default function Activities({ activitiesData }) {
+export default async function Activities() {
+  const res = await fetch(`${process.env.BACKEND_URL}activity/getactivity?count=3`, { cache: "no-store" });
+  if (!res.ok) throw new Error("Failed to fetch data");
+  const activitiesData = await res.json();
   const prefix = activitiesData.prefix;
 
   return (
