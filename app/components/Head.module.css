@@ -1,0 +1,8 @@
+.legothemebg {
+  @apply object-cover object-center w-[600px] duration-300;
+}
+
+.legothemebg:hover {
+  background: radial-gradient(#ffffe3 5%, #fff);
+  @apply md:scale-110;
+}

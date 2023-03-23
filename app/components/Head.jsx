@@ -1,12 +1,16 @@
 import Image from "next/image";
 
 import FeedbackForm from "./FeedbackForm";
-import welcome from "../../data/welcome.png";
+import welcome from "../../data/legotheme.png";
+
+import style from "./Head.module.css";
 
 export default function Head() {
   return (
-    <div className='frame flex flex-col lg:flex-row items-center justify-between gap-10 py-10 md:py-40 bg-cover bg-center'>
-      <Image placeholder='blur' priority src={welcome} alt='welcome' className='object-cover object-center w-[600px]' />
+    <div className='frame flex flex-col lg:flex-row items-center justify-between gap-10 py-10 md:py-32 bg-cover bg-center'>
+      <a href='https://act.vistalab.top' aria-label='vistalab activity link'>
+        <Image placeholder='blur' priority src={welcome} alt='welcome' className={style.legothemebg} />
+      </a>
       <div className='w-full flex flex-col gap-10'>
         <h1 className='title text-3xl'>远景实验室</h1>
         <p className='border-b-2 border-slate-600 text-xl indent-10 flex flex-col'>
