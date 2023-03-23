@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
-export default function Awards({ awardsData }) {
+export default function AwardsClient({ awardsData }) {
   const yearsData = Object.keys(awardsData);
   const [currentIndex, setCurrentIndex] = useState(yearsData[0]);
 

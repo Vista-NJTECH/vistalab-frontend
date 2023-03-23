@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import FeedbackForm from "./FeedbackForm";
-import welcome from "../../data/legotheme.png";
+import welcome from "../../../data/legotheme.png";
 
 import style from "./Head.module.css";
 
