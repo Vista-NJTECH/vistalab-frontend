@@ -75,12 +75,21 @@ export default function CredentialsLogin() {
           登录
         </button>
       </form>
-      <Link
-        href={{ pathname: "/login", query: { callbackUrl, isFaceLogin: true } }}
-        className='text-sm text-theme hover:underline'
-      >
-        人脸识别登录
-      </Link>
+      <div className='text-sm flex flex-row gap-3'>
+        <span>
+          没有账号？
+          <Link href='/register' className='text-blue-600 hover:underline'>
+            去注册
+          </Link>
+        </span>
+        |
+        <span>
+          试试新技术？
+          <Link href='/login/face' className='text-sm text-theme hover:underline'>
+            人脸识别登录
+          </Link>
+        </span>
+      </div>
     </div>
   );
 }

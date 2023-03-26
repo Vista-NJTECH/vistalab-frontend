@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { MdEmail } from "react-icons/md";
 import { RiSendPlaneFill } from "react-icons/ri";
@@ -139,6 +140,13 @@ export default function Register() {
           注册
         </button>
       </form>
+
+      <span>
+        已有账号？
+        <Link href='/login' className='text-blue-600 hover:underline'>
+          去登陆
+        </Link>
+      </span>
     </div>
   );
 }
