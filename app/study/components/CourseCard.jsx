@@ -42,6 +42,7 @@ export default function CourseCard({ prefix, course }) {
           )}
         </div>
       </div>
+      {course.path ? (
       <a href={course.link} target='_blank'>
         <Image
           alt={course.title}
@@ -53,6 +54,9 @@ export default function CourseCard({ prefix, course }) {
           className='rounded-md shadow-md border-2 border-blue-300 hover:shadow-xl duration-500 aspect-4/3 object-cover object-left-top'
         />
       </a>
+    ) : (
+      <div className='w-full h-full bg-gray-100'></div>
+    )}
     </div>
   );
 }
