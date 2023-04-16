@@ -1,47 +1,41 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import Card from './components/Card'
-import TemperatureGraph from './components/TemperatureGraph'
-import { Responsive, WidthProvider } from 'react-grid-layout';
-import 'react-grid-layout/css/styles.css';
-import 'react-resizable/css/styles.css';
-import styles from './components/lab.module.css';
-import { FiThermometer, FiDroplet, FiSun } from 'react-icons/fi';
-import { FcInfo } from 'react-icons/fc';
-import { RiBaseStationLine } from 'react-icons/ri';
-import ReactPlayer from 'react-player';
+import "react-grid-layout/css/styles.css";
+import "react-resizable/css/styles.css";
 
+import { useState, useEffect } from "react";
+import { RiBaseStationLine } from "react-icons/ri";
+import { Responsive, WidthProvider } from "react-grid-layout";
+import { FiThermometer, FiDroplet, FiSun } from "react-icons/fi";
+
+import Card from "./components/Card";
+import styles from "./components/lab.module.css";
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
 export default function Page() {
-  const [connectionStatus, setConnectionStatus] = React.useState(false);
-  const [temperature, setTemperature] = useState("");
-  const [humidity, setHumidity] = useState("");
-  const [weather, setWeather] = useState({
-    temperature_min: '',
-    temperature_max: '',
-    weather: ''
-  });
   const [people, setPeople] = useState("");
-  const videoUrl = "https://backend.vistalab.top/cam";
-  var options = {
-    protocol: 'mqtt',
-    clientId: 'mqttx_c563443e' 	
-  };
+  const [humidity, setHumidity] = useState("");
+  const [temperature, setTemperature] = useState("");
+  const [weather, setWeather] = useState({
+    temperature_min: "",
+    temperature_max: "",
+    weather: "",
+  });
+
+  const videoUrl = "https://backend.vistalab.top/cam/?action=stream";
 
   useEffect(() => {
-    const ws = new WebSocket('wss://backend.vistalab.top/ws');
+    const ws = new WebSocket("wss://backend.vistalab.top/ws");
     ws.onopen = () => {
-      console.log('WebSocket connection opened');
+      console.log("WebSocket connection opened");
       setConnectionStatus(true);
     };
     ws.onmessage = (event) => {
       setPeople(JSON.parse(event.data));
     };
     ws.onclose = () => {
-      console.log('WebSocket connection closed');
+      console.log("WebSocket connection closed");
       setConnectionStatus(false);
     };
     return () => {
@@ -49,7 +43,6 @@ export default function Page() {
     };
   }, []);
 
-  
   useEffect(() => {
     setTimeout(() => {
       setHumidity("50%");
@@ -59,7 +52,9 @@ export default function Page() {
 
   useEffect(() => {
     async function fetchWeather() {
-      const res = await fetch('https://devapi.qweather.com/v7/weather/3d?location=101190107&key=ed1a0454398f45da875002ad02316554');
+      const res = await fetch(
+        "https://devapi.qweather.com/v7/weather/3d?location=101190107&key=ed1a0454398f45da875002ad02316554"
+      );
       const data = await res.json();
       setWeather({
         temperature_min: data.daily[0].tempMin,
@@ -72,65 +67,62 @@ export default function Page() {
 
   return (
     <div className={styles.container}>
-    <ResponsiveReactGridLayout
-    className="layout"
-    cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}
-    rowHeight={30}
-    isDraggable={true}
-    isResizable={true}
-  >
-    <div key="1" data-grid={{ w: 2, h: 3, x: 0, y: 0 }}>
-      <Card>
-        <h3><FiThermometer />Temperature</h3>
-        <p>{temperature}</p>
-      </Card>
-    </div>
-    <div key="2" data-grid={{ w: 2, h: 3, x: 2, y: 0 }}>
-      <Card>
-        <h3><FiDroplet />Humidity</h3>
-        <p>{humidity}</p>
-      </Card>
-    </div>
-    <div key="3" data-grid={{ w: 2, h: 3, x: 6, y: 0 }}>
-      <Card>
-        <h3><FiSun />Weather</h3>
-        <p>{`weather: ${weather.weather}`}</p>
-        <p>{`Min: ${weather.temperature_min}`}℃</p>
-        <p>{`Max: ${weather.temperature_max}`}℃</p>
-      </Card>
-    </div>
-    <div key="4" data-grid={{ w: 2, h: 3, x: 8, y: 0 }}>
-      <Card>
-        <h3><RiBaseStationLine />在线人数</h3>
-        <p>{`Count: ${people}`}</p>
-      </Card>
-    </div>
-    <div key="5" data-grid={{ w: 2, h: 3, x: 10, y: 0 }}>
-      <Card>
-        
-      </Card>
-    </div>
-      <div key="6" data-grid={{ w: 4, h: 6, x: 4, y: 3 }}>
+      <ResponsiveReactGridLayout
+        className='layout'
+        cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}
+        rowHeight={30}
+        isDraggable={true}
+        isResizable={true}
+      >
+        <div key='1' data-grid={{ w: 2, h: 3, x: 0, y: 0 }}>
           <Card>
-      <h3>VISTA-CAM-1</h3>
-          <ReactPlayer
-              url='rtsp://172.18.192.218:8084/unicast'
-              playing={true}
-              controls={true}
-              width='100%'
-              height='100%'
-              config={{
-                file: {
-                  forceVideo: true,
-                  attributes: {
-                    controlsList: 'nodownload'
-                  }
-                }
-              }}
-            />
+            <h1>
+              <FiThermometer />
+              Temperature
+            </h1>
+            <p>{temperature}</p>
           </Card>
         </div>
-    </ResponsiveReactGridLayout>
+
+        <div key='2' data-grid={{ w: 2, h: 3, x: 2, y: 0 }}>
+          <Card>
+            <h1>
+              <FiDroplet />
+              Humidity
+            </h1>
+            <p>{humidity}</p>
+          </Card>
+        </div>
+
+        <div key='3' data-grid={{ w: 2, h: 3, x: 6, y: 0 }}>
+          <Card>
+            <h1>
+              <FiSun />
+              Weather
+            </h1>
+            <p>{`weather: ${weather.weather}`}</p>
+            <p>{`Min: ${weather.temperature_min}`}℃</p>
+            <p>{`Max: ${weather.temperature_max}`}℃</p>
+          </Card>
+        </div>
+
+        <div key='4' data-grid={{ w: 2, h: 3, x: 4, y: 0 }}>
+          <Card>
+            <h1>
+              <RiBaseStationLine />
+              在线人数
+            </h1>
+            <p>{`Count: ${people}`}</p>
+          </Card>
+        </div>
+
+        <div key='6' data-grid={{ w: 6, h: 8, x: 0, y: 3 }}>
+          <Card>
+            <h1>VISTA-CAM-1</h1>
+            <img src={videoUrl} alt='stream video' />
+          </Card>
+        </div>
+      </ResponsiveReactGridLayout>
     </div>
-)
+  );
 }
