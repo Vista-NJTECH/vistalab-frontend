@@ -60,14 +60,14 @@ export const footerData = {
       isLocal: true,
     },
     {
+      title: "网站日志",
+      href: "/log",
+      isLocal: true,
+    },
+    {
       title: "Github组织",
       href: "https://github.com/510Lab/",
       isLocal: false,
-    },
-    {
-      title: "网站日志",
-      href: "/ourlog",
-      isLocal: true,
     },
   ],
 };
