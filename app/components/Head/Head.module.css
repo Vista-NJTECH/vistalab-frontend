@@ -6,3 +6,31 @@
   background: radial-gradient(#ffffe3 5%, #fff);
   @apply md:scale-110;
 }
+
+.legocar{
+  @apply hidden md:block absolute bottom-0 w-36 -z-10;
+  animation: bounce 12s linear infinite;
+}
+
+@keyframes bounce {
+  0% {
+    left: 10vw;
+    transform: scaleX(100%);
+  }
+  49.9%{
+    left: 80vw;
+    transform: scaleX(100%);
+  }
+  50% {
+    left: 80vw;
+    transform: scaleX(-100%);
+  }
+  99.9%{
+    left: 10vw;
+    transform: scaleX(-100%);
+  }
+  100%{
+    left: 10vw;
+    transform: scaleX(100%);
+  }
+}

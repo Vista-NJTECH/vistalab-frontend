@@ -4,11 +4,11 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ["vista.online.njtech.edu.cn"],
+    domains: ["backend.vistalab.top"],
   },
   
   env: {
-    BACKEND_URL: "https://vista.online.njtech.edu.cn/backend/",
+    BACKEND_URL: "https://backend.vistalab.top/",
   },
 };
 

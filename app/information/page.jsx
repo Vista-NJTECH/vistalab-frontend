@@ -10,6 +10,8 @@ import styles from './components/lab.module.css';
 import { FiThermometer, FiDroplet, FiSun } from 'react-icons/fi';
 import { FcInfo } from 'react-icons/fc';
 import { RiBaseStationLine } from 'react-icons/ri';
+import ReactPlayer from 'react-player';
+
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
@@ -23,7 +25,7 @@ export default function Page() {
     weather: ''
   });
   const [people, setPeople] = useState("");
-
+  const videoUrl = "https://backend.vistalab.top/cam";
   var options = {
     protocol: 'mqtt',
     clientId: 'mqttx_c563443e' 	
@@ -104,10 +106,30 @@ export default function Page() {
       </Card>
     </div>
     <div key="5" data-grid={{ w: 2, h: 3, x: 10, y: 0 }}>
-    <Card>
-    <h3><FcInfo />本页面开发有待时日</h3>
-    </Card>
+      <Card>
+        
+      </Card>
     </div>
+      <div key="6" data-grid={{ w: 4, h: 6, x: 4, y: 3 }}>
+          <Card>
+      <h3>VISTA-CAM-1</h3>
+          <ReactPlayer
+              url='rtsp://172.18.192.218:8084/unicast'
+              playing={true}
+              controls={true}
+              width='100%'
+              height='100%'
+              config={{
+                file: {
+                  forceVideo: true,
+                  attributes: {
+                    controlsList: 'nodownload'
+                  }
+                }
+              }}
+            />
+          </Card>
+        </div>
     </ResponsiveReactGridLayout>
     </div>
 )
