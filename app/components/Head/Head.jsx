@@ -10,7 +10,7 @@ export default function Head() {
   return (
     <div className='isolate relative frame flex flex-col lg:flex-row items-center justify-between gap-10 py-10 md:py-32 bg-cover bg-center'>
       <Image src={legocar} alt="lego car"placeholder="blur" className={style.legocar}/>
-      <a href='https://vista.online.njtech.edu.cn/labact' aria-label='vistalab activity link'>
+      <a href='https://act.vistalab.top/' aria-label='vistalab activity link'>
         <Image priority src={welcome} alt='welcome' className={style.legothemebg} />
       </a>
       <div className='w-full flex flex-col gap-10'>
