@@ -13,8 +13,8 @@ export default function Page() {
       <Head />
       <Awards />
       <Certificates />
-      <Stacks />
       <Video />
+      <Stacks />
       <Activities />
     </div>
   );
