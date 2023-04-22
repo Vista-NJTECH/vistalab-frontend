@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { unstable_getServerSession } from "next-auth";
+import { getServerSession } from "next-auth";
 
 import { UploadProject } from "./components";
 import { authOptions } from "../../pages/api/auth/[...nextauth]";
 
 export default async function Sidebar() {
-  const session = await unstable_getServerSession(authOptions);
+  const session = await getServerSession(authOptions);
 
   const headers = session
     ? { cache: "no-store", headers: { Authorization: session.user.token } }

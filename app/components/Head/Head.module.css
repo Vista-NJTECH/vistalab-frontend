@@ -7,8 +7,10 @@
   @apply md:scale-110;
 }
 
-.legocar{
+.legocar {
   @apply hidden md:block absolute bottom-0 w-36 -z-10;
+  /* remove below line to show lego car running */
+  @apply md:hidden;
   animation: bounce 12s linear infinite;
 }
 
@@ -17,7 +19,7 @@
     left: 10vw;
     transform: scaleX(100%);
   }
-  49.9%{
+  49.9% {
     left: 80vw;
     transform: scaleX(100%);
   }
@@ -25,11 +27,11 @@
     left: 80vw;
     transform: scaleX(-100%);
   }
-  99.9%{
+  99.9% {
     left: 10vw;
     transform: scaleX(-100%);
   }
-  100%{
+  100% {
     left: 10vw;
     transform: scaleX(100%);
   }

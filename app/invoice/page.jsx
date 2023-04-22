@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { GoCheck } from "react-icons/go";
 import { AiOutlineStop } from "react-icons/ai";
-import { unstable_getServerSession } from "next-auth/next";
+import { getServerSession } from "next-auth/next";
 
 import { Upload, Download, Delete, Toggle } from "./components";
 import { authOptions } from "../../pages/api/auth/[...nextauth]";
 
 export default async function Page() {
-  const session = await unstable_getServerSession(authOptions);
+  const session = await getServerSession(authOptions);
   if (!session)
     return (
       <div className='w-full flex flex-col items-center justify-center gap-3'>

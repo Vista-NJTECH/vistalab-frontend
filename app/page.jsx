@@ -1,10 +1,11 @@
 import { Head } from "./components";
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
-const Awards = dynamic(() => import('./components/Awards/Awards'), { ssr: false });
-const Stacks = dynamic(() => import('./components/Stacks'), { ssr: false });
-const Certificates = dynamic(() => import('./components/Certificates/Certificates'), { ssr: false });
-const Activities = dynamic(() => import('./components/Activities'), { ssr: false });
+const Awards = dynamic(() => import("./components/Awards/Awards"), { ssr: false });
+const Stacks = dynamic(() => import("./components/Stacks"), { ssr: false });
+const Certificates = dynamic(() => import("./components/Certificates/Certificates"), { ssr: false });
+const Activities = dynamic(() => import("./components/Activities"), { ssr: false });
+const Video = dynamic(() => import("./components/Video/Video"), { ssr: false });
 
 export default function Page() {
   return (
@@ -13,6 +14,7 @@ export default function Page() {
       <Awards />
       <Certificates />
       <Stacks />
+      <Video />
       <Activities />
     </div>
   );

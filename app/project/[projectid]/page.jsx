@@ -1,11 +1,11 @@
-import { unstable_getServerSession } from "next-auth/next";
+import { getServerSession } from "next-auth/next";
 
 import CycleCard from "./CycleCard";
 import { authOptions } from "../../../pages/api/auth/[...nextauth]";
 import { DeleteProject } from "../components";
 
 export default async function Page({ params: { projectid }, searchParams }) {
-  const session = await unstable_getServerSession(authOptions);
+  const session = await getServerSession(authOptions);
   const project = { title: decodeURIComponent(projectid), ...searchParams };
 
   const headers = session
