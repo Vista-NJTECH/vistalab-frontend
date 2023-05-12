@@ -15,7 +15,7 @@ function UploadCard({ setIsUpload }) {
   const [isSubmit, setIsSubmit] = useState(false);
   const [processingMsg, setProcessingMsg] = useState("Processing...");
 
-  const [form, setForm] = useState({ title: "", category: "", pdfile: null, remark: "" });
+  const [form, setForm] = useState({ project: "", category: "", pdfile: null, remark: "" });
   const onUpdateInput = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
@@ -77,14 +77,24 @@ function UploadCard({ setIsUpload }) {
               <label htmlFor='title' className='text-slate-800'>
                 标题
               </label>
-              <input
+              <select
                 required
-                type='text'
-                name='title'
-                value={form.title}
+                name='project'
+                defaultValue
                 onChange={onUpdateInput}
                 className='bg-gray-100 rounded-md p-2 outline-none'
-              />
+              >
+                <option disabled value>
+                  -- select an option --
+                </option>
+                <option value='实验室日常维护项'>实验室日常维护项</option>
+                <option value='2023计算机设计大赛物联网'>2023计算机设计大赛物联网</option>
+                <option value='2023计算机设计大赛无人驾驶专项挑战赛'>2023计算机设计大赛无人驾驶专项挑战赛</option>
+                <option value='2023计算机设计大赛智能视觉工程专项挑战赛'>2023计算机设计大赛智能视觉工程专项挑战赛</option>
+                <option value='2023智能车智慧物流'>2023智能车智慧物流</option>
+                <option value='大创-多智能体机器人'>大创-多智能体机器人</option>
+                <option value='大创-Lab Guard'>大创-Lab Guard</option>
+              </select>
             </div>
 
             <div className='flex flex-col w-full'>
