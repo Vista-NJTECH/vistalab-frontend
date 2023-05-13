@@ -28,11 +28,11 @@ export default async function Page() {
 
   return (
     <div className='frame w-full flex flex-col items-start justify-center gap-5'>
+      {<Upload/>}
       {projectNames.map((project, index) => (
         <div key={project} className='w-full flex flex-col gap-1'>
           <div className='w-full flex flex-row items-center justify-between'>
             <h1 className='title text-xl'>{project}</h1>
-            {index === 0 && <Upload />}
           </div>
           <div className='w-full overflow-x-auto'>
             <table className='w-full text-left border-collapse rounded-md'>
