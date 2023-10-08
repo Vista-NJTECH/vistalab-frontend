@@ -3,15 +3,35 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useSession, signIn, signOut } from "next-auth/react";
-
+import { useEffect, useState } from "react";
 import { useStateContext } from "../../Provider/Provider";
 
 export default function Avatar() {
   const { data: session } = useSession();
   const { avatarUrl } = useStateContext();
+  const [onlinePlayers, setOnlinePlayers] = useState(null);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://mcapi.us/server/status?ip=mc.vistalab.top");
+        const data = await response.json();
+        if (data && data.players) {
+          console.log("Online players:", data.players.online);
+          setOnlinePlayers(data.players.now);
+        }
+      } catch (error) {
+        console.error("Error fetching Minecraft server data:", error);
+      }
+    };
+  
+    fetchData();
+  }, []);
+
+  
   if (session) {
     return (
+      <div className='flex flex-row items-center'>
       <div className='flex flex-row gap-1 items-center relative group'>
         <Image
           width={240}
@@ -32,11 +52,18 @@ export default function Avatar() {
           </button>
         </div>
       </div>
+      <span className='inline-block w-2 h-2 rounded-full bg-green-500 ml-2'></span>
+    <p className='text-black-500 text-sm'>MC ONLINE: {onlinePlayers !== null ? onlinePlayers : 'Loading···'}</p>
+      </div>
     );
   }
   return (
+    <div className='flex flex-row items-center'>
     <button type='button' onClick={() => signIn()} className='btn text-base px-3 py-1 w-fit'>
       登录
     </button>
+    <span className='inline-block w-2 h-2 rounded-full bg-green-500 ml-2'></span>
+    <p className='text-black-500 text-sm'>MC ONLINE: {onlinePlayers !== null ? onlinePlayers : 'Loading···'}</p>
+    </div>
   );
 }

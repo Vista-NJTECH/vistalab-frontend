@@ -15,7 +15,6 @@ function ActivityCard({ prefix, activity, isOdd }) {
               src={prefix + activity.img.path}
               width={activity.img.width}
               height={activity.img.height}
-              blurDataURL={activity.img.base64}
               alt='activity'
               placeholder='blur'
               className='rounded-l-md object-cover object-center'
@@ -45,7 +44,6 @@ function ActivityCard({ prefix, activity, isOdd }) {
               src={prefix + activity.img.path}
               width={activity.img.width}
               height={activity.img.height}
-              blurDataURL={activity.img.base64}
               alt='activity'
               placeholder='blur'
               className='rounded-r-md object-cover object-center'
@@ -59,7 +57,6 @@ function ActivityCard({ prefix, activity, isOdd }) {
             src={prefix + activity.img.path}
             width={activity.img.width}
             height={activity.img.height}
-            blurDataURL={activity.img.base64}
             alt='activity'
             placeholder='blur'
             className='rounded-t-md object-cover object-center'

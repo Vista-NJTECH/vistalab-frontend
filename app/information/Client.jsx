@@ -17,6 +17,8 @@ export default function Client() {
   const [people, setPeople] = useState("");
   const [humidity, setHumidity] = useState("");
   const [temperature, setTemperature] = useState("");
+  const [currentCamera, setCurrentCamera] = useState("camera1");
+
 
   useEffect(() => {
     const ws = new WebSocket("wss://backend.vistalab.top/ws");
