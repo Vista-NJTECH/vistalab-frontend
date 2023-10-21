@@ -1,7 +1,7 @@
 import { MdSchool } from "react-icons/md";
 import { BsBoxSeam } from "react-icons/bs";
 import { HiOutlineUsers } from "react-icons/hi";
-import { FaListAlt, FaFlagCheckered } from "react-icons/fa";
+import { FaListAlt, FaFlagCheckered, FaServer } from "react-icons/fa";
 import { RiChatSmile3Fill, RiComputerFill, RiHomeGearFill } from "react-icons/ri";
 import { AiFillHome, AiFillAccountBook, AiFillSchedule } from "react-icons/ai";
 
@@ -59,6 +59,11 @@ export const navbarData = [
         title: "竞赛信息",
         href: "/competition",
         icon: <FaFlagCheckered />,
+      },
+      {
+        title: "服务信息",
+        href: "/service",
+        icon: <FaServer />,
       },
     ],
   },
